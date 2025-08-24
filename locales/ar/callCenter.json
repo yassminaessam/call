@@ -1,0 +1,44 @@
+{
+  "title": "مركز الاتصالات المتقدم",
+  "subtitle": "نظام متكامل مع Twilio، تحويل الصوت إلى نصّ، والردود الذكية",
+  "processAllCalls": "معالجة جميع المكالمات",
+  "startNewCall": "بدء مكالمة جديدة",
+  "endCall": "إنهاء المكالمة",
+  "callStarted": "تم بدء المكالمة",
+  "callRecordingActive": "جاري تسجيل المكالمة تلقائياً",
+  "callEnded": "انتهت المكالمة",
+  "tabs": {"callLog": "سجل المكالمات","analytics": "التحليلات","aiResponses": "الردود الذكية","settings": "الإعدادات"},
+  "filters": {"title": "فلترة المكالمات","status": "الحالة","direction": "الاتجاه","department": "القسم","dateRange": "الفترة الزمنية","allStatuses": "جميع الحالات","allDirections": "جميع الاتجاهات","allDepartments": "جميع الأقسام","today": "اليوم","thisWeek": "هذا الأسبوع","thisMonth": "هذا الشهر"},
+  "call": {"callId": "معرف المكالمة","recording": "التسجيل","transcription": "النص المحول","aiAnalysis": "التحليل الذكي","aiReply": "الرد الذكي","play": "تشغيل","download": "تحميل","viewFull": "عرض كامل","process": "معالجة","regenerate": "إعادة إنشاء","listen": "استماع","send": "إرسال","accuracy": "دقة","sentiment": "المشاعر","confidence": "الثقة","processing": "جاري المعالجة...","transcriptionStarted": "بدأت معالجة المكالمة","transcriptionCompleted": "تمت معالجة المكالمة بنجاح","processingSteps": {"loadingRecording": "تحميل التسجيل...","convertingToText": "تحويل الصوت إلى نص...","aiAnalyzing": "تحليل ذكي للمحتوى...","completed": "تمت المعالجة بنجاح"}},
+  "statuses": {"completed": "مكتملة","missed": "فائتة","ongoing": "جارية","failed": "فاشلة"},
+  "directions": {"inbound": "واردة","outbound": "صادرة"},
+  "sentiments": {"positive": "إيجابي","negative": "سلبي","neutral": "محايد"},
+  "priorities": {"urgent": "عاجل","high": "عالي","medium": "متوسط","low": "منخفض"},
+  "analytics": {
+    "totalCalls": "إجمالي المكالمات",
+    "totalCallsChange": "+12% من الشهر الماضي",
+    "answerRate": "معدل الرد",
+    "answerRateChange": "+5% من الشهر الماضي",
+    "smartProcessing": "معالجة ذكية",
+    "smartProcessingDesc": "من المكالمات تمت معالجتها",
+    "customerSatisfaction": "رضا العملاء",
+    "customerSatisfactionChange": "+0.3 من الشهر الماضي"
+  },
+  "aiResponses": {
+    "title": "مكتبة الردود الذكية",
+    "description": "جميع الردود المولدة بالذكاء الاصطناعي مع إمكانية التحرير والتحسين",
+    "empty": "سيتم عرض الردود الذكية هنا"
+  },
+  "settings": {
+    "twilio": {
+      "title": "إعدادات Twilio",
+      "accountSid": "Account SID",
+      "phoneNumber": "رقم الهاتف"
+    },
+    "ai": {
+      "title": "إعدادات الذكاء الاصطناعي",
+      "modelLabel": "نموذج الذكاء الاصطناعي",
+      "models": {"gpt4": "GPT-4", "gpt35": "GPT-3.5 Turbo"}
+    }
+  }
+}

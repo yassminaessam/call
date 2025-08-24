@@ -1,0 +1,13 @@
+{
+  "dashboard": "Dashboard",
+  "callCenter": "Call Center",
+  "aiAnswering": "AI Answering",
+  "sales": "Sales",
+  "hr": "HR",
+  "marketing": "Marketing",
+  "manufacturing": "Manufacturing",
+  "support": "Support",
+  "settings": "Settings",
+  "translationDemo": "Translation Demo",
+  "logout": "Logout"
+}

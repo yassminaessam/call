@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "variantOf": "ar"
+  },
+  "title": "لوحة تحكم الدعم",
+  "subtitle": "إدارة التذاكر، رضا العملاء، وحلول المشكلات",
+  "tabs": {
+    "overview": "نظرة عامة",
+    "tickets": "التذاكر",
+    "customers": "العملاء",
+    "knowledge": "المعرفة",
+    "automation": "الأتمتة",
+    "analytics": "التحليلات"
+  },
+  "kpis": {
+    "openTickets": "التذاكر المفتوحة",
+    "responseTime": "وقت الاستجابة",
+    "csat": "رضا العملاء",
+    "slas": "اتفاقيات مستوى الخدمة",
+    "firstContactResolution": "حل من أول تواصل",
+    "backlog": "التراكم"
+  },
+  "tickets": {
+    "title": "حالة التذاكر",
+    "allChannels": "جميع القنوات",
+    "createTicket": "إنشاء تذكرة",
+    "metrics": {
+      "priority": "الأولوية",
+      "status": "الحالة",
+      "agent": "الوكيل",
+      "sla": "اتفاقية الخدمة"
+    }
+  },
+  "customers": {
+    "title": "العملاء",
+    "addCustomer": "إضافة عميل"
+  },
+  "knowledge": {
+    "title": "قاعدة المعرفة",
+    "createArticle": "إنشاء مقال"
+  },
+  "automation": {
+    "title": "الأتمتة الذكية",
+    "createRule": "إنشاء قاعدة"
+  },
+  "analytics": {
+    "title": "تحليلات الدعم",
+    "ticketTrends": "اتجاهات التذاكر",
+    "resolutionMetrics": "مقاييس الحل",
+    "channelPerformance": "أداء القنوات"
+  }
+}

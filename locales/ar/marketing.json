@@ -1,0 +1,55 @@
+{
+  "title": "لوحة تحكم التسويق",
+  "subtitle": "متابعة أداء الحملات، القنوات، والتحويلات",
+  "tabs": {"overview": "نظرة عامة","campaigns": "الحملات","leads": "العملاء المحتملون","automation": "الأتمتة","analytics": "التحليلات","templates": "القوالب"},
+  "kpis": {"activeCampaigns": "الحملات النشطة","leadsGenerated": "العملاء المحتملون الجدد","conversionRate": "معدل التحويل","mql": "العملاء التسويقيون المؤهلون","campaignRoi": "عائد الاستثمار للحملة","adSpend": "الإنفاق الإعلاني"},
+  "campaigns": {"title": "أداء الحملات","allChannels": "جميع القنوات","createCampaign": "إنشاء حملة","metrics": {"budget": "الميزانية","spend": "الإنفاق","leads": "العملاء المحتملون","cpl": "التكلفة لكل عميل محتمل","revenue": "الإيرادات","roi": "العائد"}},
+  "leads": {"title": "تحليل العملاء المحتملين","allSources": "جميع المصادر","addLead": "إضافة عميل محتمل"},
+  "funnel": {"title": "قُمع التحويل","stages": {"visitors": "الزوار","leads": "العملاء المحتملون","mql": "عملاء تسويقيون مؤهلون","sql": "عملاء مبيعات مؤهلون","opportunities": "فرص","customers": "عملاء"}},
+  "leadSources": {"title": "مصادر العملاء المحتملين","direct": "مباشر","organic": "عضوي","referral": "إحالة","social": "اجتماعي","email": "البريد الإلكتروني","paid": "مدفوع"},
+  "automation": {"title": "سير العمل الآلي","allTypes": "جميع الأنواع","createWorkflow": "إنشاء سير عمل","types": {"email": "بريد إلكتروني","nurture": "رعاية","leadScoring": "تقييم العملاء","retargeting": "إعادة استهداف"}},
+  "analytics": {"title": "تحليلات التسويق","trafficSources": "مصادر الزيارات","channelPerformance": "أداء القنوات","conversionMetrics": "مقاييس التحويل","attribution": "الإسناد"},
+  "sampleData": {
+    "campaigns": {
+      "q1ProductLaunch": "إطلاق منتج الربع الأول",
+      "q1ProductLaunchDesc": "تقديم مزايا المؤسسات الجديدة للعملاء الحاليين",
+      "summerSale2024": "تخفيضات صيف 2024",
+      "summerSale2024Desc": "حملة خصم خاصة لقطاع الشركات المتوسطة",
+      "customerSuccessStories": "قصص نجاح العملاء",
+      "customerSuccessStoriesDesc": "عرض شهادات ودراسات حالة العملاء"
+    },
+    "segments": {
+      "enterpriseCustomers": "عملاء المؤسسات",
+      "enterpriseCustomersDesc": "عملاء شركات كبيرة أكثر من 1000 موظف",
+      "highValueProspects": "عملاء محتملون مرتفعو القيمة",
+      "highValueProspectsDesc": "عملاء محتملون مؤهلون بقيمة عالية",
+      "trialUsers": "مستخدمو النسخة التجريبية",
+      "trialUsersDesc": "مستخدمون في الفترة التجريبية المجانية",
+      "existingCustomers": "العملاء الحاليون",
+      "midMarketProspects": "عملاء محتملون من السوق المتوسط",
+      "allProspects": "جميع العملاء المحتملين",
+      "enterprisePlanUsers": "مستخدمو خطة المؤسسات",
+      "companySize50to500": "شركات بحجم 50-500 موظف",
+      "allLeadsAndCustomers": "جميع العملاء المحتملين والعملاء"
+    },
+    "templates": {
+      "socialPost": "منشور اجتماعي",
+      "eventInvitation": "دعوة فعالية"
+    },
+    "criteria": {
+      "companySize": "حجم الشركة",
+      "planType": "نوع الخطة",
+      "industry": "الصناعة",
+      "leadScore": "درجة العميل المحتمل",
+      "budget": "الميزانية",
+      "daysInTrial": "الأيام في التجربة",
+      "engagement": "التفاعل",
+      "technology": "التقنية",
+      "finance": "المالية",
+      "healthcare": "الرعاية الصحية",
+      "enterprise": "مؤسسة",
+      "trial": "تجربة",
+      "high": "مرتفع"
+    }
+  }
+}

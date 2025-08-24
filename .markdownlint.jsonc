@@ -1,0 +1,9 @@
+{
+  // Core style adjustments
+  "default": true,
+  "MD013": false,            // line length – keep off for Arabic/English mix
+  "MD033": false,            // inline HTML allowed
+  "MD041": false,            // first heading rule relaxed
+  // Ensure we catch blank lines again
+  "MD012": true
+}

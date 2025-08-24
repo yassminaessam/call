@@ -1,0 +1,64 @@
+{
+  "locale": "ar-EG",
+  "meta": {
+    "language": "Arabic (Egypt)",
+    "currency": "جنيه مصري",
+    "currency_code": "EGP"
+  },
+  "active": "نشط",
+  "inactive": "غير نشط",
+  "arabic": "العربية",
+  "english": "الإنجليزية",
+  "language": "اللغة",
+  "welcome": "مرحباً بك",
+  "dashboard": "لوحة التحكم",
+  "sales": "المبيعات",
+  "support": "الدعم",
+  "settings": "الإعدادات",
+  "logout": "تسجيل الخروج",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "view": "عرض",
+  "search": "بحث",
+  "loading": "جاري التحميل...",
+  "status": "الحالة",
+  "error": "خطأ",
+  "export": "تصدير",
+  "import": "استيراد",
+  "fromLastMonth": "مقارنة بالشهر الماضي",
+  "duration": "المدة",
+  "priority": "الأولوية",
+  "success": "نجاح",
+  "warning": "تحذير",
+  "info": "معلومات",
+  "currency": {
+    "egp_symbol": "ج.م",
+    "total_revenue": "إجمالي الإيرادات",
+    "monthly_revenue": "الإيراد الشهري",
+    "annual_revenue": "الإيراد السنوي"
+  },
+  "marketing": {
+    "leads": "العملاء المحتملون",
+    "conversions": "التحويلات",
+    "campaign_performance": "أداء الحملة",
+    "status": {
+      "running": "جارية",
+      "paused": "متوقفة",
+      "completed": "مكتملة",
+      "draft": "مسودة"
+    },
+    "type": {
+      "email": "بريد إلكتروني",
+      "social": "وسائل التواصل",
+      "mixed": "متعدد القنوات",
+      "sms": "رسائل نصية"
+    }
+  },
+  "dates": {
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "this_month": "هذا الشهر"
+  }
+}

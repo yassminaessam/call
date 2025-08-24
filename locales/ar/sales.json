@@ -1,0 +1,17 @@
+{
+  "title": "نظام المبيعات CRM",
+  "subtitle": "إدارة العملاء المحتملين وتتبع الصفقات وتنمية الإيرادات",
+  "tabs": {"leads": "العملاء المحتملون","deals": "مسار الصفقات","quotes": "العروض والفواتير","analytics": "التحليلات"},
+  "stats": {"totalLeads": "إجمالي العملاء المحتملين","activeDeals": "الصفقات النشطة","revenueMTD": "الإيرادات (منذ بداية الشهر)","conversionRate": "نسبة التحويل"},
+  "actions": {"exportLeads": "تصدير العملاء المحتملين","newLead": "عميل محتمل جديد","createLead": "إنشاء عميل محتمل","newDeal": "صفقة جديدة","createQuote": "إنشاء عرض سعر","callLead": "الاتصال بالعميل المحتمل","sendEmail": "إرسال بريد","editLead": "تعديل العميل المحتمل","moreOptions": "المزيد من الخيارات"},
+  "filters": {"searchPlaceholder": "ابحث عن العملاء المحتملين...","allStages": "جميع المراحل","allAgents": "جميع الوكلاء"},
+  "stages": {"leads": "العملاء المحتملون","new": "جديد","qualified": "مؤهل","proposal": "عرض سعر","negotiation": "تفاوض","won": "مغلقة - ربح","lost": "مغلقة - خسارة"},
+  "lead": {"value": "القيمة:","probability": "الاحتمالية:","agent": "الوكيل:","lastContact": "آخر تواصل:","nextFollowup": "المتابعة القادمة:","form": {"title": "إنشاء عميل محتمل جديد","description": "أضف عميلًا محتملاً جديدًا لمسار المبيعات","leadName": "اسم العميل المحتمل *","contactPerson": "الشخص المسؤول *","email": "البريد الإلكتروني *","phone": "الهاتف","dealValue": "قيمة الصفقة","leadSource": "مصدر العميل المحتمل","stage": "المرحلة","assignedAgent": "الوكيل المعيّن","notes": "ملاحظات","tags": "وسوم","placeholders": {"leadName": "اسم الشركة أو الشخص","contactPerson": "جهة الاتصال الأساسية","email": "contact@company.com","phone": "+1 (555) 123-4567","dealValue": "50000","tags": "enterprise, hot-lead, decision-maker"},"sources": {"website": "الموقع الإلكتروني","referral": "ترشيح/إحالة","coldOutreach": "تواصل بارد","socialMedia": "وسائل التواصل","tradeShow": "معرض تجاري"},"selectSource": "اختر المصدر","selectAgent": "اختر الوكيل"}},
+  "deals": {"pipelineTitle": "مسار الصفقات","byStage": "الصفقات حسب المرحلة","activeTitle": "الصفقات النشطة","dealsCount": "{{count}} صفقة"},
+  "deal": {"value": "القيمة:","expectedClose": "الإغلاق المتوقع:","agent": "الوكيل:","activitiesCount": "{{count}} نشاط","daysInStage": "{{days}} يومًا في المرحلة","lastActivity": "الأخير: {{activity}}"},
+  "quotes": {"title": "العروض والفواتير","description": "إدارة العروض، المقترحات، والفوترة","emptyTitle": "لا توجد عروض بعد","emptyDescription": "ابدأ بإنشاء عروض ومقترحات لعملائك المحتملين","createQuote": "إنشاء عرض سعر"},
+  "analytics": {"conversionFunnel": "قمع التحويل","performanceMetrics": "مؤشرات الأداء"},
+  "metrics": {"averageDealSize": "متوسط حجم الصفقة","salesCycleLength": "طول دورة المبيعات","winRate": "معدل الربح","revenueGrowth": "نمو الإيرادات"},
+  "agents": {"sarah": "سارة جونسون","mike": "مايك ديفيس","lisa": "ليزا تشين"},
+  "tags": {"enterprise": "مؤسسة","hot-lead": "عميل محتمل ساخن","startup": "شركة ناشئة","warm-lead": "عميل محتمل دافئ","closing-soon": "قرب الإغلاق"}
+}

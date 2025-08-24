@@ -1,0 +1,26 @@
+{
+  "active": "نشط",
+  "inactive": "غير نشط",
+  "arabic": "العربية",
+  "english": "الإنجليزية",
+  "language": "اللغة",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "view": "عرض",
+  "loading": "جاري التحميل...",
+  "error": "خطأ",
+  "export": "تصدير",
+  "import": "استيراد",
+  "fromLastMonth": "مقارنة بالشهر الماضي",
+  "duration": "المدة",
+  "priority": "الأولوية",
+  "success": "نجاح",
+  "placeholders": {
+    "comingSoon": "هذه الصفحة قيد الإعداد. تابع التوجيه لاستكمال هذا القسم.",
+    "moduleLabel": "الوحدة:"
+  },
+  "pagination": {"previous": "السابق","next": "التالي","morePages": "صفحات أخرى"},
+  "sidebar": {"toggle": "تبديل الشريط الجانبي"}
+}

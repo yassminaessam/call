@@ -1,0 +1,43 @@
+name: i18n & Lint Checks
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint (custom no-hardcoded-ui-text)
+        run: npm run lint -- --max-warnings=0
+
+      - name: i18n scan (hardcoded string detection)
+        run: |
+          npm run i18n:scan || true
+          if [ -f unlocalized-report.json ]; then
+            echo '::group::Unlocalized Report'
+            cat unlocalized-report.json
+            echo '::endgroup::'
+            echo 'Found potential hardcoded strings. Failing build.'
+            exit 1
+          fi
+
+      - name: Tests
+        run: npm test --if-present

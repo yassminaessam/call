@@ -1,0 +1,26 @@
+{
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "view": "View",
+  "loading": "Loading...",
+  "active": "Active",
+  "inactive": "Inactive",
+  "arabic": "Arabic",
+  "english": "English",
+  "language": "Language",
+  "error": "Error",
+  "export": "Export",
+  "import": "Import",
+  "fromLastMonth": "From last month",
+  "duration": "Duration",
+  "priority": "Priority",
+  "success": "Success",
+  "placeholders": {
+    "comingSoon": "This page is coming soon. Continue prompting to build out this section.",
+    "moduleLabel": "Module:"
+  },
+  "pagination": {"previous": "Previous","next": "Next","morePages": "More pages"},
+  "sidebar": {"toggle": "Toggle Sidebar"}
+}

@@ -1,0 +1,13 @@
+{
+  "dashboard": "لوحة التحكم",
+  "callCenter": "مركز الاتصالات",
+  "aiAnswering": "الرد الآلي بالذكاء الاصطناعي",
+  "sales": "المبيعات",
+  "hr": "الموارد البشرية",
+  "marketing": "التسويق",
+  "manufacturing": "التصنيع",
+  "support": "الدعم",
+  "settings": "الإعدادات",
+  "translationDemo": "عرض الترجمة",
+  "logout": "تسجيل الخروج"
+}

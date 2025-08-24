@@ -1,0 +1,1 @@
+Pseudo locale generated automatically. Do not edit manually; run `npm run i18n:pseudo`.

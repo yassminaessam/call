@@ -1,0 +1,44 @@
+{
+  "title": "Advanced Call Center",
+  "subtitle": "Integrated system with Twilio, Speech-to-Text, and Smart Responses",
+  "processAllCalls": "Process All Calls",
+  "startNewCall": "Start New Call",
+  "endCall": "End Call",
+  "callStarted": "Call Started",
+  "callRecordingActive": "Call recording is active",
+  "callEnded": "Call Ended",
+  "tabs": {"callLog": "Call Log","analytics": "Analytics","aiResponses": "AI Responses","settings": "Settings"},
+  "filters": {"title": "Filter Calls","status": "Status","direction": "Direction","department": "Department","dateRange": "Date Range","allStatuses": "All Statuses","allDirections": "All Directions","allDepartments": "All Departments","today": "Today","thisWeek": "This Week","thisMonth": "This Month"},
+  "call": {"callId": "Call ID","recording": "Recording","transcription": "Transcription","aiAnalysis": "AI Analysis","aiReply": "AI Reply","play": "Play","download": "Download","viewFull": "View Full","process": "Process","regenerate": "Regenerate","listen": "Listen","send": "Send","accuracy": "Accuracy","sentiment": "Sentiment","confidence": "Confidence","processing": "Processing...","transcriptionStarted": "Call processing started","transcriptionCompleted": "Call processed successfully","processingSteps": {"loadingRecording": "Loading recording...","convertingToText": "Converting speech to text...","aiAnalyzing": "AI analyzing content...","completed": "Processing completed successfully"}},
+  "statuses": {"completed": "Completed","missed": "Missed","ongoing": "Ongoing","failed": "Failed"},
+  "directions": {"inbound": "Inbound","outbound": "Outbound"},
+  "sentiments": {"positive": "Positive","negative": "Negative","neutral": "Neutral"},
+  "priorities": {"urgent": "Urgent","high": "High","medium": "Medium","low": "Low"},
+  "analytics": {
+    "totalCalls": "Total Calls",
+    "totalCallsChange": "+12% from last month",
+    "answerRate": "Answer Rate",
+    "answerRateChange": "+5% from last month",
+    "smartProcessing": "Smart Processing",
+    "smartProcessingDesc": "of calls processed",
+    "customerSatisfaction": "Customer Satisfaction",
+    "customerSatisfactionChange": "+0.3 from last month"
+  },
+  "aiResponses": {
+    "title": "AI Responses Library",
+    "description": "All AI-generated responses with editing and optimization options",
+    "empty": "Smart responses will appear here"
+  },
+  "settings": {
+    "twilio": {
+      "title": "Twilio Settings",
+      "accountSid": "Account SID",
+      "phoneNumber": "Phone Number"
+    },
+    "ai": {
+      "title": "AI Settings",
+      "modelLabel": "AI Model",
+      "models": {"gpt4": "GPT-4", "gpt35": "GPT-3.5 Turbo"}
+    }
+  }
+}

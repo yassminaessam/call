@@ -1,0 +1,19 @@
+{
+  "title": "Translation System Demo",
+  "subtitle": "Comprehensive Arabic/English translation system with RTL support",
+  "activeLanguage": "Active Language",
+  "direction": "Direction",
+  "directions": {"rtl": "Right-to-Left (RTL)", "ltr": "Left-to-Right (LTR)"},
+  "featuresSection": {"title": "Translation System Features", "description": "Advanced internationalization capabilities for enterprise CRM"},
+  "features": {
+    "bidirectional": {"title": "Bidirectional Text Support", "desc": "Full RTL/LTR support with automatic direction switching"},
+    "formatting": {"title": "Localized Formatting", "desc": "Numbers, dates, and currency formatting based on locale"},
+    "dynamic": {"title": "Dynamic Content Translation", "desc": "All UI elements update instantly when language changes"},
+    "context": {"title": "Context-Aware Translations", "desc": "Department-specific terminology and professional tone"}
+  },
+  "status": {"completed": "completed"},
+  "formattingSection": {"title": "Localized Formatting Examples", "description": "Numbers, dates, and currency automatically formatted for the active locale", "number": "Number Formatting", "currency": "Currency Formatting", "date": "Date Formatting", "relative": "Relative Time", "rawValue": "Raw value", "autoUpdates": "Auto-updates based on locale"},
+  "modulesSection": {"title": "CRM Modules", "description": "CRM modules with translated content and RTL-aware layouts"},
+  "commonUISection": {"title": "Common UI Elements Translation", "description": "Standard UI components showing translated text and RTL layouts", "actions": "Action Buttons", "statuses": "Status Indicators", "priorities": "Priority Levels"},
+  "implementation": {"title": "Implementation Details", "description": "Technical details about the translation system implementation", "context": {"title": "Context-Based Translation", "desc": "Uses React Context for global language state management with automatic persistence to localStorage."}, "rtl": {"title": "RTL Layout Support", "desc": "Automatic direction switching with CSS-based RTL layout adjustments for margins, padding, and text alignment."}, "intl": {"title": "Localized Formatting", "desc": "Built-in Intl API integration for numbers, dates, currency, and relative time formatting."}, "params": {"title": "Parameter Substitution", "desc": "Support for dynamic content with parameter replacement using {{}} syntax in translation strings."}}
+}

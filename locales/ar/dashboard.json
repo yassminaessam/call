@@ -1,0 +1,44 @@
+{
+  "title": "لوحة التحكم الرئيسية",
+  "subtitle": "مرحباً بك في نظام إدارة علاقات العملاء",
+  "quickActions": "الإجراءات السريعة",
+  "recentActivity": "النشاط الأخير",
+  "departmentOverview": "نظرة عامة على الأقسام",
+  "aiAnsweringStatus": "حالة الردود الذكية",
+  "makeQuickCall": "مكالمة سريعة",
+  "enterPhoneNumber": "أدخل رقم الهاتف",
+  "stats": {
+    "totalCallsToday": "إجمالي المكالمات اليوم",
+    "activeDeals": "الصفقات النشطة",
+    "openTickets": "التذاكر المفتوحة",
+    "teamMembers": "أعضاء الفريق",
+    "fromLastMonth": "من الشهر الماضي"
+  },
+  "deptStats": {
+    "leads": "عملاء محتملون",
+    "deals": "الصفقات",
+    "revenue": "الإيرادات",
+    "employees": "الموظفون",
+    "pending": "قيد الانتظار",
+    "attendance": "الحضور",
+    "campaigns": "الحملات",
+    "reach": "الوصول",
+    "conversion": "نسبة التحويل",
+    "orders": "الطلبات",
+    "inventory": "المخزون",
+    "quality": "الجودة",
+    "tickets": "التذاكر",
+    "resolved": "تم الحل",
+    "satisfaction": "الرضا"
+  },
+  "recentActivities": {
+    "newCall": "مكالمة جديدة من {{name}} - استفسار {{type}}",
+    "newLead": "عميل محتمل جديد: {{company}}",
+    "ticketResolved": "تذكرة رقم {{number}} تم حلها بواسطة {{agent}}",
+    "newHire": "بدء عملية توظيف جديدة لـ {{name}}",
+    "orderShipped": "طلب رقم {{number}} تم شحنه للعميل",
+    "salesInquiry": "استفسار مبيعات",
+    "minutesAgo": "منذ {{minutes}} دقيقة",
+    "hoursAgo": "منذ {{hours}} ساعة"
+  }
+}

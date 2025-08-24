@@ -1,0 +1,44 @@
+{
+  "title": "Main Dashboard",
+  "subtitle": "Welcome to Customer Relationship Management System",
+  "quickActions": "Quick Actions",
+  "recentActivity": "Recent Activity",
+  "departmentOverview": "Department Overview",
+  "aiAnsweringStatus": "AI Answering Status",
+  "makeQuickCall": "Make Quick Call",
+  "enterPhoneNumber": "Enter phone number",
+  "stats": {
+    "totalCallsToday": "Total Calls Today",
+    "activeDeals": "Active Deals",
+    "openTickets": "Open Tickets",
+    "teamMembers": "Team Members",
+    "fromLastMonth": "from last month"
+  },
+  "deptStats": {
+    "leads": "Leads",
+    "deals": "Deals",
+    "revenue": "Revenue",
+    "employees": "Employees",
+    "pending": "Pending",
+    "attendance": "Attendance",
+    "campaigns": "Campaigns",
+    "reach": "Reach",
+    "conversion": "Conversion",
+    "orders": "Orders",
+    "inventory": "Inventory",
+    "quality": "Quality",
+    "tickets": "Tickets",
+    "resolved": "Resolved",
+    "satisfaction": "Satisfaction"
+  },
+  "recentActivities": {
+    "newCall": "New call from {{name}} - {{type}} inquiry",
+    "newLead": "New lead created: {{company}}",
+    "ticketResolved": "Ticket #{{number}} resolved by {{agent}}",
+    "newHire": "New hire process started for {{name}}",
+    "orderShipped": "Order #{{number}} shipped to client",
+    "salesInquiry": "Sales",
+    "minutesAgo": "{{minutes}} minutes ago",
+    "hoursAgo": "{{hours}} hours ago"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "file": "client\\lib\\i18n.ts",
+    "line": 99,
+    "text": "= 3 && count"
+  },
+  {
+    "file": "client\\contexts\\TranslationContext.tsx",
+    "line": 29,
+    "text": "Promise"
+  },
+  {
+    "file": "client\\components\\PrefetchLink.tsx",
+    "line": 10,
+    "text": "Promise"
+  }
+]

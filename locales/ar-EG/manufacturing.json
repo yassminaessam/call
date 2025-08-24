@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "variantOf": "ar"
+  },
+  "title": "لوحة تحكم التصنيع",
+  "subtitle": "مراقبة الإنتاج، الجودة، وسلسلة الإمداد",
+  "tabs": {
+    "overview": "نظرة عامة",
+    "production": "الإنتاج",
+    "quality": "الجودة",
+    "inventory": "المخزون",
+    "maintenance": "الصيانة",
+    "analytics": "التحليلات"
+  },
+  "kpis": {
+    "oee": "الكفاءة الإجمالية للمعدات",
+    "unitsProduced": "الوحدات المنتجة",
+    "defectRate": "معدل العيوب",
+    "downtime": "التوقف",
+    "inventoryTurnover": "دوران المخزون",
+    "onTimeDelivery": "التسليم في الوقت"
+  },
+  "production": {
+    "title": "أداء الإنتاج",
+    "allLines": "جميع الخطوط",
+    "addLine": "إضافة خط"
+  },
+  "quality": {
+    "title": "مراقبة الجودة",
+    "addInspection": "إضافة فحص"
+  },
+  "inventory": {
+    "title": "مستويات المخزون",
+    "addItem": "إضافة عنصر"
+  },
+  "maintenance": {
+    "title": "الصيانة الوقائية",
+    "createWorkOrder": "إنشاء أمر عمل",
+    "upcomingTasks": "المهام القادمة"
+  },
+  "analytics": {
+    "title": "تحليلات التصنيع",
+    "efficiencyTrends": "اتجاهات الكفاءة",
+    "qualityMetrics": "مقاييس الجودة",
+    "supplyChain": "سلسلة الإمداد"
+  }
+}

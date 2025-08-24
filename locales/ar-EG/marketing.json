@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "variantOf": "ar"
+  },
+  "title": "لوحة تحكم التسويق",
+  "subtitle": "متابعة أداء الحملات، القنوات، والتحويلات",
+  "tabs": {
+    "overview": "نظرة عامة",
+    "campaigns": "الحملات",
+    "leads": "العملاء المحتملون",
+    "automation": "الأتمتة",
+    "analytics": "التحليلات"
+  },
+  "kpis": {
+    "activeCampaigns": "الحملات النشطة",
+    "leadsGenerated": "العملاء المحتملون الجدد",
+    "conversionRate": "معدل التحويل",
+    "mql": "العملاء التسويقيون المؤهلون",
+    "campaignRoi": "عائد الاستثمار للحملة",
+    "adSpend": "الإنفاق الإعلاني"
+  },
+  "campaigns": {
+    "title": "أداء الحملات",
+    "allChannels": "جميع القنوات",
+    "createCampaign": "إنشاء حملة",
+    "metrics": {
+      "budget": "الميزانية",
+      "spend": "الإنفاق",
+      "leads": "العملاء المحتملون",
+      "cpl": "التكلفة لكل عميل محتمل",
+      "revenue": "الإيرادات",
+      "roi": "العائد"
+    }
+  },
+  "leads": {
+    "title": "تحليل العملاء المحتملين",
+    "allSources": "جميع المصادر",
+    "addLead": "إضافة عميل محتمل"
+  },
+  "funnel": {
+    "title": "قُمع التحويل",
+    "stages": {
+      "visitors": "الزوار",
+      "leads": "العملاء المحتملون",
+      "mql": "عملاء تسويقيون مؤهلون",
+      "sql": "عملاء مبيعات مؤهلون",
+      "opportunities": "فرص",
+      "customers": "عملاء"
+    }
+  },
+  "leadSources": {
+    "title": "مصادر العملاء المحتملين",
+    "direct": "مباشر",
+    "organic": "عضوي",
+    "referral": "إحالة",
+    "social": "اجتماعي",
+    "email": "البريد الإلكتروني",
+    "paid": "مدفوع"
+  },
+  "automation": {
+    "title": "سير العمل الآلي",
+    "allTypes": "جميع الأنواع",
+    "createWorkflow": "إنشاء سير عمل",
+    "types": {
+      "email": "بريد إلكتروني",
+      "nurture": "رعاية",
+      "leadScoring": "تقييم العملاء",
+      "retargeting": "إعادة استهداف"
+    }
+  },
+  "analytics": {
+    "title": "تحليلات التسويق",
+    "trafficSources": "مصادر الزيارات",
+    "channelPerformance": "أداء القنوات",
+    "conversionMetrics": "مقاييس التحويل",
+    "attribution": "الإسناد"
+  }
+}

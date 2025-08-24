@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "variantOf": "ar"
+  },
+  "title": "إجابة بالذكاء الاصطناعي",
+  "subtitle": "نظام ردود آلي مدعوم بالذكاء الاصطناعي",
+  "actions": {"globalSettings": "إعدادات عامة","saveChanges": "حفظ التغييرات"},
+  "departments": {"title": "الأقسام","active": "نشط","inactive": "غير نشط","autoGen": "توليد تلقائي","defaultMessages": {"sales": "لقد وصلت إلى قسم المبيعات. الرجاء ترك اسمك وشركتك وسبب الاتصال وسنعاود الاتصال خلال 24 ساعة.","hr": "لقد وصلت إلى الموارد البشرية. الرجاء ترك اسمك وسبب الاتصال وسنرد خلال 24 ساعة.","marketing": "لقد وصلت إلى التسويق. شارك أفكارك أو فرص الشراكة وسنعاود الاتصال خلال 24 ساعة.","manufacturing": "لقد وصلت إلى التصنيع. اترك تفاصيل طلبك أو استفسارك وسنرد قريبًا.","support": "لقد وصلت إلى الدعم. الرجاء وصف المشكلة وبيانات الاتصال وسنعود إليك اليوم."}},
+  "departmentConfig": {"title": "قسم {{name}}","subtitle": "إعداد رسائل الرد الصوتي وإعدادات الصوت","status": {"active": "نشط","inactive": "غير نشط"}},
+  "tabs": {"message": "إعداد الرسالة","voice": "إعداد الصوت","analytics": "التحليلات"},
+  "messageSetup": {"title": "إعداد الرسالة","messageLabel": "رسالة الرد","messagePlaceholder": "أدخل رسالة الرد المخصصة...","charactersCount": "عدد الحروف: {{count}}/500","estimatedDuration": "المدة التقديرية: ~{{seconds}} ثانية","aiGeneration": {"title": "تحسين آلي بالذكاء الاصطناعي","description": "تحسين الرسالة تلقائياً باستخدام الذكاء الاصطناعي","placeholder": "مثال: اجعلها أكثر احترافية","generateButton": "توليد"},"language": {"label": "اللغة","options": {"en-US": "إنجليزي (أمريكي)","en-GB": "إنجليزي (بريطاني)","es-ES": "إسباني","fr-FR": "فرنسي","de-DE": "ألماني"}},"tone": {"label": "نبرة الرسالة","options": {"professional": "احترافية","friendly": "ودّية","formal": "رسمية","casual": "غير رسمية"}}},
+  "voiceSettings": {"title": "إعداد توليد الصوت","currentVoice": {"title": "التسجيل الحالي","generated": "مولد","duration": "{{current}} / {{total}}"},"provider": {"label": "مزود الصوت","options": {"elevenlabs": "ElevenLabs","google": "Google TTS","playht": "PlayHT","aws": "AWS Polly"}},"voiceModel": {"label": "نموذج الصوت","options": {"professional-female": "أنثى احترافية","professional-male": "ذكر احترافي","friendly-female": "أنثى ودّية","friendly-male": "ذكر ودّي"}},"speed": {"label": "السرعة","options": {"slow": "بطيء","normal": "طبيعي","fast": "سريع"}},"pitch": {"label": "طبقة الصوت","options": {"low": "منخفض","normal": "عادي","high": "مرتفع"}},"emotion": {"label": "العاطفة","options": {"neutral": "محايد","happy": "سعيد","calm": "هادئ","excited": "متحمس"}},"actions": {"generateVoice": "توليد صوت","uploadCustom": "رفع مخصص"}},
+  "analytics": {"messagesPlayed": "عدد الرسائل المشغلة","callbackRate": "معدل إعادة الاتصال","avgListenTime": "متوسط وقت الاستماع","recentResponses": "أحدث الردود","fullMessage": "كامل الرسالة","partial": "جزئي","sampleData": {"caller1": "أحمد علي","caller2": "شركة التقنية","caller3": "سارة محمد","caller4": "مايك وائل","timeAgo": {"2min": "منذ دقيقتين","15min": "منذ 15 دقيقة","1hour": "منذ ساعة","2hours": "منذ ساعتين"}}}
+  
+}

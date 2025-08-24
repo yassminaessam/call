@@ -1,0 +1,17 @@
+{
+  "title": "Sales CRM",
+  "subtitle": "Manage leads, track deals, and drive revenue growth",
+  "tabs": {"leads": "Leads","deals": "Deal Pipeline","quotes": "Quotes & Invoices","analytics": "Analytics"},
+  "stats": {"totalLeads": "Total Leads","activeDeals": "Active Deals","revenueMTD": "Revenue (MTD)","conversionRate": "Conversion Rate"},
+  "actions": {"exportLeads": "Export Leads","newLead": "New Lead","createLead": "Create Lead","newDeal": "New Deal","createQuote": "Create Quote","callLead": "Call lead","sendEmail": "Send email","editLead": "Edit lead","moreOptions": "More options"},
+  "filters": {"searchPlaceholder": "Search leads...","allStages": "All Stages","allAgents": "All Agents"},
+  "stages": {"leads": "Leads","new": "New","qualified": "Qualified","proposal": "Proposal","negotiation": "Negotiation","won": "Won","lost": "Lost"},
+  "lead": {"value": "Value:","probability": "Probability:","agent": "Agent:","lastContact": "Last Contact:","nextFollowup": "Next follow-up:","form": {"title": "Create New Lead","description": "Add a new lead to your sales pipeline","leadName": "Lead Name *","contactPerson": "Contact Person *","email": "Email *","phone": "Phone","dealValue": "Deal Value","leadSource": "Lead Source","stage": "Stage","assignedAgent": "Assigned Agent","notes": "Notes","tags": "Tags","placeholders": {"leadName": "Company or person name","contactPerson": "Primary contact","email": "contact@company.com","phone": "+1 (555) 123-4567","dealValue": "50000","tags": "enterprise, hot-lead, decision-maker"},"sources": {"website": "Website","referral": "Referral","coldOutreach": "Cold Outreach","socialMedia": "Social Media","tradeShow": "Trade Show"},"selectSource": "Select source","selectAgent": "Select agent"}},
+  "deals": {"pipelineTitle": "Deal Pipeline","byStage": "Deals by stage","activeTitle": "Active Deals","dealsCount": "{{count}} deals"},
+  "deal": {"value": "Value:","expectedClose": "Expected Close:","agent": "Agent:","activitiesCount": "{{count}} activities","daysInStage": "{{days}} days in stage","lastActivity": "Last: {{activity}}"},
+  "quotes": {"title": "Quotes & Invoices","description": "Manage quotes, proposals, and invoicing","emptyTitle": "No quotes yet","emptyDescription": "Start creating quotes and proposals for your leads","createQuote": "Create Quote"},
+  "analytics": {"conversionFunnel": "Conversion Funnel","performanceMetrics": "Performance Metrics"},
+  "metrics": {"averageDealSize": "Average Deal Size","salesCycleLength": "Sales Cycle Length","winRate": "Win Rate","revenueGrowth": "Revenue Growth"},
+  "agents": {"sarah": "Sarah Johnson","mike": "Mike Davis","lisa": "Lisa Chen"},
+  "tags": {"enterprise": "Enterprise","hot-lead": "Hot lead","startup": "Startup","warm-lead": "Warm lead","closing-soon": "Closing soon"}
+}
