@@ -19,18 +19,18 @@ export default function LanguageSwitcher({
   variant = 'default', 
   className 
 }: LanguageSwitcherProps) {
-  const { language, setLanguage, t, ready } = useTranslation() as any; // extended context includes ready
+  const { language, setLanguage, t, ready } = useTranslation();
 
   const languages: { code: Language; name: string; nativeName: string; flag: string }[] = [
     { 
       code: 'ar', 
-      name: t('common.arabic'), 
+      name: ready ? t('common.arabic') : 'العربية', 
       nativeName: 'العربية', 
       flag: '🇸🇦' 
     },
     { 
       code: 'en', 
-      name: t('common.english'), 
+      name: ready ? t('common.english') : 'English', 
       nativeName: 'English', 
       flag: '🇺🇸' 
     }
@@ -40,21 +40,29 @@ export default function LanguageSwitcher({
 
   const handleLanguageChange = (newLanguage: Language) => {
     console.log('🌐 Language change requested:', newLanguage);
-    setLanguage(newLanguage);
+    try {
+      setLanguage(newLanguage);
 
-    // Force a small delay and then log the state
-    setTimeout(() => {
-      console.log('🌐 Current language after change:', language);
-      console.log('🌐 Document direction:', document.documentElement.dir);
-      console.log('🌐 Document language:', document.documentElement.lang);
-    }, 100);
+      // Force a small delay and then log the state
+      setTimeout(() => {
+        console.log('🌐 Current language after change:', newLanguage);
+        console.log('🌐 Document direction:', document.documentElement.dir);
+        console.log('🌐 Document language:', document.documentElement.lang);
+      }, 100);
+    } catch (error) {
+      console.error('🌐 Error changing language:', error);
+      // Fallback to English in case of error
+      if (newLanguage !== 'en') {
+        setTimeout(() => setLanguage('en'), 100);
+      }
+    }
   };
 
   // Provide a lightweight visual when translations not yet ready
   const loadingBadge = !ready ? (
     <span className="ml-2 inline-flex items-center gap-1 text-[10px] font-medium text-muted-foreground">
       <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-      {t('common.loading')}
+      Loading...
     </span>
   ) : null;
 
@@ -78,9 +86,11 @@ export default function LanguageSwitcher({
             <DropdownMenuItem
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
+              disabled={!ready}
               className={cn(
                 "flex items-center gap-2 cursor-pointer",
-                language === lang.code && "bg-accent"
+                language === lang.code && "bg-accent",
+                !ready && "opacity-50 cursor-not-allowed"
               )}
             >
               <span className="text-lg">{lang.flag}</span>
@@ -114,9 +124,11 @@ export default function LanguageSwitcher({
             <DropdownMenuItem
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
+              disabled={!ready}
               className={cn(
                 "flex items-center gap-2 cursor-pointer",
-                language === lang.code && "bg-accent"
+                language === lang.code && "bg-accent",
+                !ready && "opacity-50 cursor-not-allowed"
               )}
             >
               <span className="text-lg">{lang.flag}</span>
@@ -149,16 +161,18 @@ export default function LanguageSwitcher({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[180px]">
         <div className="px-2 py-1.5 text-sm font-medium text-muted-foreground">
-          {t('common.language')}
+          {ready ? t('common.language') : 'Language'}
         </div>
         {loadingBadge && <div className="px-2 pb-1">{loadingBadge}</div>}
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
             onClick={() => handleLanguageChange(lang.code)}
+            disabled={!ready}
             className={cn(
               "flex items-center gap-3 cursor-pointer px-2 py-2",
-              language === lang.code && "bg-accent"
+              language === lang.code && "bg-accent",
+              !ready && "opacity-50 cursor-not-allowed"
             )}
           >
             <span className="text-lg">{lang.flag}</span>

@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import CRMLayout from "@/components/CRMLayout";
 import { TranslationProvider, useTranslation } from "@/contexts/TranslationContext";
 import LoadingSpinner from '@/components/LoadingSpinner';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 // Critical above-the-fold page (keep eager): Dashboard
 import Dashboard from "@/pages/Dashboard";
@@ -37,10 +38,32 @@ const PlaceholderPage = ({ title }: { title: string }) => {
 
 function App() {
   return (
-    <TranslationProvider>
-      <AppRoutes />
-    </TranslationProvider>
+    <ErrorBoundary>
+      <TranslationProvider>
+        <AppContent />
+      </TranslationProvider>
+    </ErrorBoundary>
   );
+}
+
+function AppContent() {
+  const { ready } = useTranslation();
+  
+  // Show loading state while translations initialize
+  if (!ready) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <LoadingSpinner label="Loading translations..." />
+          <p className="mt-4 text-sm text-muted-foreground">
+            Initializing language system...
+          </p>
+        </div>
+      </div>
+    );
+  }
+  
+  return <AppRoutes />;
 }
 
 function AppRoutes() {
@@ -48,7 +71,11 @@ function AppRoutes() {
 
   return (
     <BrowserRouter key={language}>
-  <Suspense fallback={<LoadingSpinner label={"Loading module..."} />}> 
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <LoadingSpinner label="Loading module..." />
+        </div>
+      }> 
         <Routes>
         <Route path="/" element={
           <CRMLayout>

@@ -90,3 +90,4 @@ dist-ssr
 
 .config/
 !.env
+.vercel

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist/spa",
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/server.ts" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

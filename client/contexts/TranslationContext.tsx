@@ -45,14 +45,22 @@ async function loadDomain(locale: Language, domain: string): Promise<void> {
     if (loader) {
       if (!localeStore[locale][domain]) {
         try {
+          console.log(`[i18n] Loading domain ${domain} for locale ${locale}`);
           const data = await loader();
-            localeStore[locale][domain] = data || {};
+          localeStore[locale][domain] = data || {};
+          console.log(`[i18n] Successfully loaded ${p}`);
         } catch (e) {
           console.warn(`[i18n] Failed loading ${p}`, e);
+          // Set empty object to prevent repeated attempts
+          localeStore[locale][domain] = {};
         }
       }
       return;
     }
+  }
+  // If no loader found, set empty object to prevent repeated attempts
+  if (!localeStore[locale][domain]) {
+    localeStore[locale][domain] = {};
   }
 }
 
@@ -84,18 +92,23 @@ function buildFallbackChain(lang: Language): Language[] {
 export const TranslationProvider: React.FC<TranslationProviderProps> = ({ children }) => {
   const initialLang = (() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('crm-language') as Language | null;
-      if (stored) return stored;
-      // Browser detection
-      const navLang = navigator.language || (navigator as any).userLanguage || 'en';
-      if (navLang.startsWith('ar-EG')) return 'ar-EG';
-      if (navLang.startsWith('ar')) return 'ar';
+      try {
+        const stored = localStorage.getItem('crm-language') as Language | null;
+        if (stored && ['en', 'ar', 'ar-EG', 'ar-EG-x'].includes(stored)) return stored;
+        // Browser detection
+        const navLang = navigator.language || (navigator as any).userLanguage || 'en';
+        if (navLang.startsWith('ar-EG')) return 'ar-EG';
+        if (navLang.startsWith('ar')) return 'ar';
+      } catch (e) {
+        console.warn('[i18n] Failed to read localStorage:', e);
+      }
     }
-    return 'ar-EG';
+    return 'en'; // Default to English for stability
   })();
 
   const [language, setLanguageState] = useState<Language>(initialLang);
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(false); // Start as false, set to true after initial load
+  const [isInitialized, setIsInitialized] = useState(false);
   // bump used to force re-render after async background domain loads triggered by misses
   const [, forceRerender] = useState(0);
   const pendingDomainsRef = useRef<Set<string>>(new Set());
@@ -117,8 +130,10 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     if (!key) return '';
     const [domain, ...rest] = key.split('.');
     if (!domain || rest.length === 0) return key; // enforce domain.key format
+    
     const chain = buildFallbackChain(language);
     let domainLoadedSomewhere = false;
+    
     for (const loc of chain) {
       const domainObj = localeStore[loc]?.[domain];
       if (!domainObj) continue;
@@ -128,37 +143,67 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
     }
 
     // If the domain is not yet loaded for the active language, trigger async load then rerender
-    if (!domainLoadedSomewhere) {
+    if (!domainLoadedSomewhere && ready) {
       const chainToWarm = buildFallbackChain(language);
       // fire and forget; when finished we force a rerender so that keys resolve
       Promise.all(chainToWarm.map(l => loadDomain(l as Language, domain)))
         .then(() => {
+          console.log(`[i18n] Domain ${domain} loaded, forcing rerender`);
           forceRerender(v => v + 1);
         })
-        .catch(() => {});
+        .catch((err) => {
+          console.warn(`[i18n] Failed to load domain ${domain}:`, err);
+        });
     }
+    
     const mk = `${language}:${key}`;
     if (!missingKeysRef.current.has(mk)) {
       missingKeysRef.current.add(mk);
-      console.warn(`[i18n] Missing translation for ${mk}`);
+      if (ready) { // Only warn when we're supposed to be ready
+        console.warn(`[i18n] Missing translation for ${mk}`);
+      }
     }
     return key; // fall back to key string
   };
 
   const prefetchLocale = async (lang: Language, domains: string[] = []) => {
-    const chain = buildFallbackChain(lang);
-    const uniqueDomains = domains.length ? domains : Array.from(pendingDomainsRef.current);
-    await Promise.all(chain.map(l => ensureDomains(l as Language, uniqueDomains)));
+    try {
+      console.log(`[i18n] Prefetching locale ${lang} with domains:`, domains);
+      const chain = buildFallbackChain(lang);
+      const uniqueDomains = domains.length ? domains : Array.from(pendingDomainsRef.current);
+      await Promise.all(chain.map(l => ensureDomains(l as Language, uniqueDomains)));
+      console.log(`[i18n] Successfully prefetched locale ${lang}`);
+    } catch (err) {
+      console.warn(`[i18n] Prefetch failed for ${lang}:`, err);
+    }
   };
 
   const setLanguage = (lang: Language) => {
     if (lang === language) return;
+    console.log(`[i18n] Changing language from ${language} to ${lang}`);
+    
+    // Set ready to false during language change to prevent crashes
     setReady(false);
     setLanguageState(lang);
-    if (typeof window !== 'undefined') localStorage.setItem('crm-language', lang);
+    
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('crm-language', lang);
+      } catch (e) {
+        console.warn('[i18n] Failed to save language to localStorage:', e);
+      }
+    }
+    
     // Trigger async warm of any known domains
     const domains = Array.from(pendingDomainsRef.current);
-    prefetchLocale(lang, domains).finally(() => setReady(true));
+    prefetchLocale(lang, domains).then(() => {
+      console.log(`[i18n] Language change to ${lang} complete, setting ready to true`);
+      setReady(true);
+    }).catch((err) => {
+      console.warn(`[i18n] Failed to prefetch after language change:`, err);
+      // Still set ready to true to prevent infinite loading
+      setReady(true);
+    });
   };
 
   // Track requested domains (from t) for smarter prefetch
@@ -174,6 +219,10 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
   };
 
   useEffect(() => {
+    if (isInitialized) return;
+    
+    console.log(`[i18n] Initializing translation system for language: ${language}`);
+    
     // Discover all potential domains for the initial language by scanning moduleLoaders
     // Pattern: /locales/<lang>/<domain>.json
     const discovered = new Set<string>();
@@ -187,11 +236,31 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
         }
       }
     });
+    
     // Always ensure core domains exist even if empty
     ['common','nav','dashboard'].forEach(d => discovered.add(d));
     discovered.forEach(d => pendingDomainsRef.current.add(d));
-    prefetchLocale(language, Array.from(discovered)).finally(() => setReady(true));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    
+    console.log(`[i18n] Discovered domains:`, Array.from(discovered));
+    
+    prefetchLocale(language, Array.from(discovered)).then(() => {
+      console.log(`[i18n] Initial prefetch complete for ${language}`);
+      setReady(true);
+      setIsInitialized(true);
+    }).catch((err) => {
+      console.warn(`[i18n] Initial prefetch failed:`, err);
+      // Still set ready to prevent infinite loading
+      setReady(true);
+      setIsInitialized(true);
+    });
+  }, [language]); // Include language in deps to reinitialize on language change
+
+  // Reset initialization when language changes
+  useEffect(() => {
+    if (isInitialized) {
+      setIsInitialized(false);
+    }
+  }, [language]);
 
   const ctx: TranslationContextType = useMemo(() => ({
     language,
@@ -204,8 +273,7 @@ export const TranslationProvider: React.FC<TranslationProviderProps> = ({ childr
 
   return (
     <TranslationContext.Provider value={ctx}>
-      {/* Optionally render nothing until ready to avoid flash of keys */}
-      {ready ? children : null}
+      {children}
     </TranslationContext.Provider>
   );
 };

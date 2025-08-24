@@ -1,0 +1,303 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  calls     Call[]
+  leads     Lead[]
+  tickets   Ticket[]
+  campaigns Campaign[]
+
+  @@map("users")
+}
+
+model Call {
+  id          String    @id @default(cuid())
+  phoneNumber String
+  duration    Int? // in seconds
+  recording   String? // URL to recording
+  transcript  String?
+  status      CallStatus @default(PENDING)
+  type        CallType
+  department  Department
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+  
+  // AI Analysis
+  sentiment   String?
+  priority    Priority  @default(MEDIUM)
+  summary     String?
+  actionItems String[]
+  
+  @@map("calls")
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  firstName   String
+  lastName    String?
+  email       String?
+  phone       String?
+  company     String?
+  source      LeadSource
+  status      LeadStatus @default(NEW)
+  value       Float?     // potential deal value
+  notes       String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
+  // Relations
+  assignedTo  String?
+  user        User?      @relation(fields: [assignedTo], references: [id])
+  
+  @@map("leads")
+}
+
+model Client {
+  id          String   @id @default(cuid())
+  name        String
+  email       String?  @unique
+  phone       String?
+  company     String?
+  address     String?
+  industry    String?
+  status      ClientStatus @default(ACTIVE)
+  totalValue  Float?   @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("clients")
+}
+
+model Employee {
+  id          String         @id @default(cuid())
+  employeeId  String         @unique
+  firstName   String
+  lastName    String
+  email       String         @unique
+  phone       String?
+  position    String
+  department  Department
+  salary      Float?
+  hireDate    DateTime
+  status      EmployeeStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  
+  @@map("employees")
+}
+
+model Campaign {
+  id          String         @id @default(cuid())
+  name        String
+  description String?
+  type        CampaignType
+  status      CampaignStatus @default(DRAFT)
+  budget      Float?
+  startDate   DateTime?
+  endDate     DateTime?
+  targetAudience String?
+  metrics     Json?          // Store campaign metrics as JSON
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  
+  // Relations
+  createdBy   String?
+  user        User?          @relation(fields: [createdBy], references: [id])
+  
+  @@map("campaigns")
+}
+
+model InventoryItem {
+  id          String            @id @default(cuid())
+  name        String
+  sku         String            @unique
+  description String?
+  category    String?
+  quantity    Int               @default(0)
+  minQuantity Int               @default(0)
+  price       Float?
+  cost        Float?
+  supplier    String?
+  location    String?
+  status      InventoryStatus   @default(IN_STOCK)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  
+  @@map("inventory_items")
+}
+
+model Ticket {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  category    TicketCategory
+  priority    Priority     @default(MEDIUM)
+  status      TicketStatus @default(OPEN)
+  resolution  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  resolvedAt  DateTime?
+  
+  // Relations
+  customerId  String?
+  assignedTo  String?
+  user        User?        @relation(fields: [assignedTo], references: [id])
+  
+  @@map("tickets")
+}
+
+model AIResponse {
+  id          String      @id @default(cuid())
+  department  Department
+  prompt      String
+  response    String
+  model       String?     @default("gpt-4")
+  tokens      Int?
+  cost        Float?
+  createdAt   DateTime    @default(now())
+  
+  @@map("ai_responses")
+}
+
+model WebhookLog {
+  id          String      @id @default(cuid())
+  event       String
+  source      String      // e.g., "twilio", "openai"
+  payload     Json
+  status      String      // success, failed, pending
+  error       String?
+  processedAt DateTime?
+  createdAt   DateTime    @default(now())
+  
+  @@map("webhook_logs")
+}
+
+// Enums
+enum UserRole {
+  USER
+  ADMIN
+  MANAGER
+}
+
+enum CallStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum CallType {
+  INBOUND
+  OUTBOUND
+}
+
+enum Department {
+  SALES
+  SUPPORT
+  HR
+  MARKETING
+  MANUFACTURING
+  AI_ANSWERING
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum LeadSource {
+  WEBSITE
+  PHONE
+  EMAIL
+  REFERRAL
+  SOCIAL_MEDIA
+  ADVERTISING
+  OTHER
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL
+  NEGOTIATION
+  CLOSED_WON
+  CLOSED_LOST
+}
+
+enum ClientStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  TERMINATED
+  ON_LEAVE
+}
+
+enum CampaignType {
+  EMAIL
+  SOCIAL_MEDIA
+  PPC
+  CONTENT
+  EVENT
+  DIRECT_MAIL
+  OTHER
+}
+
+enum CampaignStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+
+enum InventoryStatus {
+  IN_STOCK
+  LOW_STOCK
+  OUT_OF_STOCK
+  DISCONTINUED
+}
+
+enum TicketCategory {
+  TECHNICAL
+  BILLING
+  GENERAL
+  FEATURE_REQUEST
+  BUG_REPORT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
