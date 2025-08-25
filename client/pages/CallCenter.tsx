@@ -46,7 +46,8 @@ import {
   Headphones,
   FileText,
   Eye,
-  Send
+  Send,
+  Star
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -383,35 +384,54 @@ export default function CallCenter() {
   };
 
   return (
-    <div className="container max-w-7xl mx-auto p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
-            <Headphones className="h-8 w-8" />
-            {t('callCenter.title')}
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            {t('callCenter.subtitle')}
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button onClick={() => processCall('all')} variant="outline">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            {t('callCenter.processAllCalls')}
-          </Button>
-          <Button onClick={isOnCall ? handleEndCall : handleStartCall}>
-            {isOnCall ? (
-              <>
-                <PhoneCall className="h-4 w-4 mr-2" />
-                {t('callCenter.endCall')}
-              </>
-            ) : (
-              <>
-                <Phone className="h-4 w-4 mr-2" />
-                {t('callCenter.startNewCall')}
-              </>
-            )}
-          </Button>
+    <div className="container max-w-7xl mx-auto p-6 space-y-6">
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 via-blue-500 to-green-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-700 transform rotate-12 translate-y-1"></div>
+              <Headphones className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-green-600 mb-2 flex items-center gap-3">
+                {t('callCenter.title') || 'Call Center'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('callCenter.subtitle') || 'Advanced Call Management System'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              onClick={() => processCall('all')} 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-green-300 hover:shadow-md transition-all duration-200"
+            >
+              <RefreshCw className="h-4 w-4 mr-2" />
+              {t('callCenter.processAllCalls') || 'Process All Calls'}
+            </Button>
+            <Button 
+              onClick={isOnCall ? handleEndCall : handleStartCall}
+              className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              {isOnCall ? (
+                <>
+                  <PhoneCall className="h-4 w-4 mr-2" />
+                  {t('callCenter.endCall') || 'End Call'}
+                </>
+              ) : (
+                <>
+                  <Phone className="h-4 w-4 mr-2" />
+                  {t('callCenter.startNewCall') || 'Start New Call'}
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -437,21 +457,43 @@ export default function CallCenter() {
       )}
 
       <Tabs defaultValue="calls" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="calls">{t('callCenter.tabs.callLog')}</TabsTrigger>
-          <TabsTrigger value="analytics">{t('callCenter.tabs.analytics')}</TabsTrigger>
-          <TabsTrigger value="ai-responses">{t('callCenter.tabs.aiResponses')}</TabsTrigger>
-          <TabsTrigger value="settings">{t('callCenter.tabs.settings')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="calls" 
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('callCenter.tabs.callLog') || 'Call Log'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="analytics"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('callCenter.tabs.analytics') || 'Analytics'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="ai-responses"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('callCenter.tabs.aiResponses') || 'AI Responses'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="settings"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('callCenter.tabs.settings') || 'Settings'}
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="calls">
           <div className="grid gap-6">
-            {/* Filters */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Filter className="h-5 w-5" />
-                  {t('callCenter.filters.title')}
+            {/* Elite Filters Card */}
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-200">
+              <CardHeader className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200/50">
+                <CardTitle className="flex items-center gap-2 text-gray-800">
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-2">
+                    <Filter className="h-5 w-5 text-white" />
+                  </div>
+                  {t('callCenter.filters.title') || 'Filter Calls'}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -514,10 +556,11 @@ export default function CallCenter() {
               </CardContent>
             </Card>
 
-            {/* Call List */}
+            {/* Elite Call List */}
             <div className="grid gap-4">
               {calls.map((call) => (
-                <Card key={call.id} className="hover:shadow-md transition-shadow">
+                <Card key={call.id} className="bg-white border border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 hover:border-blue-300/50 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-600"></div>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
@@ -700,40 +743,60 @@ export default function CallCenter() {
         <TabsContent value="analytics">
           <div className="grid gap-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Card>
+              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200/50 shadow-lg hover:shadow-xl transition-all duration-200">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">{t('callCenter.analytics.totalCalls')}</CardTitle>
+                  <CardTitle className="text-base text-blue-700 flex items-center gap-2">
+                    <div className="bg-blue-500 rounded-lg p-1.5">
+                      <Phone className="h-4 w-4 text-white" />
+                    </div>
+                    {t('callCenter.analytics.totalCalls') || 'Total Calls'}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">1,247</div>
-                  <p className="text-sm text-muted-foreground">{t('callCenter.analytics.totalCallsChange')}</p>
+                  <div className="text-2xl font-bold text-blue-600">1,247</div>
+                  <p className="text-sm text-blue-600/70">{t('callCenter.analytics.totalCallsChange') || '+12% from last month'}</p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200/50 shadow-lg hover:shadow-xl transition-all duration-200">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">{t('callCenter.analytics.answerRate')}</CardTitle>
+                  <CardTitle className="text-base text-green-700 flex items-center gap-2">
+                    <div className="bg-green-500 rounded-lg p-1.5">
+                      <CheckCircle className="h-4 w-4 text-white" />
+                    </div>
+                    {t('callCenter.analytics.answerRate') || 'Answer Rate'}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">87%</div>
-                  <p className="text-sm text-muted-foreground">{t('callCenter.analytics.answerRateChange')}</p>
+                  <div className="text-2xl font-bold text-green-600">87%</div>
+                  <p className="text-sm text-green-600/70">{t('callCenter.analytics.answerRateChange') || '+5% from last month'}</p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200/50 shadow-lg hover:shadow-xl transition-all duration-200">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">{t('callCenter.analytics.smartProcessing')}</CardTitle>
+                  <CardTitle className="text-base text-purple-700 flex items-center gap-2">
+                    <div className="bg-purple-500 rounded-lg p-1.5">
+                      <Bot className="h-4 w-4 text-white" />
+                    </div>
+                    {t('callCenter.analytics.smartProcessing') || 'Smart Processing'}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">94%</div>
-                  <p className="text-sm text-muted-foreground">{t('callCenter.analytics.smartProcessingDesc')}</p>
+                  <div className="text-2xl font-bold text-purple-600">94%</div>
+                  <p className="text-sm text-purple-600/70">{t('callCenter.analytics.smartProcessingDesc') || 'of calls processed'}</p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="bg-gradient-to-br from-orange-50 to-amber-50 border-orange-200/50 shadow-lg hover:shadow-xl transition-all duration-200">
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">{t('callCenter.analytics.customerSatisfaction')}</CardTitle>
+                  <CardTitle className="text-base text-orange-700 flex items-center gap-2">
+                    <div className="bg-orange-500 rounded-lg p-1.5">
+                      <Star className="h-4 w-4 text-white" />
+                    </div>
+                    {t('callCenter.analytics.customerSatisfaction') || 'Customer Satisfaction'}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">4.8/5</div>
-                  <p className="text-sm text-muted-foreground">{t('callCenter.analytics.customerSatisfactionChange')}</p>
+                  <div className="text-2xl font-bold text-orange-600">4.8/5</div>
+                  <p className="text-sm text-orange-600/70">{t('callCenter.analytics.customerSatisfactionChange') || '+0.3 from last month'}</p>
                 </CardContent>
               </Card>
             </div>

@@ -564,36 +564,61 @@ export default function Manufacturing() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('manufacturing.title')}</h1>
-          <p className="text-muted-foreground">{t('manufacturing.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline">
-            <BarChart3 className="mr-2 h-4 w-4" />
-            {t('manufacturing.actions.reports')}
-          </Button>
-          <Button onClick={() => setIsAddItemOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" />
-            {t('manufacturing.actions.addItem')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-red-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 via-red-500 to-orange-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-700 transform rotate-12 translate-y-1"></div>
+              <Factory className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-orange-600 mb-2">
+                {t('manufacturing.title') || 'Manufacturing'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('manufacturing.subtitle') || 'Manage inventory, work orders, production tracking, and quality control'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-orange-300 hover:shadow-md transition-all duration-200"
+            >
+              <BarChart3 className="mr-2 h-4 w-4" />
+              {t('manufacturing.actions.reports') || 'Reports'}
+            </Button>
+            <Button 
+              onClick={() => setIsAddItemOpen(true)}
+              className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {t('manufacturing.actions.addItem') || 'Add Item'}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Elite Stats Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {manufacturingStats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="bg-white/80 border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-red-600"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <CardTitle className="text-sm font-medium text-gray-700">{stat.label}</CardTitle>
+              <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-lg p-2">
+                <stat.icon className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> {t('common.fromLastMonth')}
+              <div className="text-2xl font-bold text-orange-600">{stat.value}</div>
+              <p className="text-xs text-orange-600/70">
+                <span className="text-orange-600">{stat.change}</span> {t('common.fromLastMonth') || 'from last month'}
               </p>
             </CardContent>
           </Card>
@@ -601,8 +626,13 @@ export default function Manufacturing() {
       </div>
 
       <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="inventory">{t('manufacturing.tabs.inventory')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="inventory"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-red-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('manufacturing.tabs.inventory') || 'Inventory'}
+          </TabsTrigger>
           <TabsTrigger value="work-orders">{t('manufacturing.tabs.workOrders')}</TabsTrigger>
           <TabsTrigger value="bom">{t('manufacturing.tabs.bom')}</TabsTrigger>
           <TabsTrigger value="production">{t('manufacturing.tabs.production')}</TabsTrigger>

@@ -154,25 +154,48 @@ export default function AIAnswering() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('aiAnswering.title')}</h1>
-          <p className="text-muted-foreground">{t('aiAnswering.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline">
-            <Settings className="mr-2 h-4 w-4" />
-            {t('aiAnswering.actions.globalSettings')}
-          </Button>
-          <Button onClick={handleSaveSettings} disabled={isSaving}>
-            {isSaving ? (
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <Save className="mr-2 h-4 w-4" />
-            )}
-            {t('aiAnswering.actions.saveChanges')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 transform rotate-12 translate-y-1"></div>
+              <MessageSquare className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-purple-600 mb-2">
+                {t('aiAnswering.title') || 'AI Answering System'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('aiAnswering.subtitle') || 'Configure automated responses for each department'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-purple-300 hover:shadow-md transition-all duration-200"
+            >
+              <Settings className="mr-2 h-4 w-4" />
+              {t('aiAnswering.actions.globalSettings') || 'Global Settings'}
+            </Button>
+            <Button 
+              onClick={handleSaveSettings} 
+              disabled={isSaving}
+              className="bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              {isSaving ? (
+                <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Save className="mr-2 h-4 w-4" />
+              )}
+              {t('aiAnswering.actions.saveChanges') || 'Save Changes'}
+            </Button>
+          </div>
         </div>
       </div>
 

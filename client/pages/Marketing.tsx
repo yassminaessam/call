@@ -457,36 +457,61 @@ export default function Marketing() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('marketing.title')}</h1>
-          <p className="text-muted-foreground">{t('marketing.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline">
-            <BarChart3 className="mr-2 h-4 w-4" />
-            {t('marketing.actions.analytics')}
-          </Button>
-          <Button onClick={() => setIsCreateCampaignOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" />
-            {t('marketing.actions.newCampaign')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 transform rotate-12 translate-y-1"></div>
+              <Target className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-purple-600 mb-2">
+                {t('marketing.title') || 'Marketing'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('marketing.subtitle') || 'Create campaigns, manage audiences, and track performance'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-purple-300 hover:shadow-md transition-all duration-200"
+            >
+              <BarChart3 className="mr-2 h-4 w-4" />
+              {t('marketing.actions.analytics') || 'Analytics'}
+            </Button>
+            <Button 
+              onClick={() => setIsCreateCampaignOpen(true)}
+              className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {t('marketing.actions.newCampaign') || 'New Campaign'}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Elite Stats Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {marketingStats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="bg-white/80 border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-600"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <CardTitle className="text-sm font-medium text-gray-700">{stat.label}</CardTitle>
+              <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg p-2">
+                <stat.icon className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> {t('common.fromLastMonth')}
+              <div className="text-2xl font-bold text-purple-600">{stat.value}</div>
+              <p className="text-xs text-purple-600/70">
+                <span className="text-purple-600">{stat.change}</span> {t('common.fromLastMonth') || 'from last month'}
               </p>
             </CardContent>
           </Card>
@@ -494,8 +519,13 @@ export default function Marketing() {
       </div>
 
       <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="campaigns">{t('marketing.tabs.campaigns')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="campaigns"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('marketing.tabs.campaigns') || 'Campaigns'}
+          </TabsTrigger>
           <TabsTrigger value="audiences">{t('marketing.tabs.audiences')}</TabsTrigger>
           <TabsTrigger value="analytics">{t('marketing.tabs.analytics')}</TabsTrigger>
           <TabsTrigger value="templates">{t('marketing.tabs.templates')}</TabsTrigger>

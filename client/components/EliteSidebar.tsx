@@ -16,7 +16,8 @@ import {
   Star,
   Zap,
   Shield,
-  Activity
+  Activity,
+  Router
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/contexts/TranslationContext";
@@ -43,16 +44,26 @@ export default function EliteSidebar({ className }: EliteSidebarProps) {
     {
       id: 'call-center',
       name: t('nav.callCenter') || 'Call Center',
-      description: t('callCenter.description') || 'Call and Communication Management',
+      description: t('nav.advancedCallCenter') || 'مركز الاتصالات الذكي - بميزات متقدمة',
       icon: Phone,
       href: '/calls',
       status: 'OPERATIONAL',
       color: 'from-green-500 to-green-600'
     },
     {
+      id: 'grandstream',
+      name: t('nav.grandstream') || 'PBX Control',
+      description: t('nav.grandstream') || 'تحكم السنترال - الإدارة الكاملة للـ PBX ✨',
+      icon: Router,
+      href: '/grandstream',
+      status: 'ACTIVE',
+      isPro: true,
+      color: 'from-cyan-500 to-blue-600'
+    },
+    {
       id: 'ai-answering',
       name: t('nav.aiAnswering') || 'AI Answering',
-      description: t('aiAnswering.description') || 'Smart Response System',
+      description: t('nav.aiAnswering') || 'الرد الآلي بالذكاء الاصطناعي - للردود الذكية',
       icon: Brain,
       href: '/ai-answering',
       status: 'AI_ACTIVE',

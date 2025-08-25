@@ -33,7 +33,8 @@ import {
   CreditCard,
   Eye,
   EyeOff,
-  Activity
+  Activity,
+  Settings
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -165,42 +166,63 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
-            {t('settings.title')}
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            {t('settings.subtitle')}
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={handleExportSettings}>
-            <Download className="h-4 w-4 mr-2" />
-            {t('common.export')}
-          </Button>
-          <div>
-            <label htmlFor="import-settings" className="cursor-pointer inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium bg-background hover:bg-accent hover:text-accent-foreground">
-              <Upload className="h-4 w-4 mr-2" />
-              {t('common.import')}
-            </label>
-            <input
-              id="import-settings"
-              type="file"
-              accept=".json"
-              className="hidden"
-              onChange={handleImportSettings}
-            />
+    <div className="container max-w-6xl mx-auto p-6 space-y-6">
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-gray-50 to-slate-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-500/5 to-slate-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-500 via-slate-500 to-gray-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-gray-500 to-slate-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-600 to-gray-700 transform rotate-12 translate-y-1"></div>
+              <Settings className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-gray-600 mb-2">
+                {t('settings.title') || 'System Settings'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('settings.subtitle') || 'Manage your CRM platform configuration and preferences'}
+              </p>
+            </div>
           </div>
-          <Button onClick={handleSave} disabled={saving}>
-            {saving ? (
-              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-            ) : (
-              <Save className="h-4 w-4 mr-2" />
-            )}
-            {t('common.save')}
-          </Button>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline" 
+              onClick={handleExportSettings}
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:shadow-md transition-all duration-200"
+            >
+              <Download className="h-4 w-4 mr-2" />
+              {t('common.export') || 'Export'}
+            </Button>
+            <div>
+              <label htmlFor="import-settings" className="cursor-pointer inline-flex items-center rounded-lg border px-4 py-2 text-sm font-medium bg-white/80 border-gray-200 hover:bg-white hover:border-gray-300 hover:shadow-md transition-all duration-200">
+                <Upload className="h-4 w-4 mr-2" />
+                {t('common.import') || 'Import'}
+              </label>
+              <input
+                id="import-settings"
+                type="file"
+                accept=".json"
+                className="hidden"
+                onChange={handleImportSettings}
+              />
+            </div>
+            <Button 
+              onClick={handleSave} 
+              disabled={saving}
+              className="bg-gradient-to-r from-gray-500 to-slate-600 hover:from-gray-600 hover:to-slate-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              {saving ? (
+                <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              ) : (
+                <Save className="h-4 w-4 mr-2" />
+              )}
+              {t('common.save') || 'Save'}
+            </Button>
+          </div>
         </div>
       </div>
 

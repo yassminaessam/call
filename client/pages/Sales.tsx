@@ -415,36 +415,62 @@ export default function Sales() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('sales.title')}</h1>
-          <p className="text-muted-foreground">{t('sales.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline" onClick={handleExportLeads}>
-            <FileText className="mr-2 h-4 w-4" />
-            {t('sales.actions.exportLeads')}
-          </Button>
-          <Button onClick={() => setIsCreateLeadOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" />
-            {t('sales.actions.newLead')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-700 transform rotate-12 translate-y-1"></div>
+              <TrendingUp className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-emerald-600 mb-2">
+                {t('sales.title') || 'Sales CRM'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('sales.subtitle') || 'Manage leads, track deals, and drive revenue growth'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline" 
+              onClick={handleExportLeads}
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-emerald-300 hover:shadow-md transition-all duration-200"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              {t('sales.actions.exportLeads') || 'Export Leads'}
+            </Button>
+            <Button 
+              onClick={() => setIsCreateLeadOpen(true)}
+              className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {t('sales.actions.newLead') || 'New Lead'}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Elite Stats Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {salesStats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="bg-white/80 border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-teal-600"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <CardTitle className="text-sm font-medium text-gray-700">{stat.label}</CardTitle>
+              <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg p-2">
+                <stat.icon className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> {t('dashboard.stats.fromLastMonth')}
+              <div className="text-2xl font-bold text-emerald-600">{stat.value}</div>
+              <p className="text-xs text-emerald-600/70">
+                <span className="text-emerald-600">{stat.change}</span> {t('dashboard.stats.fromLastMonth') || 'from last month'}
               </p>
             </CardContent>
           </Card>
@@ -452,11 +478,31 @@ export default function Sales() {
       </div>
 
       <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="leads">{t('sales.tabs.leads')}</TabsTrigger>
-          <TabsTrigger value="deals">{t('sales.tabs.deals')}</TabsTrigger>
-          <TabsTrigger value="quotes">{t('sales.tabs.quotes')}</TabsTrigger>
-          <TabsTrigger value="analytics">{t('sales.tabs.analytics')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="leads"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('sales.tabs.leads') || 'Leads'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="deals"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('sales.tabs.deals') || 'Deals'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="quotes"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('sales.tabs.quotes') || 'Quotes'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="analytics"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('sales.tabs.analytics') || 'Analytics'}
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="leads" className="space-y-4">

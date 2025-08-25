@@ -619,36 +619,61 @@ export default function Support() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('support.title')}</h1>
-          <p className="text-muted-foreground">{t('support.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline">
-            <BarChart3 className="mr-2 h-4 w-4" />
-            {t('support.actions.reports')}
-          </Button>
-          <Button onClick={() => setIsCreateTicketOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" />
-            {t('support.actions.newTicket')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-cyan-50 to-blue-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-700 transform rotate-12 translate-y-1"></div>
+              <HeadphonesIcon className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-cyan-600 mb-2">
+                {t('support.title') || 'Support Center'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('support.subtitle') || 'Manage tickets, customer satisfaction, and team performance'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-cyan-300 hover:shadow-md transition-all duration-200"
+            >
+              <BarChart3 className="mr-2 h-4 w-4" />
+              {t('support.actions.reports') || 'Reports'}
+            </Button>
+            <Button 
+              onClick={() => setIsCreateTicketOpen(true)}
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              {t('support.actions.newTicket') || 'New Ticket'}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Elite Stats Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {supportStats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="bg-white/80 border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <CardTitle className="text-sm font-medium text-gray-700">{stat.label}</CardTitle>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg p-2">
+                <stat.icon className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> {t('support.stats.fromYesterday')}
+              <div className="text-2xl font-bold text-cyan-600">{stat.value}</div>
+              <p className="text-xs text-cyan-600/70">
+                <span className="text-cyan-600">{stat.change}</span> {t('support.stats.fromYesterday') || 'from yesterday'}
               </p>
             </CardContent>
           </Card>
@@ -656,8 +681,13 @@ export default function Support() {
       </div>
 
       <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="tickets">{t('support.tabs.tickets')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="tickets"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('support.tabs.tickets') || 'Tickets'}
+          </TabsTrigger>
           <TabsTrigger value="clients">{t('support.tabs.clients')}</TabsTrigger>
           <TabsTrigger value="knowledge">{t('support.tabs.knowledge')}</TabsTrigger>
           <TabsTrigger value="analytics">{t('support.tabs.analytics')}</TabsTrigger>

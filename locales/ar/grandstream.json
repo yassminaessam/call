@@ -69,7 +69,11 @@
     "stopped": "تم إيقاف المراقبة",
     "realTimeActive": "المراقبة الفورية نشطة الآن",
     "realTimeInactive": "تم إيقاف المراقبة الفورية",
-    "error": "خطأ في المراقبة"
+    "error": "خطأ في المراقبة",
+    "registered": "مسجل",
+    "activeCalls": "المكالمات النشطة",
+    "waitingCalls": "المكالمات في الانتظار",
+    "availableAgents": "الوكلاء المتاحون"
   },
   "autoRefresh": {
     "on": "التحديث التلقائي مفعل",
@@ -79,6 +83,7 @@
     "title": "الخطوط الداخلية",
     "description": "إدارة الخطوط الداخلية والمستخدمين",
     "unregistered": "غير مسجل",
+    "registered": "مسجل",
     "status": "الحالة",
     "extension": "الخط",
     "user": "المستخدم",
@@ -86,7 +91,56 @@
     "available": "متاح",
     "busy": "مشغول",
     "offline": "غير متصل",
-    "ringing": "يرن"
+    "ringing": "يرن",
+    "inCall": "في مكالمة"
+  },
+  "settings": {
+    "title": "إعدادات السنترال",
+    "connection": "الاتصال",
+    "system": "النظام",
+    "security": "الأمان",
+    "maintenance": "الصيانة",
+    "host": "عنوان IP",
+    "port": "المنفذ",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "enableSSL": "تفعيل SSL",
+    "testConnection": "اختبار الاتصال",
+    "maxConcurrentCalls": "أقصى عدد مكالمات متزامنة",
+    "callTimeout": "مهلة انتظار المكالمة (ثانية)",
+    "logLevel": "مستوى السجلات",
+    "recordCalls": "تسجيل المكالمات تلقائياً",
+    "securityWarning": "تأكد من تطبيق إعدادات الأمان بعناية لحماية النظام",
+    "currentSecurityStatus": "حالة الأمان الحالية",
+    "securityEnabled": "الأمان مفعل",
+    "updateSecurity": "تحديث إعدادات الأمان",
+    "backupInterval": "فترة النسخ الاحتياطي",
+    "every6Hours": "كل 6 ساعات",
+    "every12Hours": "كل 12 ساعة",
+    "daily": "يومياً",
+    "weekly": "أسبوعياً",
+    "autoBackup": "النسخ الاحتياطي التلقائي",
+    "systemMaintenance": "صيانة النظام",
+    "backupNow": "نسخ احتياطي الآن",
+    "rebootSystem": "إعادة تشغيل النظام",
+    "test": "اختبار",
+    "save": "حفظ",
+    "saved": "تم الحفظ",
+    "savedSuccessfully": "تم حفظ الإعدادات بنجاح",
+    "saveFailed": "فشل في حفظ الإعدادات",
+    "testSuccess": "نجح الاختبار",
+    "testFailed": "فشل الاختبار"
+  },
+  "backup": {
+    "success": "تم إنشاء النسخة الاحتياطية",
+    "downloaded": "تم تحميل ملف النسخة الاحتياطية",
+    "failed": "فشل في إنشاء النسخة الاحتياطية"
+  },
+  "reboot": {
+    "confirm": "هل أنت متأكد من إعادة تشغيل السنترال؟ سيتم قطع جميع المكالمات الجارية.",
+    "initiated": "تم بدء إعادة التشغيل",
+    "pleaseWait": "يرجى الانتظار حوالي 2-3 دقائق",
+    "failed": "فشل في إعادة تشغيل النظام"
   },
   "calls": {
     "recentHistory": "سجل المكالمات الحديثة",

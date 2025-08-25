@@ -428,36 +428,61 @@ export default function HR() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('hr.title')}</h1>
-          <p className="text-muted-foreground">{t('hr.subtitle')}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline">
-            <Download className="mr-2 h-4 w-4" />
-            {t('hr.actions.exportReport')}
-          </Button>
-          <Button onClick={() => setIsAddEmployeeOpen(true)}>
-            <UserPlus className="mr-2 h-4 w-4" />
-            {t('hr.actions.addEmployee')}
-          </Button>
+      {/* Elite Header Section */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-gray-200/50 p-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600"></div>
+        
+        <div className="relative z-10 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-4 relative overflow-hidden shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-700 transform rotate-12 translate-y-1"></div>
+              <Users className="h-8 w-8 text-white relative z-10" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-blue-600 mb-2">
+                {t('hr.title') || 'HR Management'}
+              </h1>
+              <p className="text-gray-600 text-lg">
+                {t('hr.subtitle') || 'Manage employees, attendance, leave requests, and performance'}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline"
+              className="bg-white/80 border-gray-200 hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-200"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              {t('hr.actions.exportReport') || 'Export Report'}
+            </Button>
+            <Button 
+              onClick={() => setIsAddEmployeeOpen(true)}
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <UserPlus className="mr-2 h-4 w-4" />
+              {t('hr.actions.addEmployee') || 'Add Employee'}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Elite Stats Overview */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {hrStats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="bg-white/80 border-gray-200/50 shadow-lg hover:shadow-xl transition-all duration-200 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <CardTitle className="text-sm font-medium text-gray-700">{stat.label}</CardTitle>
+              <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg p-2">
+                <stat.icon className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> {t('common.fromLastMonth')}
+              <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
+              <p className="text-xs text-blue-600/70">
+                <span className="text-blue-600">{stat.change}</span> {t('common.fromLastMonth') || 'from last month'}
               </p>
             </CardContent>
           </Card>
@@ -465,11 +490,31 @@ export default function HR() {
       </div>
 
       <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-4">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="employees">{t('hr.tabs.employees')}</TabsTrigger>
-          <TabsTrigger value="attendance">{t('hr.tabs.attendance')}</TabsTrigger>
-          <TabsTrigger value="leaves">{t('hr.tabs.leaves')}</TabsTrigger>
-          <TabsTrigger value="performance">{t('hr.tabs.performance')}</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
+          <TabsTrigger 
+            value="employees"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('hr.tabs.employees') || 'Employees'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="attendance"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('hr.tabs.attendance') || 'Attendance'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="leaves"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('hr.tabs.leaves') || 'Leave Requests'}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="performance"
+            className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-indigo-600 data-[state=active]:text-white data-[state=active]:shadow-md rounded-lg transition-all duration-200"
+          >
+            {t('hr.tabs.performance') || 'Performance'}
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="employees" className="space-y-4">
