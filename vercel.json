@@ -4,19 +4,7 @@
   "outputDirectory": "dist/spa",
   "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "api/**": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/server.ts",
-      "headers": {
-        "cache-control": "s-maxage=0"
-      }
-    },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ],
