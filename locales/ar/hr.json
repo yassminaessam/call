@@ -1,5 +1,6 @@
 {
   "title": "نظام إدارة الموارد البشرية",
+  "description": "إدارة الموظفين والموارد البشرية",
   "subtitle": "إدارة الموظفين والحضور والإجازات والأداء",
   "employeeData": {"names": {"sarahJohnson": "سارة جونسون","mikeDavis": "مايك ديفيس","lisaChen": "ليزا تشين"},"positions": {"seniorSalesManager": "مدير مبيعات أول","salesDirector": "مدير المبيعات","hrSpecialist": "أخصائي موارد بشرية"},"locations": {"sanFrancisco": "سان فرانسيسكو، كاليفورنيا","austin": "أوستن، تكساس"}},
   "employeeCard": {"manager": "المدير:","startDate": "تاريخ البدء:","attendance": "الحضور:","performance": "الأداء:","leaveBalance": "رصيد الإجازات:","nextReview": "المراجعة القادمة:","days": "أيام"},

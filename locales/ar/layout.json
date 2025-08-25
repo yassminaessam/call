@@ -1,5 +1,9 @@
 {
   "companyName": "فيوجن CRM",
+  "systemType": "نظام CRM للنخبة",
+  "eliteOperations": "العمليات النخبة",
+  "crmStatus": "حالة CRM",
+  "operational": "تشغيلي",
   "systemStatus": "حالة النظام",
   "allSystemsOperational": "جميع الأنظمة تعمل بشكل طبيعي",
   "toggleNavigation": "إظهار/إخفاء التنقل",

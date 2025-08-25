@@ -303,11 +303,11 @@ export default function Manufacturing() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="item-name">{t('manufacturing.dialogs.itemName')}</Label>
-                <Input id="item-name" placeholder="Steel Plates - Grade A" />
+                <Input id="item-name" placeholder={t('manufacturing.placeholders.itemName')} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="sku">{t('manufacturing.dialogs.sku')}</Label>
-                <Input id="sku" placeholder="SP-A-001" />
+                <Input id="sku" placeholder={t('manufacturing.placeholders.sku')} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="category">{t('manufacturing.dialogs.category')}</Label>
@@ -342,7 +342,7 @@ export default function Manufacturing() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="description">{t('manufacturing.dialogs.description')}</Label>
-              <Textarea id="description" placeholder="Detailed description of the item..." />
+              <Textarea id="description" placeholder={t('manufacturing.placeholders.description')} />
             </div>
           </div>
 
@@ -352,15 +352,15 @@ export default function Manufacturing() {
             <div className="grid gap-4 md:grid-cols-3">
               <div className="space-y-2">
         <Label htmlFor="quantity">{t('manufacturing.dialogs.currentQuantity')}</Label>
-                <Input id="quantity" type="number" placeholder="450" />
+                <Input id="quantity" type="number" placeholder={t('manufacturing.placeholders.quantity')} />
               </div>
               <div className="space-y-2">
         <Label htmlFor="reorder-level">{t('manufacturing.dialogs.reorderLevel')}</Label>
-                <Input id="reorder-level" type="number" placeholder="100" />
+                <Input id="reorder-level" type="number" placeholder={t('manufacturing.placeholders.reorderLevel')} />
               </div>
               <div className="space-y-2">
         <Label htmlFor="location">{t('manufacturing.dialogs.storageLocation')}</Label>
-                <Input id="location" placeholder="Warehouse A-1" />
+                <Input id="location" placeholder={t('manufacturing.placeholders.location')} />
               </div>
             </div>
           </div>
@@ -371,11 +371,11 @@ export default function Manufacturing() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
         <Label htmlFor="supplier-name">{t('manufacturing.dialogs.supplierName')}</Label>
-                <Input id="supplier-name" placeholder="MetalCorp Industries" />
+                <Input id="supplier-name" placeholder={t('manufacturing.placeholders.supplierName')} />
               </div>
               <div className="space-y-2">
         <Label htmlFor="supplier-contact">{t('manufacturing.dialogs.contactPerson')}</Label>
-                <Input id="supplier-contact" placeholder="John Smith" />
+                <Input id="supplier-contact" placeholder={t('manufacturing.placeholders.supplierContact')} />
               </div>
               <div className="space-y-2 md:col-span-2">
         <Label htmlFor="supplier-email">{t('manufacturing.dialogs.supplierEmail')}</Label>
@@ -593,7 +593,7 @@ export default function Manufacturing() {
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
               <p className="text-xs text-muted-foreground">
-                <span className="text-success">{stat.change}</span> from last month
+                <span className="text-success">{stat.change}</span> {t('common.fromLastMonth')}
               </p>
             </CardContent>
           </Card>

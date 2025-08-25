@@ -1,18 +1,30 @@
 {
-  "title": "Main Dashboard",
-  "subtitle": "Welcome to Customer Relationship Management System",
+  "title": "Fusion CRM",
+  "subtitle": "Elite Operations Dashboard",
   "quickActions": "Quick Actions",
   "recentActivity": "Recent Activity",
   "departmentOverview": "Department Overview",
   "aiAnsweringStatus": "AI Answering Status",
   "makeQuickCall": "Make Quick Call",
   "enterPhoneNumber": "Enter phone number",
+  "allSystems": "All Systems",
+  "operations": "Operations",
+  "analytics": "CRM Analytics",
+  "analyticsDescription": "Data Analysis and Reports",
+  "systemManagement": "System Management",
+  "systemDescription": "System Administration and Maintenance",
+  "systemOnline": "System Online",
+  "welcomeBack": "Welcome back, admin",
   "stats": {
     "totalCallsToday": "Total Calls Today",
     "activeDeals": "Active Deals",
     "openTickets": "Open Tickets",
     "teamMembers": "Team Members",
-    "fromLastMonth": "from last month"
+    "fromLastMonth": "from last month",
+    "systemUptime": "System Uptime",
+    "activeCalls": "Active Calls",
+    "dailyRevenue": "Daily Revenue",
+    "activeUsers": "Active Users"
   },
   "deptStats": {
     "leads": "Leads",

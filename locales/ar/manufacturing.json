@@ -1,14 +1,30 @@
 {
   "title": "التصنيع",
-  "subtitle": "إدارة المخزون وأوامر العمل ومراقبة الجودة",
+  "description": "إدارة العمليات الإنتاجية",
+  "subtitle": "إدارة المخزون وأوامر العمل ومراقبة الإنتاج والجودة",
   "tabs": {"inventory": "المخزون","workOrders": "أوامر العمل","bom": "قائمة المواد","production": "الإنتاج"},
   "stats": {"activeOrders": "الأوامر النشطة","totalInventory": "إجمالي المخزون","qualityRate": "معدل الجودة","onTimeDelivery": "التسليم في الوقت"},
   "actions": {"reports": "التقارير","addItem": "إضافة عنصر","createWorkOrder": "إنشاء أمر عمل","createBOM": "إنشاء قائمة مواد"},
   "filters": {"searchInventory": "بحث في المخزون...","allCategories": "كل الفئات","rawMaterials": "مواد خام","components": "مكوّنات","finishedGoods": "منتجات تامة","allStatus": "كل الحالات","inStock": "متوفر","lowStock": "منخفض","outOfStock": "غير متوفر"},
-  "inventory": {"category": "الفئة:","quantity": "الكمية:","location": "الموقع:","reorderLevel": "مستوى إعادة الطلب:","supplierInfo": "معلومات المورد","pricingInfo": "معلومات التسعير","cost": "التكلفة:","price": "السعر:","margin": "الهامش:","stockLevel": "مستوى المخزون","reorderRecommended": "يوصى بإعادة الطلب"},
-  "workOrders": {"title": "أوامر العمل","details": "تفاصيل أمر العمل","materialsRequired": "المواد المطلوبة","requiredMaterials": "المواد المطلوبة","assigned": "مُسند إلى:","dueDate": "تاريخ الاستحقاق:","hours": "الساعات:","progress": "التقدم","notes": "ملاحظات","allocated": "مُخصص","pending": "قيد الانتظار"},
+  "inventory": {"category": "الفئة:","quantity": "الكمية:","location": "الموقع:","reorderLevel": "مستوى إعادة الطلب:","supplierInfo": "معلومات المورد","pricingInfo": "معلومات التسعير","cost": "التكلفة:","price": "السعر:","margin": "الهامش:","stockLevel": "مستوى المخزون","reorderRecommended": "يوصى بإعادة الطلب","itemDetails": "تفاصيل العنصر","stockHistory": "تاريخ المخزون","actions": "الإجراءات"},
+  "workOrders": {"title": "أوامر العمل","details": "تفاصيل أمر العمل","materialsRequired": "المواد المطلوبة","requiredMaterials": "المواد المطلوبة","assigned": "مُسند إلى:","dueDate": "تاريخ الاستحقاق:","hours": "الساعات:","progress": "التقدم","notes": "ملاحظات","allocated": "مُخصص","pending": "قيد الانتظار","status": "الحالة","workOrderNumber": "رقم أمر العمل","priority": "الأولوية","startDate": "تاريخ البدء"},
   "bom": {"title": "قائمة المواد","create": "إنشاء قائمة مواد","totalCost": "التكلفة الإجمالية:","components": "المكوّنات","created": "تم الإنشاء:","modified": "تم التعديل:"},
-  "production": {"lines": "خطوط الإنتاج","targets": "الأهداف الإنتاجية","realTimeMetrics": "مؤشرات الإنتاج الفعلية","output": "الإنتاج:","completePercent": "{{percent}}% مكتمل","overallEfficiency": "الكفاءة الإجمالية","unitsToday": "الوحدات اليوم","defectRate": "معدل العيوب","onTimeDelivery": "التسليم في الوقت"},
+  "production": {"lines": "خطوط الإنتاج","targets": "الأهداف الإنتاجية","realTimeMetrics": "مؤشرات الإنتاج الفورية","output": "الإنتاج:","completePercent": "{{percent}}% مكتمل","overallEfficiency": "الكفاءة الإجمالية","unitsToday": "الوحدات اليوم","defectRate": "معدل العيوب","onTimeDelivery": "التسليم في الوقت المحدد","productionSchedule": "جدول الإنتاج","dailyTarget": "الهدف اليومي","actualOutput": "الإنتاج الفعلي","efficiency": "الكفاءة"},
   "dialogs": {"addInventoryTitle": "إضافة عنصر مخزون","addInventoryDescription": "إضافة عنصر جديد إلى نظام إدارة المخزون","basicInformation": "معلومات أساسية","itemName": "اسم العنصر *","sku": "الرمز SKU *","category": "الفئة *","selectCategory": "اختر الفئة","unit": "الوحدة *","selectUnit": "اختر الوحدة","description": "الوصف","inventoryDetails": "تفاصيل المخزون","currentQuantity": "الكمية الحالية *","reorderLevel": "مستوى إعادة الطلب *","storageLocation": "موقع التخزين","supplierInformation": "معلومات المورد","supplierName": "اسم المورد","contactPerson": "جهة الاتصال","supplierEmail": "بريد المورد","pricing": "التسعير","costPrice": "سعر التكلفة","sellingPrice": "سعر البيع","currency": "العملة","cancel": "إلغاء","addItem": "إضافة عنصر","createWorkOrderTitle": "إنشاء أمر عمل","createWorkOrderDescription": "إنشاء أمر عمل جديد للإنتاج أو الصيانة أو مراقبة الجودة","workOrderDetails": "تفاصيل أمر العمل","titleField": "العنوان *","typeField": "النوع *","selectType": "اختر النوع","priorityField": "الأولوية *","selectPriority": "اختر الأولوية","estimatedHours": "الساعات المقدرة","orderDescription": "الوصف","assignmentSchedule": "التكليف والجدولة","assignedTo": "مُسند إلى","selectTeamMembers": "اختر أعضاء الفريق","startDate": "تاريخ البدء","dueDate": "تاريخ الاستحقاق","materialsRequired": "المواد المطلوبة","materialItem": "عنصر المادة","selectItem": "اختر العنصر","quantity": "الكمية","unitField": "الوحدة","addAnotherMaterial": "إضافة مادة أخرى","additionalNotes": "ملاحظات إضافية","saveDraft": "حفظ كمسودة","createWorkOrder": "إنشاء أمر عمل"},
-  "enums": {"production": "إنتاج","maintenance": "صيانة","repair": "إصلاح","quality_check": "فحص جودة","low": "منخفض","medium": "متوسط","high": "مرتفع","urgent": "عاجل","in_progress": "قيد التنفيذ","pending": "قيد الانتظار","completed": "مكتمل","active": "نشط","inactive": "غير نشط","in_stock": "متوفر","low_stock": "منخفض","out_of_stock": "غير متوفر"}
+  "enums": {"production": "إنتاج","maintenance": "صيانة","repair": "إصلاح","quality_check": "فحص جودة","low": "منخفض","medium": "متوسط","high": "مرتفع","urgent": "عاجل","in_progress": "قيد التنفيذ","pending": "قيد الانتظار","completed": "مكتمل","active": "نشط","inactive": "غير نشط","in_stock": "متوفر","low_stock": "منخفض","out_of_stock": "غير متوفر"},
+  "placeholders": {
+    "itemName": "ألواح فولاذية - درجة أ",
+    "sku": "SP-A-001",
+    "description": "وصف تفصيلي للعنصر ومواصفاته الفنية...",
+    "quantity": "450",
+    "reorderLevel": "100",
+    "location": "مستودع أ - الرف رقم 1",
+    "supplierName": "شركة الصناعات المعدنية المحدودة",
+    "supplierContact": "أحمد علي - مدير المبيعات",
+    "supplierEmail": "ahmed.ali@metalindustries.com",
+    "workOrderTitle": "صيانة خط الإنتاج الرئيسي",
+    "workOrderDescription": "صيانة دورية وإصلاح المعدات...",
+    "bomName": "قائمة مواد الطاولة الخشبية",
+    "bomDescription": "قائمة المواد اللازمة لإنتاج الطاولة الخشبية القياسية"
+  }
 }

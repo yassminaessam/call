@@ -1,7 +1,11 @@
 {
   "companyName": "Fusion CRM",
+  "systemType": "ELITE CRM SYSTEM",
+  "eliteOperations": "ELITE OPERATIONS",
+  "crmStatus": "CRM Status",
+  "operational": "OPERATIONAL",
   "systemStatus": "System Status",
-  "allSystemsOperational": "All systems operational",
+  "allSystemsOperational": "All Systems Operational",
   "toggleNavigation": "Toggle navigation",
   "searchPlaceholder": "Search..."
 }

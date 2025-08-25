@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -69,17 +73,35 @@ export default {
           DEFAULT: "hsl(var(--info))",
           foreground: "hsl(var(--info-foreground))",
         },
-        // Department colors
+        // Elite Department Colors
         sales: "hsl(var(--sales))",
         hr: "hsl(var(--hr))",
         marketing: "hsl(var(--marketing))",
         manufacturing: "hsl(var(--manufacturing))",
         support: "hsl(var(--support))",
+        // Elite Gradient Colors
+        'elite-primary': 'var(--gradient-primary)',
+        'elite-secondary': 'var(--gradient-secondary)',
+        'elite-accent': 'var(--gradient-accent)',
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "1rem",
+        "2xl": "1.5rem",
+      },
+      boxShadow: {
+        'elite-sm': 'var(--shadow-sm)',
+        'elite': 'var(--shadow)',
+        'elite-md': 'var(--shadow-md)',
+        'elite-lg': 'var(--shadow-lg)',
+        'elite-xl': 'var(--shadow-xl)',
+        'glow': '0 0 20px rgba(59, 130, 246, 0.15)',
+        'glow-lg': '0 0 40px rgba(59, 130, 246, 0.2)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
       keyframes: {
         "accordion-down": {
@@ -98,10 +120,55 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
+        "slide-up": {
+          from: {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "scale-in": {
+          from: {
+            opacity: "0",
+            transform: "scale(0.95)",
+          },
+          to: {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+        "shimmer": {
+          from: {
+            backgroundPosition: "0% 0%",
+          },
+          to: {
+            backgroundPosition: "-200% 0%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-up": "slide-up 0.5s ease-out",
+        "scale-in": "scale-in 0.3s ease-out",
+        "shimmer": "shimmer 2s linear infinite",
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'elite-gradient': 'var(--gradient-primary)',
       },
     },
   },

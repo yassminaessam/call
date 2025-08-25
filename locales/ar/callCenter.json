@@ -1,5 +1,6 @@
 {
   "title": "مركز الاتصالات المتقدم",
+  "description": "إدارة المكالمات والاتصالات",
   "subtitle": "نظام متكامل مع Twilio، تحويل الصوت إلى نصّ، والردود الذكية",
   "processAllCalls": "معالجة جميع المكالمات",
   "startNewCall": "بدء مكالمة جديدة",
@@ -7,13 +8,147 @@
   "callStarted": "تم بدء المكالمة",
   "callRecordingActive": "جاري تسجيل المكالمة تلقائياً",
   "callEnded": "انتهت المكالمة",
-  "tabs": {"callLog": "سجل المكالمات","analytics": "التحليلات","aiResponses": "الردود الذكية","settings": "الإعدادات"},
-  "filters": {"title": "فلترة المكالمات","status": "الحالة","direction": "الاتجاه","department": "القسم","dateRange": "الفترة الزمنية","allStatuses": "جميع الحالات","allDirections": "جميع الاتجاهات","allDepartments": "جميع الأقسام","today": "اليوم","thisWeek": "هذا الأسبوع","thisMonth": "هذا الشهر"},
-  "call": {"callId": "معرف المكالمة","recording": "التسجيل","transcription": "النص المحول","aiAnalysis": "التحليل الذكي","aiReply": "الرد الذكي","play": "تشغيل","download": "تحميل","viewFull": "عرض كامل","process": "معالجة","regenerate": "إعادة إنشاء","listen": "استماع","send": "إرسال","accuracy": "دقة","sentiment": "المشاعر","confidence": "الثقة","processing": "جاري المعالجة...","transcriptionStarted": "بدأت معالجة المكالمة","transcriptionCompleted": "تمت معالجة المكالمة بنجاح","processingSteps": {"loadingRecording": "تحميل التسجيل...","convertingToText": "تحويل الصوت إلى نص...","aiAnalyzing": "تحليل ذكي للمحتوى...","completed": "تمت المعالجة بنجاح"}},
-  "statuses": {"completed": "مكتملة","missed": "فائتة","ongoing": "جارية","failed": "فاشلة"},
-  "directions": {"inbound": "واردة","outbound": "صادرة"},
-  "sentiments": {"positive": "إيجابي","negative": "سلبي","neutral": "محايد"},
-  "priorities": {"urgent": "عاجل","high": "عالي","medium": "متوسط","low": "منخفض"},
+  "advanced": {
+    "title": "مركز الاتصالات المتقدم بالذكاء الاصطناعي",
+    "description": "تحليل المكالمات بالذكاء الاصطناعي وتوليد الردود التلقائية"
+  },
+  "ai": {
+    "enabled": "الذكاء الاصطناعي مفعل",
+    "processing": "معالجة ذكية",
+    "analysis": "تحليل ذكي",
+    "response": "رد ذكي"
+  },
+  "processing": {
+    "queue": "طابور المعالجة: {{count}}",
+    "success": "تمت المعالجة بنجاح",
+    "completed": "تم معالجة المكالمة بنجاح مع التحليل الذكي",
+    "failed": "فشل في المعالجة",
+    "error": "فشل في معالجة المكالمة بالذكاء الاصطناعي",
+    "inProgress": "الذكاء الاصطناعي يعالج هذه المكالمة حالياً..."
+  },
+  "regenerate": {
+    "success": "تم إعادة توليد الرد",
+    "completed": "تم إعادة توليد الرد الذكي بنجاح",
+    "failed": "فشل في إعادة التوليد",
+    "error": "فشل في إعادة توليد الرد الذكي"
+  },
+  "stats": {
+    "totalCalls": "إجمالي المكالمات",
+    "processed": "معالج بالذكاء الاصطناعي",
+    "avgTime": "متوسط المعالجة",
+    "satisfaction": "الرضا",
+    "active": "المعالجة النشطة",
+    "queue": "طوابير الانتظار",
+    "successRate": "معدل النجاح"
+  },
+  "tabs": {
+    "callLog": "سجل المكالمات",
+    "analytics": "التحليلات",
+    "aiResponses": "الردود الذكية",
+    "settings": "الإعدادات",
+    "calls": "إدارة المكالمات",
+    "analysis": "التحليل الذكي",
+    "config": "إعدادات الذكاء الاصطناعي"
+  },
+  "list": {
+    "title": "قائمة المكالمات"
+  },
+  "calls": {
+    "recent": "المكالمات الأخيرة"
+  },
+  "call": {
+    "callId": "معرف المكالمة",
+    "recording": "التسجيل",
+    "transcription": "النص المحول",
+    "aiAnalysis": "التحليل الذكي",
+    "aiReply": "الرد الذكي",
+    "play": "تشغيل",
+    "download": "تحميل",
+    "viewFull": "عرض كامل",
+    "process": "معالجة",
+    "regenerate": "إعادة إنشاء",
+    "listen": "استماع",
+    "send": "إرسال",
+    "accuracy": "دقة",
+    "sentiment": "المشاعر",
+    "confidence": "الثقة",
+    "processing": "جاري المعالجة...",
+    "transcriptionStarted": "بدأت معالجة المكالمة",
+    "transcriptionCompleted": "تمت معالجة المكالمة بنجاح",
+    "inbound": "واردة",
+    "outbound": "صادرة",
+    "processingSteps": {
+      "loadingRecording": "تحميل التسجيل...",
+      "convertingToText": "تحويل الصوت إلى نص...",
+      "aiAnalyzing": "تحليل ذكي للمحتوى...",
+      "completed": "تمت المعالجة بنجاح"
+    }
+  },
+  "status": {
+    "processing": "قيد المعالجة",
+    "completed": "مكتملة",
+    "failed": "فاشلة"
+  },
+  "statuses": {
+    "completed": "مكتملة",
+    "missed": "فائتة",
+    "ongoing": "جارية",
+    "failed": "فاشلة"
+  },
+  "directions": {
+    "inbound": "واردة",
+    "outbound": "صادرة"
+  },
+  "sentiments": {
+    "positive": "إيجابي",
+    "negative": "سلبي",
+    "neutral": "محايد"
+  },
+  "sentiment": {
+    "positive": "إيجابية",
+    "negative": "سلبية",
+    "neutral": "محايدة"
+  },
+  "priorities": {
+    "urgent": "عاجل",
+    "high": "عالي",
+    "medium": "متوسط",
+    "low": "منخفض"
+  },
+  "priority": {
+    "urgent": "عاجل",
+    "high": "عالية",
+    "medium": "متوسطة",
+    "low": "منخفضة"
+  },
+  "details": {
+    "title": "تفاصيل المكالمة",
+    "select": "اختر مكالمة",
+    "phone": "رقم الهاتف",
+    "duration": "المدة",
+    "department": "القسم",
+    "selectCall": "اختر مكالمة لعرض التفاصيل"
+  },
+  "actions": {
+    "regenerate": "إعادة توليد الرد",
+    "process": "معالجة بالذكاء الاصطناعي",
+    "play": "تشغيل التسجيل",
+    "playReply": "تشغيل الرد الذكي"
+  },
+  "analysis": {
+    "title": "التحليل الذكي",
+    "summary": "الملخص",
+    "sentiment": "المشاعر",
+    "actions": "الإجراءات المقترحة"
+  },
+  "reply": {
+    "title": "الرد المولد بالذكاء الاصطناعي",
+    "tone": "النبرة",
+    "audioGenerated": "تم توليد الصوت"
+  },
+  "transcription": {
+    "title": "نص المكالمة"
+  },
   "analytics": {
     "totalCalls": "إجمالي المكالمات",
     "totalCallsChange": "+12% من الشهر الماضي",
@@ -22,12 +157,52 @@
     "smartProcessing": "معالجة ذكية",
     "smartProcessingDesc": "من المكالمات تمت معالجتها",
     "customerSatisfaction": "رضا العملاء",
-    "customerSatisfactionChange": "+0.3 من الشهر الماضي"
+    "customerSatisfactionChange": "+0.3 من الشهر الماضي",
+    "overview": "نظرة عامة على الأداء",
+    "processed": "المكالمات المعالجة",
+    "satisfaction": "رضا العملاء",
+    "insights": "الرؤى الذكية",
+    "efficiency": "تحسنت كفاءة المعالجة بنسبة 40%",
+    "performance": "الأداء العام للنظام ممتاز",
+    "title": "التحليلات المتقدمة",
+    "comingSoon": "لوحة التحليلات التفصيلية قريباً",
+    "sentiment": "تحليل المشاعر",
+    "departments": "الأقسام"
+  },
+  "insights": {
+    "efficiency": "تحسنت كفاءة المعالجة بنسبة 40%",
+    "satisfaction": "زاد رضا العملاء بنسبة 25%",
+    "performance": "الأداء العام للنظام ممتاز"
   },
   "aiResponses": {
     "title": "مكتبة الردود الذكية",
     "description": "جميع الردود المولدة بالذكاء الاصطناعي مع إمكانية التحرير والتحسين",
     "empty": "سيتم عرض الردود الذكية هنا"
+  },
+  "config": {
+    "speechToText": "تحويل الصوت إلى نص",
+    "aiAnalysis": "التحليل الذكي",
+    "textToSpeech": "تحويل النص إلى صوت",
+    "provider": "المزود",
+    "language": "اللغة",
+    "model": "نموذج الذكاء الاصطناعي",
+    "maxTokens": "الحد الأقصى للرموز",
+    "speed": "سرعة الكلام",
+    "ai": "إعدادات الذكاء الاصطناعي",
+    "prompts": "نماذج الأسئلة"
+  },
+  "filters": {
+    "title": "فلترة المكالمات",
+    "status": "الحالة",
+    "direction": "الاتجاه",
+    "department": "القسم",
+    "dateRange": "الفترة الزمنية",
+    "allStatuses": "جميع الحالات",
+    "allDirections": "جميع الاتجاهات",
+    "allDepartments": "جميع الأقسام",
+    "today": "اليوم",
+    "thisWeek": "هذا الأسبوع",
+    "thisMonth": "هذا الشهر"
   },
   "settings": {
     "twilio": {
@@ -38,7 +213,10 @@
     "ai": {
       "title": "إعدادات الذكاء الاصطناعي",
       "modelLabel": "نموذج الذكاء الاصطناعي",
-      "models": {"gpt4": "GPT-4", "gpt35": "GPT-3.5 Turbo"}
+      "models": {
+        "gpt4": "GPT-4",
+        "gpt35": "GPT-3.5 Turbo"
+      }
     }
   }
 }

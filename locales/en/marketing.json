@@ -1,5 +1,6 @@
 {
   "title": "Marketing",
+  "description": "Marketing Campaigns and Customer Management",
   "subtitle": "Create campaigns, manage audiences, and track performance",
   "tabs": {"campaigns": "Campaigns","audiences": "Audiences","analytics": "Analytics","templates": "Templates"},
   "stats": {"activeCampaigns": "Active Campaigns","totalReach": "Total Reach","conversionRate": "Conversion Rate","revenueGenerated": "Revenue Generated"},

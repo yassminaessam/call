@@ -1,0 +1,103 @@
+{
+  "title": "إدارة السنترال",
+  "subtitle": "نظام إدارة Grandstream UCM6304A",
+  "connected": "متصل",
+  "disconnected": "غير متصل",
+  "refresh": "تحديث",
+  "connectionError": "خطأ في الاتصال",
+  "error": "خطأ",
+  "tabs": {
+    "overview": "نظرة عامة",
+    "extensions": "الخطوط الداخلية",
+    "calls": "سجل المكالمات",
+    "monitoring": "المراقبة"
+  },
+  "dashboard": {
+    "title": "إدارة السنترال",
+    "subtitle": "نظام إدارة Grandstream UCM6304A"
+  },
+  "overview": {
+    "totalExtensions": "إجمالي الخطوط",
+    "activeCalls": "المكالمات النشطة",
+    "waitingCalls": "المكالمات المنتظرة",
+    "systemStatus": "حالة النظام",
+    "available": "متاح",
+    "inProgress": "قيد التقدم",
+    "inQueues": "في الطوابير",
+    "issues": "مشاكل",
+    "healthy": "صحيح",
+    "queues": "طوابير المكالمات",
+    "quickActions": "إجراءات سريعة",
+    "waiting": "في الانتظار",
+    "availableAgents": "الوكلاء المتاحون",
+    "longestWait": "أطول انتظار"
+  },
+  "actions": {
+    "makeCall": "إجراء مكالمة",
+    "start": "بدء المراقبة",
+    "settings": "الإعدادات"
+  },
+  "makeCall": {
+    "title": "إجراء مكالمة",
+    "call": "اتصال",
+    "fromExtension": "من الخط",
+    "toNumber": "إلى الرقم",
+    "missingFields": "يرجى اختيار الخط والرقم",
+    "success": "تم بدء المكالمة",
+    "calling": "جاري الاتصال",
+    "failed": "فشل في المكالمة"
+  },
+  "endCall": {
+    "success": "انتهت المكالمة",
+    "ended": "تم إنهاء المكالمة بنجاح",
+    "failed": "فشل في إنهاء المكالمة"
+  },
+  "transferCall": {
+    "success": "تم تحويل المكالمة",
+    "transferred": "تم التحويل إلى",
+    "failed": "فشل في التحويل"
+  },
+  "monitoring": {
+    "title": "المراقبة",
+    "description": "مراقبة النظام والمكالمات في الوقت الفعلي",
+    "realTimeMonitoring": "المراقبة الفورية",
+    "realTimeDescription": "مراقبة المكالمات والحالة في الوقت الفعلي",
+    "systemMetrics": "مقاييس النظام",
+    "start": "بدء المراقبة",
+    "stop": "إيقاف المراقبة",
+    "started": "تم بدء المراقبة",
+    "stopped": "تم إيقاف المراقبة",
+    "realTimeActive": "المراقبة الفورية نشطة الآن",
+    "realTimeInactive": "تم إيقاف المراقبة الفورية",
+    "error": "خطأ في المراقبة"
+  },
+  "autoRefresh": {
+    "on": "التحديث التلقائي مفعل",
+    "off": "التحديث التلقائي معطل"
+  },
+  "extensions": {
+    "title": "الخطوط الداخلية",
+    "description": "إدارة الخطوط الداخلية والمستخدمين",
+    "unregistered": "غير مسجل",
+    "status": "الحالة",
+    "extension": "الخط",
+    "user": "المستخدم",
+    "lastActivity": "آخر نشاط",
+    "available": "متاح",
+    "busy": "مشغول",
+    "offline": "غير متصل",
+    "ringing": "يرن"
+  },
+  "calls": {
+    "recentHistory": "سجل المكالمات الحديثة",
+    "noHistory": "لا يوجد سجل للمكالمات",
+    "from": "من",
+    "to": "إلى",
+    "duration": "المدة",
+    "time": "الوقت",
+    "type": "النوع",
+    "incoming": "واردة",
+    "outgoing": "صادرة",
+    "missed": "فائتة"
+  }
+}

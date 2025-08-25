@@ -1,5 +1,6 @@
 {
   "title": "Manufacturing",
+  "description": "Production Operations Management",
   "subtitle": "Manage inventory, work orders, and quality control",
   "tabs": {"inventory": "Inventory","workOrders": "Work Orders","bom": "Bill of Materials","production": "Production"},
   "stats": {"activeOrders": "Active Orders","totalInventory": "Total Inventory","qualityRate": "Quality Rate","onTimeDelivery": "On-Time Delivery"},

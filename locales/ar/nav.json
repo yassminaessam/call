@@ -1,7 +1,10 @@
 {
   "dashboard": "لوحة التحكم",
+  "communications": "الاتصالات",
   "callCenter": "مركز الاتصالات",
+  "advancedCallCenter": "مركز الاتصالات الذكي",
   "aiAnswering": "الرد الآلي بالذكاء الاصطناعي",
+  "grandstream": "تحكم السنترال",
   "sales": "المبيعات",
   "hr": "الموارد البشرية",
   "marketing": "التسويق",
@@ -9,5 +12,7 @@
   "support": "الدعم",
   "settings": "الإعدادات",
   "translationDemo": "عرض الترجمة",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "items": "عناصر",
+  "status": "الحالة"
 }

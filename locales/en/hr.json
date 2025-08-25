@@ -1,5 +1,6 @@
 {
   "title": "HR Management",
+  "description": "Employee and HR Management",
   "subtitle": "Manage employees, attendance, leave requests, and performance",
   "employeeData": {"names": {"sarahJohnson": "Sarah Johnson","mikeDavis": "Mike Davis","lisaChen": "Lisa Chen"},"positions": {"seniorSalesManager": "Senior Sales Manager","salesDirector": "Sales Director","hrSpecialist": "HR Specialist"},"locations": {"sanFrancisco": "San Francisco, CA","austin": "Austin, TX"}},
   "employeeCard": {"manager": "Manager:","startDate": "Start Date:","attendance": "Attendance:","performance": "Performance:","leaveBalance": "Leave Balance:","nextReview": "Next Review:","days": "days"},

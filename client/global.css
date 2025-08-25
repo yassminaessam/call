@@ -6,118 +6,154 @@
 
 @layer base {
   /**
-   * Tailwind CSS theme
+   * Elite Premium Color Theme
+   * Sophisticated color palette inspired by luxury brands and modern design
    * tailwind.config.ts expects the following color variables to be expressed as HSL values.
-   * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    /* Elite Base Colors - Deep navy and platinum */
+    --background: 218 23% 97%;
+    --foreground: 222 47% 11%;
 
+    /* Elite Card System - Subtle elevation */
     --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card-foreground: 222 47% 11%;
 
+    /* Elite Popovers - Clean and minimal */
     --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 220 90% 56%;
+    /* Elite Primary - Deep sapphire blue */
+    --primary: 218 100% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 215 25% 27%;
+    /* Elite Secondary - Soft platinum */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    /* Elite Muted - Refined gray tones */
+    --muted: 217 12% 94%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 220 14% 96%;
-    --accent-foreground: 215 25% 27%;
+    /* Elite Accent - Sophisticated highlight */
+    --accent: 210 40% 93%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84% 60%;
+    /* Elite Destructive - Refined red */
+    --destructive: 0 65% 48%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 90% 56%;
+    /* Elite Borders - Subtle definition */
+    --border: 217 20% 88%;
+    --input: 217 20% 88%;
+    --ring: 218 100% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 222 84% 5%;
+    /* Elite Sidebar - Premium dark theme */
+    --sidebar-background: 222 84% 4%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 220 90% 56%;
+    --sidebar-primary: 218 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 32% 18%;
+    --sidebar-accent: 220 30% 12%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 32% 18%;
-    --sidebar-ring: 220 90% 56%;
+    --sidebar-border: 220 30% 12%;
+    --sidebar-ring: 218 100% 45%;
 
-    /* CRM specific colors */
-    --success: 142 76% 36%;
+    /* Elite Status Colors */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 98%;
-    --warning: 38 92% 50%;
+    --warning: 32 95% 44%;
     --warning-foreground: 0 0% 98%;
-    --info: 199 89% 48%;
+    --info: 204 100% 40%;
     --info-foreground: 0 0% 98%;
 
-    /* Department colors */
-    --sales: 142 76% 36%;
-    --hr: 262 83% 58%;
-    --marketing: 340 75% 55%;
-    --manufacturing: 25 95% 53%;
-    --support: 199 89% 48%;
+    /* Elite Department Colors - Premium palette */
+    --sales: 142 71% 45%;      /* Emerald green - prosperity */
+    --hr: 259 94% 51%;         /* Royal purple - sophistication */
+    --marketing: 348 83% 47%;  /* Crimson red - energy */
+    --manufacturing: 25 95% 53%; /* Amber gold - industry */
+    --support: 204 100% 40%;   /* Sapphire blue - trust */
+
+    /* Elite Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(218 100% 25%) 0%, hsl(228 100% 35%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 14% 96%) 0%, hsl(210 20% 92%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(210 40% 93%) 0%, hsl(220 20% 88%) 100%);
+    
+    /* Elite Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
   }
 
   .dark {
-    --background: 222 84% 5%;
+    /* Elite Dark Mode - Luxury black and gold accents */
+    --background: 222 84% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 222 84% 5%;
+    --card: 220 30% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 84% 5%;
+    --popover: 220 30% 6%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 220 90% 56%;
-    --primary-foreground: 0 0% 100%;
+    /* Elite Primary - Bright sapphire in dark */
+    --primary: 218 100% 55%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 217 33% 18%;
+    --secondary: 220 30% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 33% 18%;
+    --muted: 220 30% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 217 33% 18%;
+    --accent: 220 30% 15%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 63% 45%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 220 90% 56%;
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 218 100% 55%;
 
-    --sidebar-background: 222 84% 5%;
+    --sidebar-background: 222 84% 4%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 220 90% 56%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 33% 18%;
+    --sidebar-primary: 218 100% 55%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 220 30% 12%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 18%;
-    --sidebar-ring: 220 90% 56%;
+    --sidebar-border: 220 30% 12%;
+    --sidebar-ring: 218 100% 55%;
 
-    /* CRM specific colors */
-    --success: 142 70% 45%;
-    --success-foreground: 0 0% 98%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 98%;
-    --info: 199 89% 48%;
-    --info-foreground: 0 0% 98%;
+    /* Elite Dark Status Colors */
+    --success: 142 71% 55%;
+    --success-foreground: 222 47% 11%;
+    --warning: 32 95% 54%;
+    --warning-foreground: 222 47% 11%;
+    --info: 204 100% 50%;
+    --info-foreground: 222 47% 11%;
 
-    /* Department colors */
-    --sales: 142 70% 45%;
-    --hr: 262 83% 58%;
-    --marketing: 340 75% 55%;
-    --manufacturing: 25 95% 53%;
-    --support: 199 89% 48%;
+    /* Elite Dark Department Colors */
+    --sales: 142 71% 55%;
+    --hr: 259 94% 61%;
+    --marketing: 348 83% 57%;
+    --manufacturing: 25 95% 63%;
+    --support: 204 100% 50%;
+
+    /* Elite Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(218 100% 55%) 0%, hsl(228 100% 65%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(210 25% 18%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(220 30% 15%) 0%, hsl(210 25% 22%) 100%);
+    
+    /* Elite Dark Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
   }
 }
 
@@ -128,6 +164,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
   }
 
   /* Hide boot status placeholder (replaces inline style) */
@@ -145,5 +183,245 @@
   /* When a sheet/sidebar is rendered in mobile mode we can scope width */
   [data-mobile="true"] {
     --sidebar-width: var(--sidebar-width-mobile);
+  }
+}
+
+@layer components {
+  /* Elite Button Styles */
+  .btn-elite {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-elite:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-elite:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow);
+  }
+
+  /* Elite Card Styles */
+  .card-elite {
+    @apply relative overflow-hidden;
+    background: var(--gradient-secondary);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-elite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  }
+
+  /* Elite Glass Effect */
+  .glass-elite {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Elite Gradient Text */
+  .text-elite {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+
+  /* Elite Input Styles */
+  .input-elite {
+    @apply relative;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .input-elite:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Elite Navigation */
+  .nav-elite {
+    position: relative;
+  }
+
+  .nav-elite::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: var(--gradient-primary);
+    border-radius: 0 2px 2px 0;
+    transition: height 0.3s ease;
+  }
+
+  .nav-elite.active::before {
+    height: 100%;
+  }
+
+  /* Elite Badge Styles */
+  .badge-elite {
+    @apply relative;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow);
+    border: none;
+  }
+
+  .badge-elite::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+  }
+
+  /* Elite Sidebar Enhancements */
+  .sidebar-elite {
+    background: linear-gradient(180deg, 
+      hsl(var(--sidebar-background)) 0%, 
+      hsl(222 84% 3%) 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Elite Status Indicators */
+  .status-online {
+    @apply relative;
+    background: hsl(var(--success));
+    box-shadow: 0 0 10px hsla(var(--success), 0.5);
+  }
+
+  .status-online::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, transparent, hsl(var(--success)), transparent);
+    animation: rotate 2s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Elite Data Visualization */
+  .chart-elite {
+    position: relative;
+    background: var(--gradient-accent);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .chart-elite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0.05) 0%, 
+      transparent 50%, 
+      rgba(255, 255, 255, 0.05) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Elite Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Elite Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+
+  /* Elite Selection */
+  ::selection {
+    background: hsla(var(--primary), 0.3);
+    color: hsl(var(--primary-foreground));
   }
 }

@@ -1,0 +1,92 @@
+{
+  "title": "PBX Management",
+  "subtitle": "Grandstream UCM6304A Management System",
+  "connected": "Connected",
+  "disconnected": "Disconnected",
+  "refresh": "Refresh",
+  "connectionError": "Connection Error",
+  "error": "Error",
+  "tabs": {
+    "overview": "Overview",
+    "extensions": "Extensions",
+    "calls": "Call History",
+    "monitoring": "Monitoring"
+  },
+  "dashboard": {
+    "title": "PBX Management",
+    "subtitle": "Grandstream UCM6304A Management System"
+  },
+  "overview": {
+    "totalExtensions": "Total Extensions",
+    "activeCalls": "Active Calls",
+    "waitingCalls": "Waiting Calls",
+    "systemStatus": "System Status",
+    "available": "Available",
+    "inProgress": "In Progress",
+    "inQueues": "In Queues",
+    "issues": "Issues",
+    "healthy": "Healthy",
+    "queues": "Call Queues",
+    "quickActions": "Quick Actions",
+    "waiting": "Waiting",
+    "availableAgents": "Available Agents",
+    "longestWait": "Longest Wait"
+  },
+  "actions": {
+    "makeCall": "Make Call",
+    "start": "Start Monitoring",
+    "settings": "Settings"
+  },
+  "makeCall": {
+    "title": "Make Call",
+    "fromExtension": "From Extension",
+    "toNumber": "To Number",
+    "missingFields": "Please select extension and number",
+    "success": "Call Initiated",
+    "calling": "Calling",
+    "failed": "Call Failed"
+  },
+  "endCall": {
+    "success": "Call Ended",
+    "ended": "Call ended successfully",
+    "failed": "End Call Failed"
+  },
+  "transferCall": {
+    "success": "Call Transferred",
+    "transferred": "Transferred to",
+    "failed": "Transfer Failed"
+  },
+  "monitoring": {
+    "start": "Start Monitoring",
+    "stop": "Stop Monitoring",
+    "started": "Monitoring Started",
+    "stopped": "Monitoring Stopped",
+    "realTimeActive": "Real-time monitoring is now active",
+    "realTimeInactive": "Real-time monitoring has been stopped",
+    "error": "Monitoring Error"
+  },
+  "autoRefresh": {
+    "on": "Auto Refresh On",
+    "off": "Auto Refresh Off"
+  },
+  "extensions": {
+    "status": "Status",
+    "extension": "Extension",
+    "user": "User",
+    "lastActivity": "Last Activity",
+    "available": "Available",
+    "busy": "Busy",
+    "offline": "Offline",
+    "ringing": "Ringing"
+  },
+  "calls": {
+    "from": "From",
+    "to": "To",
+    "duration": "Duration",
+    "time": "Time",
+    "type": "Type",
+    "incoming": "Incoming",
+    "outgoing": "Outgoing",
+    "missed": "Missed"
+  }
+}

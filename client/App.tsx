@@ -1,24 +1,30 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
-import CRMLayout from "@/components/CRMLayout";
-import { TranslationProvider, useTranslation } from "@/contexts/TranslationContext";
-import LoadingSpinner from '@/components/LoadingSpinner';
-import ErrorBoundary from '@/components/ErrorBoundary';
+import CRMLayout from "./components/CRMLayout";
+import { TranslationProvider, useTranslation } from "./contexts/TranslationContext";
+import LoadingSpinner from './components/LoadingSpinner';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Critical above-the-fold page (keep eager): Dashboard
-import Dashboard from "@/pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
-// Lazy loaded feature pages
-const CallCenter = lazy(() => import('@/pages/CallCenter'));
-const AIAnswering = lazy(() => import('@/pages/AIAnswering'));
-const Sales = lazy(() => import('@/pages/Sales'));
-const HR = lazy(() => import('@/pages/HR'));
-const Marketing = lazy(() => import('@/pages/Marketing'));
-const Manufacturing = lazy(() => import('@/pages/Manufacturing'));
-const Support = lazy(() => import('@/pages/Support'));
-const SettingsPage = lazy(() => import('@/pages/Settings'));
-const NotFound = lazy(() => import('@/pages/NotFound'));
-const TranslationDemo = lazy(() => import('@/pages/TranslationDemo'));
+// Essential feature pages
+const AdvancedCallCenter = lazy(() => import('./pages/AdvancedCallCenter'));
+const SettingsPage = lazy(() => import('./pages/Settings'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Department pages for CRM
+const Sales = lazy(() => import('./pages/Sales'));
+const HR = lazy(() => import('./pages/HR'));
+const Marketing = lazy(() => import('./pages/Marketing'));
+const Manufacturing = lazy(() => import('./pages/Manufacturing'));
+const Support = lazy(() => import('./pages/Support'));
+
+// Additional modules
+const CallCenter = lazy(() => import('./pages/CallCenter')); // Basic call center
+const AIAnswering = lazy(() => import('./pages/AIAnswering')); // AI features
+// Grandstream PBX dashboard page (full operational control center)
+const GrandstreamDashboard = lazy(() => import('./pages/GrandstreamDashboard'));
 
 // Placeholder components for routes (currently unused but kept for future lazy modules)
 const PlaceholderPage = ({ title }: { title: string }) => {
@@ -83,12 +89,33 @@ function AppRoutes() {
           </CRMLayout>
         } />
 
+        {/* Call Center Module */}
         <Route path="/calls" element={
           <CRMLayout>
             <CallCenter />
           </CRMLayout>
         } />
 
+        <Route path="/advanced-calls" element={
+          <CRMLayout>
+            <AdvancedCallCenter />
+          </CRMLayout>
+        } />
+
+        <Route path="/ai-answering" element={
+          <CRMLayout>
+            <AIAnswering />
+          </CRMLayout>
+        } />
+
+        {/* Grandstream PBX Control */}
+        <Route path="/grandstream" element={
+          <CRMLayout>
+            <GrandstreamDashboard />
+          </CRMLayout>
+        } />
+
+        {/* Department Pages */}
         <Route path="/sales" element={
           <CRMLayout>
             <Sales />
@@ -119,21 +146,10 @@ function AppRoutes() {
           </CRMLayout>
         } />
 
-        <Route path="/ai-answering" element={
-          <CRMLayout>
-            <AIAnswering />
-          </CRMLayout>
-        } />
-
+        {/* System Settings */}
         <Route path="/settings" element={
           <CRMLayout>
             <SettingsPage />
-          </CRMLayout>
-        } />
-
-        <Route path="/translation-demo" element={
-          <CRMLayout>
-            <TranslationDemo />
           </CRMLayout>
         } />
 

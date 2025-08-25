@@ -1,10 +1,30 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:vercel",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist/spa",
+  "installCommand": "npm install",
+  "framework": null,
+  "functions": {
+    "api/**": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/server.ts" },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/server.ts",
+      "headers": {
+        "cache-control": "s-maxage=0"
+      }
+    },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "GRANDSTREAM_HOST": "@grandstream_host",
+    "GRANDSTREAM_PORT": "@grandstream_port", 
+    "GRANDSTREAM_USERNAME": "@grandstream_username",
+    "GRANDSTREAM_PASSWORD": "@grandstream_password"
+  }
 }

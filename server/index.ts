@@ -19,6 +19,8 @@ import {
   handleStockLowWebhook
 } from "./routes/crm";
 import webhookRoutes from "./routes/webhooks";
+import grandstreamRoutes from "./routes/grandstream";
+import callCenterRoutes from "./routes/callCenter";
 
 export function createServer() {
   const app = express();
@@ -70,6 +72,12 @@ export function createServer() {
 
   // Advanced webhook system for Twilio, Speech-to-Text, and AI
   app.use("/api/webhooks", webhookRoutes);
+
+  // Grandstream UCM6304A PBX Integration
+  app.use("/api/grandstream", grandstreamRoutes);
+
+  // Advanced Call Center with AI Integration
+  app.use("/api/call-center", callCenterRoutes);
 
   // Web Vitals metrics intake (fire-and-forget)
   app.post('/api/metrics/web-vitals', (req, res) => {

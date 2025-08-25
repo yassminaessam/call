@@ -17,7 +17,7 @@
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
     "dev:debug": "node --inspect --enable-source-maps ./node_modules/vite/bin/vite.js",
-    "build:vercel": "vite build && node scripts/copy-locales.mjs",
+    "build:vercel": "prisma generate && vite build && node scripts/copy-locales.mjs",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",

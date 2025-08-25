@@ -4,5 +4,18 @@
   "justNow": "الآن",
   "minutesAgo": "قبل {{count}} د",
   "hoursAgo": "قبل {{count}} س",
-  "daysAgo": "قبل {{count}} ي"
+  "daysAgo": "قبل {{count}} ي",
+  "markAsRead": "تحديد كمقروء",
+  "markAllAsRead": "تحديد الكل كمقروء",
+  "delete": "حذف",
+  "deleteAll": "حذف الكل",
+  "new": "جديد",
+  "read": "مقروء",
+  "types": {
+    "call": "مكالمة",
+    "message": "رسالة",
+    "alert": "تنبيه",
+    "system": "النظام",
+    "reminder": "تذكير"
+  }
 }

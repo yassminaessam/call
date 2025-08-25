@@ -1,5 +1,6 @@
 {
   "title": "Sales CRM",
+  "description": "Sales and Deal Management",
   "subtitle": "Manage leads, track deals, and drive revenue growth",
   "tabs": {"leads": "Leads","deals": "Deal Pipeline","quotes": "Quotes & Invoices","analytics": "Analytics"},
   "stats": {"totalLeads": "Total Leads","activeDeals": "Active Deals","revenueMTD": "Revenue (MTD)","conversionRate": "Conversion Rate"},

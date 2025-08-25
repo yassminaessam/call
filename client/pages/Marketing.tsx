@@ -336,7 +336,7 @@ export default function Marketing() {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="campaign-name">{t('marketing.campaign.name')}</Label>
-                <Input id="campaign-name" placeholder="Q2 Product Launch" />
+                <Input id="campaign-name" placeholder={t('marketing.placeholders.campaignName')} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="campaign-type">{t('marketing.campaign.type')}</Label>
@@ -380,7 +380,7 @@ export default function Marketing() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="estimated-reach">{t('marketing.campaign.estimatedReach')}</Label>
-                <Input id="estimated-reach" placeholder="5,000 recipients" disabled />
+                <Input id="estimated-reach" placeholder={t('marketing.placeholders.estimatedReach')} disabled />
               </div>
             </div>
           </div>
@@ -392,7 +392,7 @@ export default function Marketing() {
               <>
                 <div className="space-y-2">
                   <Label htmlFor="subject">{t('marketing.campaign.emailSubject')}</Label>
-                  <Input id="subject" placeholder="Introducing our latest features..." />
+                  <Input id="subject" placeholder={t('marketing.placeholders.subject')} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="template">{t('marketing.campaign.emailTemplate')}</Label>
@@ -434,7 +434,7 @@ export default function Marketing() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="budget">{t('marketing.campaign.budget')}</Label>
-                <Input id="budget" type="number" placeholder="10000" />
+                <Input id="budget" type="number" placeholder={t('marketing.placeholders.budget')} />
               </div>
             </div>
             <div className="flex items-center space-x-2">

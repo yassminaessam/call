@@ -22,5 +22,26 @@
     "moduleLabel": "Module:"
   },
   "pagination": {"previous": "Previous","next": "Next","morePages": "More pages"},
-  "sidebar": {"toggle": "Toggle Sidebar"}
+  "sidebar": {"toggle": "Toggle Sidebar"},
+  "yes": "Yes",
+  "no": "No",
+  "status": "Status",
+  "refresh": "Refresh",
+  "online": "Online",
+  "offline": "Offline",
+  "busy": "Busy",
+  "add": "Add",
+  "remove": "Remove",
+  "update": "Update",
+  "create": "Create",
+  "close": "Close",
+  "open": "Open",
+  "departments": {
+    "salesDepartment": "Sales Department",
+    "hrDepartment": "HR Department",
+    "marketingDepartment": "Marketing Department",
+    "supportDepartment": "Support Department",
+    "manufacturingDepartment": "Manufacturing Department",
+    "itDepartment": "IT Department"
+  }
 }

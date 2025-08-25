@@ -1,6 +1,7 @@
 {
   "title": "AI Answering System",
   "subtitle": "Configure automated responses for each department",
+  "description": "Smart Response System",
   "actions": {"globalSettings": "Global Settings","saveChanges": "Save Changes"},
   "departments": {"title": "Departments","active": "Active","inactive": "Inactive","autoGen": "Auto-Gen","defaultMessages": {"sales": "Hi! You've reached Sales. We're currently unavailable, but your call is important to us. Please leave your name, company, and how we can help you, and we'll get back to you within 24 hours.","hr": "Hello! You've reached Human Resources. We're currently unavailable. Please leave your name and the reason for your call, and we'll respond within 24 hours. For urgent matters, please email hr@company.com.","marketing": "You've reached Marketing! We're excited to hear from you but are currently unavailable. Please share your campaign ideas or partnership opportunities, and we'll respond within 24 hours.","manufacturing": "Hi! You've reached Manufacturing. We're currently on the production floor. Please leave details about your order or inquiry, and we'll get back to you promptly.","support": "Thank you for calling Support! We're helping other customers right now. Please describe your issue and your contact information, and we'll prioritize getting back to you today."}},
   "departmentConfig": {"title": "{{name}} Department","subtitle": "Configure AI answering messages and voice settings","status": {"active": "Active","inactive": "Inactive"}},

@@ -1,13 +1,18 @@
 {
   "dashboard": "Dashboard",
+  "communications": "Communications",
   "callCenter": "Call Center",
+  "advancedCallCenter": "AI Call Center",
   "aiAnswering": "AI Answering",
+  "grandstream": "PBX Control",
   "sales": "Sales",
-  "hr": "HR",
+  "hr": "Human Resources",
   "marketing": "Marketing",
   "manufacturing": "Manufacturing",
   "support": "Support",
   "settings": "Settings",
   "translationDemo": "Translation Demo",
-  "logout": "Logout"
+  "logout": "Logout",
+  "items": "items",
+  "status": "Status"
 }

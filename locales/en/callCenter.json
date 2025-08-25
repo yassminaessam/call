@@ -1,19 +1,149 @@
 {
   "title": "Advanced Call Center",
   "subtitle": "Integrated system with Twilio, Speech-to-Text, and Smart Responses",
+  "description": "Call and Communication Management",
   "processAllCalls": "Process All Calls",
   "startNewCall": "Start New Call",
   "endCall": "End Call",
   "callStarted": "Call Started",
   "callRecordingActive": "Call recording is active",
   "callEnded": "Call Ended",
-  "tabs": {"callLog": "Call Log","analytics": "Analytics","aiResponses": "AI Responses","settings": "Settings"},
-  "filters": {"title": "Filter Calls","status": "Status","direction": "Direction","department": "Department","dateRange": "Date Range","allStatuses": "All Statuses","allDirections": "All Directions","allDepartments": "All Departments","today": "Today","thisWeek": "This Week","thisMonth": "This Month"},
-  "call": {"callId": "Call ID","recording": "Recording","transcription": "Transcription","aiAnalysis": "AI Analysis","aiReply": "AI Reply","play": "Play","download": "Download","viewFull": "View Full","process": "Process","regenerate": "Regenerate","listen": "Listen","send": "Send","accuracy": "Accuracy","sentiment": "Sentiment","confidence": "Confidence","processing": "Processing...","transcriptionStarted": "Call processing started","transcriptionCompleted": "Call processed successfully","processingSteps": {"loadingRecording": "Loading recording...","convertingToText": "Converting speech to text...","aiAnalyzing": "AI analyzing content...","completed": "Processing completed successfully"}},
-  "statuses": {"completed": "Completed","missed": "Missed","ongoing": "Ongoing","failed": "Failed"},
-  "directions": {"inbound": "Inbound","outbound": "Outbound"},
-  "sentiments": {"positive": "Positive","negative": "Negative","neutral": "Neutral"},
-  "priorities": {"urgent": "Urgent","high": "High","medium": "Medium","low": "Low"},
+  "advanced": {
+    "title": "Advanced AI Call Center",
+    "description": "AI-powered call analysis and automated response generation"
+  },
+  "ai": {
+    "enabled": "AI Enabled",
+    "processing": "AI Processing",
+    "analysis": "AI Analysis",
+    "response": "AI Response"
+  },
+  "processing": {
+    "queue": "Processing Queue: {{count}}",
+    "success": "Processing Completed",
+    "completed": "Call processed successfully with AI analysis",
+    "failed": "Processing Failed",
+    "error": "Failed to process call with AI",
+    "inProgress": "AI is currently processing this call..."
+  },
+  "regenerate": {
+    "success": "Response Regenerated",
+    "completed": "AI response has been regenerated successfully",
+    "failed": "Regeneration Failed",
+    "error": "Failed to regenerate AI response"
+  },
+  "stats": {
+    "totalCalls": "Total Calls",
+    "processed": "AI Processed",
+    "avgTime": "Avg Processing",
+    "satisfaction": "Satisfaction",
+    "active": "Active Processing"
+  },
+  "tabs": {
+    "callLog": "Call Log",
+    "analytics": "Analytics",
+    "aiResponses": "AI Responses",
+    "settings": "Settings",
+    "calls": "Call Management",
+    "analysis": "AI Analysis",
+    "config": "AI Configuration"
+  },
+  "calls": {
+    "recent": "Recent Calls"
+  },
+  "call": {
+    "callId": "Call ID",
+    "recording": "Recording",
+    "transcription": "Transcription",
+    "aiAnalysis": "AI Analysis",
+    "aiReply": "AI Reply",
+    "play": "Play",
+    "download": "Download",
+    "viewFull": "View Full",
+    "process": "Process",
+    "regenerate": "Regenerate",
+    "listen": "Listen",
+    "send": "Send",
+    "accuracy": "Accuracy",
+    "sentiment": "Sentiment",
+    "confidence": "Confidence",
+    "processing": "Processing...",
+    "transcriptionStarted": "Call processing started",
+    "transcriptionCompleted": "Call processed successfully",
+    "inbound": "Inbound",
+    "outbound": "Outbound",
+    "processingSteps": {
+      "loadingRecording": "Loading recording...",
+      "convertingToText": "Converting speech to text...",
+      "aiAnalyzing": "AI analyzing content...",
+      "completed": "Processing completed successfully"
+    }
+  },
+  "status": {
+    "processing": "Processing",
+    "completed": "Completed",
+    "failed": "Failed"
+  },
+  "statuses": {
+    "completed": "Completed",
+    "missed": "Missed",
+    "ongoing": "Ongoing",
+    "failed": "Failed"
+  },
+  "directions": {
+    "inbound": "Inbound",
+    "outbound": "Outbound"
+  },
+  "sentiments": {
+    "positive": "Positive",
+    "negative": "Negative",
+    "neutral": "Neutral"
+  },
+  "sentiment": {
+    "positive": "Positive",
+    "negative": "Negative",
+    "neutral": "Neutral"
+  },
+  "priorities": {
+    "urgent": "Urgent",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "priority": {
+    "urgent": "Urgent",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "details": {
+    "title": "Call Details",
+    "select": "Select Call",
+    "phone": "Phone Number",
+    "duration": "Duration",
+    "department": "Department",
+    "selectCall": "Select a call to view details"
+  },
+  "actions": {
+    "regenerate": "Regenerate Response",
+    "process": "Process with AI",
+    "play": "Play Recording",
+    "playReply": "Play AI Reply"
+  },
+  "analysis": {
+    "title": "AI Analysis",
+    "summary": "Summary",
+    "sentiment": "Sentiment",
+    "actions": "Suggested Actions"
+  },
+  "reply": {
+    "title": "AI-Generated Reply",
+    "tone": "Tone",
+    "audioGenerated": "Audio Generated"
+  },
+  "transcription": {
+    "title": "Call Transcription"
+  },
   "analytics": {
     "totalCalls": "Total Calls",
     "totalCallsChange": "+12% from last month",
@@ -22,12 +152,48 @@
     "smartProcessing": "Smart Processing",
     "smartProcessingDesc": "of calls processed",
     "customerSatisfaction": "Customer Satisfaction",
-    "customerSatisfactionChange": "+0.3 from last month"
+    "customerSatisfactionChange": "+0.3 from last month",
+    "overview": "Performance Overview",
+    "processed": "Calls Processed",
+    "satisfaction": "Customer Satisfaction",
+    "insights": "AI Insights",
+    "efficiency": "Processing efficiency improved by 40%",
+    "performance": "Overall system performance is excellent",
+    "title": "Advanced Analytics",
+    "comingSoon": "Detailed analytics dashboard coming soon"
+  },
+  "insights": {
+    "efficiency": "Processing efficiency improved by 40%",
+    "satisfaction": "Customer satisfaction increased by 25%",
+    "performance": "Overall system performance is excellent"
   },
   "aiResponses": {
     "title": "AI Responses Library",
     "description": "All AI-generated responses with editing and optimization options",
     "empty": "Smart responses will appear here"
+  },
+  "config": {
+    "speechToText": "Speech-to-Text",
+    "aiAnalysis": "AI Analysis",
+    "textToSpeech": "Text-to-Speech",
+    "provider": "Provider",
+    "language": "Language",
+    "model": "AI Model",
+    "maxTokens": "Max Tokens",
+    "speed": "Speech Speed"
+  },
+  "filters": {
+    "title": "Filter Calls",
+    "status": "Status",
+    "direction": "Direction",
+    "department": "Department",
+    "dateRange": "Date Range",
+    "allStatuses": "All Statuses",
+    "allDirections": "All Directions",
+    "allDepartments": "All Departments",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month"
   },
   "settings": {
     "twilio": {
@@ -38,7 +204,10 @@
     "ai": {
       "title": "AI Settings",
       "modelLabel": "AI Model",
-      "models": {"gpt4": "GPT-4", "gpt35": "GPT-3.5 Turbo"}
+      "models": {
+        "gpt4": "GPT-4",
+        "gpt35": "GPT-3.5 Turbo"
+      }
     }
   }
 }

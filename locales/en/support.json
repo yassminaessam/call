@@ -1,5 +1,6 @@
 {
   "title": "Support Center",
+  "description": "Customer Service and Technical Support",
   "subtitle": "Manage tickets, customer satisfaction, and team performance",
   "stats": {"openTickets": "Open Tickets","resolvedToday": "Resolved Today","avgResponseTime": "Avg Response Time","satisfactionScore": "Satisfaction Score","fromYesterday": "from yesterday"},
   "tabs": {"tickets": "Support Tickets","clients": "Client Management","knowledge": "Knowledge Base","analytics": "Analytics"},

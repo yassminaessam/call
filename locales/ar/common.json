@@ -17,10 +17,29 @@
   "duration": "المدة",
   "priority": "الأولوية",
   "success": "نجاح",
+  "refresh": "تحديث",
+  "yes": "نعم",
+  "no": "لا",
+  "online": "متصل",
+  "offline": "غير متصل",
+  "busy": "مشغول",
+  "add": "إضافة",
+  "remove": "إزالة",
+  "update": "تحديث",
+  "create": "إنشاء",
+  "close": "إغلاق",
+  "open": "فتح",
+  "status": "الحالة",
   "placeholders": {
     "comingSoon": "هذه الصفحة قيد الإعداد. تابع التوجيه لاستكمال هذا القسم.",
     "moduleLabel": "الوحدة:"
   },
-  "pagination": {"previous": "السابق","next": "التالي","morePages": "صفحات أخرى"},
-  "sidebar": {"toggle": "تبديل الشريط الجانبي"}
+  "departments": {
+    "salesDepartment": "قسم المبيعات",
+    "hrDepartment": "قسم الموارد البشرية",
+    "marketingDepartment": "قسم التسويق",
+    "supportDepartment": "قسم الدعم",
+    "manufacturingDepartment": "قسم التصنيع",
+    "itDepartment": "قسم تقنية المعلومات"
+  }
 }

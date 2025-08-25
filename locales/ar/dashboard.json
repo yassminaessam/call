@@ -1,18 +1,28 @@
 {
-  "title": "لوحة التحكم الرئيسية",
-  "subtitle": "مرحباً بك في نظام إدارة علاقات العملاء",
+  "title": "فيوجن CRM",
+  "subtitle": "لوحة عمليات النخبة",
   "quickActions": "الإجراءات السريعة",
   "recentActivity": "النشاط الأخير",
   "departmentOverview": "نظرة عامة على الأقسام",
   "aiAnsweringStatus": "حالة الردود الذكية",
   "makeQuickCall": "مكالمة سريعة",
   "enterPhoneNumber": "أدخل رقم الهاتف",
+  "allSystems": "جميع الأنظمة",
+  "operations": "العمليات",
+  "analytics": "تحليلات CRM",
+  "analyticsDescription": "تحليل البيانات والتقارير",
+  "systemManagement": "إدارة النظام",
+  "systemDescription": "إدارة وصيانة النظام",
   "stats": {
     "totalCallsToday": "إجمالي المكالمات اليوم",
     "activeDeals": "الصفقات النشطة",
     "openTickets": "التذاكر المفتوحة",
     "teamMembers": "أعضاء الفريق",
-    "fromLastMonth": "من الشهر الماضي"
+    "fromLastMonth": "من الشهر الماضي",
+    "systemUptime": "وقت تشغيل النظام",
+    "activeCalls": "المكالمات النشطة",
+    "dailyRevenue": "الإيرادات اليومية",
+    "activeUsers": "المستخدمون النشطون"
   },
   "deptStats": {
     "leads": "عملاء محتملون",
@@ -40,5 +50,21 @@
     "salesInquiry": "استفسار مبيعات",
     "minutesAgo": "منذ {{minutes}} دقيقة",
     "hoursAgo": "منذ {{hours}} ساعة"
+  },
+  "systemStatus": {
+    "operational": "يعمل بشكل طبيعي",
+    "maintenance": "تحت الصيانة",
+    "degraded": "أداء متدني",
+    "outage": "عطل"
+  },
+  "systemOnline": "النظام متصل",
+  "welcomeBack": "مرحباً بعودتك، مدير",
+  "widgets": {
+    "callCenter": "مركز الاتصالات",
+    "sales": "المبيعات",
+    "support": "الدعم",
+    "hr": "الموارد البشرية",
+    "manufacturing": "التصنيع",
+    "marketing": "التسويق"
   }
 }

@@ -9,6 +9,7 @@ interface PrefetchLinkProps extends LinkProps {
 // We conditionally reference them here to trigger preloading without mounting.
 const routeImporters: Record<string, () => Promise<any>> = {
   '/calls': () => import('@/pages/CallCenter'),
+  '/advanced-calls': () => import('@/pages/AdvancedCallCenter'),
   '/sales': () => import('@/pages/Sales'),
   '/hr': () => import('@/pages/HR'),
   '/marketing': () => import('@/pages/Marketing'),
@@ -16,7 +17,6 @@ const routeImporters: Record<string, () => Promise<any>> = {
   '/support': () => import('@/pages/Support'),
   '/ai-answering': () => import('@/pages/AIAnswering'),
   '/settings': () => import('@/pages/Settings'),
-  '/translation-demo': () => import('@/pages/TranslationDemo'),
 };
 
 function prefetchRoute(path: string) {
