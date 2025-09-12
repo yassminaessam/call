@@ -4,11 +4,6 @@
   "outputDirectory": "dist/spa",
   "installCommand": "npm install",
   "framework": null,
-  "build": {
-    "env": {
-      "NODE_VERSION": "18"
-    }
-  },
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.0.7"
