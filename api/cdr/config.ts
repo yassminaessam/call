@@ -1,17 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
-
-// Helper function to get current CDR configuration
-async function getConfig() {
-  let config = await prisma.cDRConnectorConfig.findFirst({
-    where: { id: 1 }
-  });
-  
-  return config || { mode: 'HTTPS' as any, jsonConfig: {}, isActive: true };
-}
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,16 +11,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).end();
   }
 
+  const prisma = new PrismaClient();
+
   try {
     if (req.method === 'GET') {
       // GET /api/cdr/config - Get current configuration
-      const config = await getConfig();
+      let config = await prisma.cDRConnectorConfig.findFirst({
+        where: { id: 1 }
+      });
+      
+      const configData = config || {
+        mode: 'HTTPS' as any,
+        jsonConfig: {},
+        isActive: true
+      };
+      
       return res.json({
         success: true,
         config: {
-          mode: config.mode,
-          jsonConfig: config.jsonConfig,
-          isActive: config.isActive
+          mode: configData.mode,
+          jsonConfig: configData.jsonConfig,
+          isActive: configData.isActive
         }
       });
     }
@@ -76,5 +76,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       success: false,
       error: 'Internal server error'
     });
+  } finally {
+    await prisma.$disconnect();
   }
 }
