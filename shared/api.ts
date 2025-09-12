@@ -442,3 +442,44 @@ import type {
 export interface DemoResponse {
   message: string;
 }
+
+// CDR (Call Detail Records)
+export interface CDRRecord {
+  id: number | string; // Prisma BigInt -> serialized
+  calldate?: string;
+  src?: string;
+  dst?: string;
+  disposition?: string; // ANSWERED, NO ANSWER, BUSY, etc.
+  duration?: number; // total seconds
+  billsec?: number;  // billable seconds
+  actionType?: string;
+  accountcode?: string;
+  uniqueid: string;
+  channel?: string;
+  dcontext?: string;
+  dstchannel?: string;
+  lastapp?: string;
+  lastdata?: string;
+  amaflags?: number;
+  userfield?: string;
+}
+
+export interface CDRQuery {
+  page?: number;
+  limit?: number;
+  src?: string;
+  dst?: string;
+  disposition?: string;
+  actionType?: string;
+  dateFrom?: string; // ISO
+  dateTo?: string;   // ISO
+}
+
+export interface CDRRecordsResponse {
+  success: boolean;
+  data: CDRRecord[];
+  pagination: { page: number; limit: number; total: number; pages: number };
+  stats?: Record<string, number>;
+  filters?: Partial<CDRQuery>;
+  error?: any;
+}

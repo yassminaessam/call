@@ -1,4 +1,5 @@
 import express from 'express';
+import { envManager } from '../services/envManager.js';
 
 const router = express.Router();
 let grandstreamService: any = null;
@@ -292,23 +293,248 @@ router.post('/monitoring/start', async (req, res) => {
   }
 });
 
-// Health check for Grandstream connection
-router.get('/health', async (req, res) => {
+// POST /api/grandstream/cdr/sync - Manual CDR sync from UCM
+router.post('/cdr/sync', async (req, res) => {
   try {
-    // Try to get extensions status as a health check
     const service = await getGrandstreamService();
-    const status = await service.getAllExtensionsStatus();
+    const { limit = 100 } = req.body;
+    
+    console.log(`[Manual Sync] Starting CDR sync with limit: ${limit}`);
+    const result = await service.syncCDRFromUCM(limit);
     
     res.json({
       success: true,
-      message: 'Grandstream UCM6304A connection healthy',
-      extensionsCount: status.length,
+      synced: result.synced,
+      errors: result.errors,
+      message: `Successfully synced ${result.synced} CDR records`,
       timestamp: new Date().toISOString()
     });
   } catch (error) {
+    console.error('[Manual Sync] CDR sync failed:', error);
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'CDR sync failed'
+    });
+  }
+});
+
+// POST /api/grandstream/cdr/sync/full - Full CDR sync (all available records)
+router.post('/cdr/sync/full', async (req, res) => {
+  try {
+    const service = await getGrandstreamService();
+    
+    console.log('[Full Sync] Starting full CDR sync...');
+    const result = await service.syncCDRFromUCM(1000); // Sync up to 1000 records
+    
+    res.json({
+      success: true,
+      synced: result.synced,
+      errors: result.errors,
+      message: `Full sync completed: ${result.synced} CDR records synced`,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[Full Sync] CDR sync failed:', error);
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Full CDR sync failed'
+    });
+  }
+});
+
+// GET /api/grandstream/cdr/stats - CDR statistics and sync status
+router.get('/cdr/stats', async (req, res) => {
+  try {
+    const service = await getGrandstreamService();
+    const diagnostics = await service.getCDRDiagnostics();
+    
+    res.json({
+      success: true,
+      stats: {
+        totalRecords: diagnostics.totalRecords,
+        todayRecords: diagnostics.todayRecords,
+        lastRecord: diagnostics.lastRecord,
+        lastSyncTime: diagnostics.lastSyncTime,
+        ingestionHealth: diagnostics.ingestionHealth,
+        autoSyncEnabled: true, // Always enabled in our setup
+        syncInterval: process.env.CDR_SYNC_INTERVAL || '5 minutes'
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[CDR Stats] Failed to get stats:', error);
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to get CDR statistics'
+    });
+  }
+});
+
+// GET /api/grandstream/cdr/status - CDR ingestion diagnostics
+router.get('/cdr/status', async (req, res) => {
+  try {
+    const service = await getGrandstreamService();
+    const diagnostics = await service.getCDRDiagnostics();
+    
+    res.json({
+      success: true,
+      data: diagnostics,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[CDR Status] Failed to get diagnostics:', error);
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to get CDR diagnostics'
+    });
+  }
+});
+
+// Health check for Grandstream connection
+router.get('/health', async (req, res) => {
+  try {
+    const service = await getGrandstreamService();
+    
+    // Get mode information
+    const modeInfo = service.getModeInfo();
+    
+    // If in demo mode, return demo status
+    if (modeInfo.isDemo) {
+      return res.status(200).json({
+        success: true,
+        connected: false,
+        demo: true,
+        mode: modeInfo.mode,
+        message: 'Demo mode active - Configure real UCM6304A to connect',
+        instructions: [
+          '1. Update GRANDSTREAM_HOST with your UCM IP address',
+          '2. Update GRANDSTREAM_USERNAME with your UCM username',
+          '3. Update GRANDSTREAM_PASSWORD with your UCM password',
+          '4. Set UCM_MODE=production in .env file',
+          '5. Restart the application'
+        ],
+        config: {
+          host: 'DEMO_HOST',
+          port: modeInfo.port,
+          mode: modeInfo.mode
+        },
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    // Production mode - test real connection
+    const connectionTest = await service.testConnection();
+    
+    if (connectionTest.connected) {
+      return res.status(200).json({
+        success: true,
+        connected: true,
+        demo: false,
+        mode: modeInfo.mode,
+        message: 'Successfully connected to UCM6304A',
+        ucmInfo: connectionTest.info,
+        timestamp: new Date().toISOString()
+      });
+    } else {
+      return res.status(503).json({
+        success: false,
+        connected: false,
+        demo: false,
+        mode: modeInfo.mode,
+        error: connectionTest.error,
+        troubleshooting: connectionTest.troubleshooting || [],
+        config: {
+          host: modeInfo.host,
+          port: modeInfo.port,
+          mode: modeInfo.mode
+        },
+        timestamp: new Date().toISOString()
+      });
+    }
+  } catch (error) {
     res.status(503).json({
       success: false,
-      error: 'Grandstream connection unhealthy',
+      connected: false,
+      error: 'Failed to check Grandstream connection',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Configuration validation endpoint
+router.get('/config/validate', async (req, res) => {
+  try {
+    const service = await getGrandstreamService();
+    const modeInfo = service.getModeInfo();
+    
+    // Check environment variables
+    const requiredVars = {
+      GRANDSTREAM_HOST: process.env.GRANDSTREAM_HOST,
+      GRANDSTREAM_PORT: process.env.GRANDSTREAM_PORT,
+      GRANDSTREAM_USERNAME: process.env.GRANDSTREAM_USERNAME,
+      GRANDSTREAM_PASSWORD: process.env.GRANDSTREAM_PASSWORD,
+      UCM_MODE: process.env.UCM_MODE
+    };
+    
+    const validation = {
+      valid: true,
+      mode: modeInfo.mode,
+      isDemo: modeInfo.isDemo,
+      issues: [] as string[],
+      recommendations: [] as string[],
+      config: {
+        host: modeInfo.isDemo ? 'DEMO_HOST' : modeInfo.host,
+        port: modeInfo.port,
+        mode: modeInfo.mode
+      }
+    };
+    
+    // Validate each setting
+    if (!requiredVars.GRANDSTREAM_HOST || requiredVars.GRANDSTREAM_HOST === 'YOUR_UCM_IP_ADDRESS_HERE') {
+      validation.valid = false;
+      validation.issues.push('GRANDSTREAM_HOST not configured');
+      validation.recommendations.push('Set GRANDSTREAM_HOST to your UCM6304A IP address (e.g., 192.168.1.20)');
+    }
+    
+    if (!requiredVars.GRANDSTREAM_USERNAME || requiredVars.GRANDSTREAM_USERNAME === 'YOUR_UCM_USERNAME') {
+      validation.valid = false;
+      validation.issues.push('GRANDSTREAM_USERNAME not configured');
+      validation.recommendations.push('Set GRANDSTREAM_USERNAME to your UCM admin username');
+    }
+    
+    if (!requiredVars.GRANDSTREAM_PASSWORD || requiredVars.GRANDSTREAM_PASSWORD === 'YOUR_UCM_PASSWORD') {
+      validation.valid = false;
+      validation.issues.push('GRANDSTREAM_PASSWORD not configured');
+      validation.recommendations.push('Set GRANDSTREAM_PASSWORD to your UCM admin password');
+    }
+    
+    if (modeInfo.isDemo) {
+      validation.recommendations.push('Set UCM_MODE=production to enable real UCM connection');
+    }
+    
+    // Add setup instructions if in demo mode
+    if (modeInfo.isDemo) {
+      validation.recommendations.push(
+        'Complete setup steps:',
+        '1. Find your UCM6304A IP address in Network Settings',
+        '2. Create/verify admin credentials in System Settings > Administrator',
+        '3. Enable API access in System Settings > Remote Management',
+        '4. Update .env file with real values',
+        '5. Set UCM_MODE=production',
+        '6. Restart application'
+      );
+    }
+    
+    res.json({
+      success: true,
+      validation,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: 'Failed to validate configuration',
       details: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString()
     });
@@ -373,9 +599,24 @@ router.post('/settings', async (req, res) => {
     // Here you would save to environment variables or config file
     console.log('Settings updated:', { host, port, username, sslEnabled, maxConcurrentCalls, callTimeout, logLevel, recordCalls, autoBackup, backupInterval });
     
+    // Save to .env file for persistence
+    try {
+      envManager.updateGrandstreamConfig({
+        host,
+        port: String(port),
+        username,
+        password, // Only save if provided
+        mode: 'production' // When user saves settings, assume they want production mode
+      });
+      console.log('[Grandstream Config] Configuration automatically saved to .env file');
+    } catch (envError) {
+      console.error('[Grandstream Config] Failed to save to .env file:', envError);
+      // Don't fail the request if .env update fails, just log it
+    }
+    
     res.json({
       success: true,
-      message: 'Settings saved successfully'
+      message: 'Settings saved successfully (database and .env file updated)'
     });
   } catch (error) {
     res.status(500).json({

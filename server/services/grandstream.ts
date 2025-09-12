@@ -10,19 +10,57 @@ export class GrandstreamService extends EventEmitter {
     username: string;
     password: string;
     extensions: Map<string, string>; // extension -> user mapping
+    mode: 'demo' | 'production';
+    connectionTimeout: number;
   };
 
   constructor() {
     super();
     this.prisma = new PrismaClient();
     this.ucmConfig = {
-      host: process.env.GRANDSTREAM_HOST || '192.168.1.100',
+      host: process.env.GRANDSTREAM_HOST || 'YOUR_UCM_IP_ADDRESS_HERE',
       port: parseInt(process.env.GRANDSTREAM_PORT || '8088'),
-      username: process.env.GRANDSTREAM_USERNAME || 'admin',
-      password: process.env.GRANDSTREAM_PASSWORD || '',
+      username: process.env.GRANDSTREAM_USERNAME || 'YOUR_UCM_USERNAME',
+      password: process.env.GRANDSTREAM_PASSWORD || 'YOUR_UCM_PASSWORD',
+      mode: (process.env.UCM_MODE as 'demo' | 'production') || 'demo',
+      connectionTimeout: parseInt(process.env.UCM_CONNECTION_TIMEOUT || '10000'),
       extensions: new Map()
     };
     this.initializeExtensions();
+    this.logModeInfo();
+  }
+
+  private logModeInfo() {
+    const isDemo = this.isDemo();
+    console.log(`[Grandstream] Mode: ${this.ucmConfig.mode.toUpperCase()}`);
+    
+    if (isDemo) {
+      console.log(`[Grandstream] ⚠️  DEMO MODE: Using placeholder configuration`);
+      console.log(`[Grandstream] To switch to production mode:`);
+      console.log(`[Grandstream] 1. Update .env with your real UCM6304A settings`);
+      console.log(`[Grandstream] 2. Set UCM_MODE=production`);
+    } else {
+      console.log(`[Grandstream] ✅ PRODUCTION MODE: Connecting to ${this.ucmConfig.host}:${this.ucmConfig.port}`);
+    }
+  }
+
+  // Check if we're in demo mode
+  isDemo(): boolean {
+    return this.ucmConfig.mode === 'demo' || 
+           this.ucmConfig.host === 'YOUR_UCM_IP_ADDRESS_HERE' ||
+           this.ucmConfig.username === 'YOUR_UCM_USERNAME' ||
+           this.ucmConfig.password === 'YOUR_UCM_PASSWORD';
+  }
+
+  // Get current mode info
+  getModeInfo() {
+    return {
+      mode: this.ucmConfig.mode,
+      isDemo: this.isDemo(),
+      host: this.isDemo() ? 'DEMO_HOST' : this.ucmConfig.host,
+      port: this.ucmConfig.port,
+      configured: !this.isDemo()
+    };
   }
 
   private async initializeExtensions() {
@@ -73,6 +111,116 @@ export class GrandstreamService extends EventEmitter {
     }
   }
 
+  // Test connection to UCM with proper API authentication
+  async testConnection() {
+    try {
+      // Check if we're in demo mode
+      if (this.isDemo()) {
+        return {
+          connected: false,
+          demo: true,
+          error: 'Demo mode active. Configure real UCM6304A settings in .env file to connect.',
+          instructions: [
+            'Update GRANDSTREAM_HOST with your UCM IP address',
+            'Update GRANDSTREAM_USERNAME with your UCM admin username', 
+            'Update GRANDSTREAM_PASSWORD with your UCM admin password',
+            'Set UCM_MODE=production in .env file',
+            'Restart the application'
+          ]
+        };
+      }
+
+      // Production mode - test real connection
+      const testUrl = `http://${this.ucmConfig.host}:${this.ucmConfig.port}`;
+      
+      // Test basic connectivity first with timeout
+      const connectivityTest = await fetch(testUrl, { 
+        method: 'HEAD',
+        signal: AbortSignal.timeout(this.ucmConfig.connectionTimeout)
+      }).catch(() => null);
+      
+      if (!connectivityTest) {
+        return {
+          connected: false,
+          demo: false,
+          error: `Cannot reach UCM at ${this.ucmConfig.host}:${this.ucmConfig.port}. Check network connectivity and IP address.`,
+          troubleshooting: [
+            'Verify UCM6304A is powered on and network accessible',
+            'Check if IP address in .env is correct',
+            'Ensure port 8088 is not blocked by firewall',
+            'Try pinging the UCM IP address first'
+          ]
+        };
+      }
+      
+      // Now test API authentication with actual API call
+      const response = await this.makeAPICall('status');
+      return {
+        connected: true,
+        demo: false,
+        info: {
+          firmware: response.firmware_version || 'Unknown',
+          model: response.model || 'UCM6304A',
+          uptime: response.uptime || 'Unknown',
+          apiVersion: response.api_version || 'Unknown',
+          host: this.ucmConfig.host,
+          port: this.ucmConfig.port
+        }
+      };
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      
+      // Provide more specific error messages
+      if (errorMsg.includes('401') || errorMsg.includes('Unauthorized')) {
+        return {
+          connected: false,
+          demo: false,
+          error: 'Authentication failed. Username or password incorrect.',
+          troubleshooting: [
+            'Check GRANDSTREAM_USERNAME in .env file',
+            'Check GRANDSTREAM_PASSWORD in .env file',
+            'Verify credentials work in UCM web interface',
+            'Ensure API access is enabled for this user'
+          ]
+        };
+      } else if (errorMsg.includes('403') || errorMsg.includes('Forbidden')) {
+        return {
+          connected: false,
+          demo: false,
+          error: 'API access forbidden. API may be disabled in UCM.',
+          troubleshooting: [
+            'Enable API access in UCM: System Settings > Remote Management',
+            'Check if IP address is allowed for API access',
+            'Verify user has admin privileges'
+          ]
+        };
+      } else if (errorMsg.includes('timeout') || errorMsg.includes('ECONNRESET')) {
+        return {
+          connected: false,
+          demo: false,
+          error: 'Connection timeout. UCM may be unreachable or overloaded.',
+          troubleshooting: [
+            'Check network connectivity to UCM',
+            'Verify UCM is not overloaded',
+            'Try increasing UCM_CONNECTION_TIMEOUT in .env',
+            'Check firewall settings'
+          ]
+        };
+      } else {
+        return {
+          connected: false,
+          demo: false,
+          error: `Connection failed: ${errorMsg}`,
+          troubleshooting: [
+            'Check all UCM settings in .env file',
+            'Verify UCM is accessible via web browser',
+            'Check server logs for more details'
+          ]
+        };
+      }
+    }
+  }
+
   // Get extension status
   async getExtensionStatus(extension: string) {
     try {
@@ -115,7 +263,7 @@ export class GrandstreamService extends EventEmitter {
       const callRecord = await this.prisma.call.create({
         data: {
           phoneNumber: toNumber,
-          status: 'INITIATED',
+          status: 'PENDING',
           type: 'OUTBOUND',
           department: 'SALES',
           userId: userId || this.ucmConfig.extensions.get(fromExtension),
@@ -370,6 +518,140 @@ export class GrandstreamService extends EventEmitter {
       console.log('[Grandstream] Service disconnected');
     } catch (error) {
       console.error('[Grandstream] Error during disconnect:', error);
+    }
+  }
+
+  // Sync CDR data from UCM to local database
+  async syncCDRFromUCM(limit: number = 100) {
+    try {
+      console.log(`[CDR Sync] Fetching up to ${limit} records from UCM`);
+      const cdrData = await this.getCallHistory(limit);
+      
+      let synced = 0;
+      let errors = 0;
+      
+      for (const record of cdrData) {
+        try {
+          // Convert UCM format to our CDR format
+          const cdrRecord = {
+            uniqueid: record.callId,
+            calldate: record.startTime,
+            src: record.from,
+            dst: record.to,
+            duration: record.duration || 0,
+            billsec: record.duration || 0,
+            disposition: record.status || 'UNKNOWN',
+            actionType: record.direction || 'UNKNOWN'
+          };
+          
+          // Upsert CDR record (create or update)
+          await this.prisma.cDR.upsert({
+            where: { uniqueid: cdrRecord.uniqueid },
+            update: cdrRecord,
+            create: cdrRecord
+          });
+          
+          synced++;
+        } catch (recordError) {
+          console.error('[CDR Sync] Failed to sync record:', recordError);
+          errors++;
+        }
+      }
+      
+      console.log(`[CDR Sync] Completed: ${synced} synced, ${errors} errors`);
+      return { synced, errors };
+    } catch (error) {
+      console.error('[CDR Sync] Failed:', error);
+      throw error;
+    }
+  }
+
+  // Get CDR diagnostics and health info
+  async getCDRDiagnostics() {
+    try {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const [totalRecords, todayRecords, lastRecord] = await Promise.all([
+        this.prisma.cDR.count(),
+        this.prisma.cDR.count({
+          where: {
+            calldate: {
+              gte: today
+            }
+          }
+        }),
+        this.prisma.cDR.findFirst({
+          orderBy: { calldate: 'desc' },
+          select: { calldate: true, src: true, dst: true, disposition: true }
+        })
+      ]);
+      
+      return {
+        totalRecords,
+        todayRecords,
+        lastRecord: lastRecord ? {
+          time: lastRecord.calldate,
+          from: lastRecord.src,
+          to: lastRecord.dst,
+          status: lastRecord.disposition
+        } : null,
+        lastSyncTime: new Date().toISOString(),
+        ingestionHealth: totalRecords > 0 ? 'healthy' : 'no-data'
+      };
+    } catch (error) {
+      console.error('[CDR Diagnostics] Failed:', error);
+      return {
+        totalRecords: 0,
+        todayRecords: 0,
+        lastRecord: null,
+        lastSyncTime: null,
+        ingestionHealth: 'error',
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  // Schedule periodic CDR sync with configurable interval
+  startPeriodicSync(intervalMinutes: number = 5) {
+    console.log(`[CDR Sync] Starting periodic sync every ${intervalMinutes} minutes`);
+    
+    // Do an initial sync immediately
+    this.syncCDRFromUCM(50).catch(error => {
+      console.error('[CDR Sync] Initial sync failed:', error);
+    });
+    
+    const syncInterval = setInterval(async () => {
+      try {
+        console.log('[CDR Sync] Running scheduled sync...');
+        const result = await this.syncCDRFromUCM(50); // Sync last 50 records
+        console.log(`[CDR Sync] Scheduled sync completed: ${result.synced} records synced`);
+      } catch (error) {
+        console.error('[CDR Sync] Scheduled sync failed:', error);
+      }
+    }, intervalMinutes * 60 * 1000);
+    
+    return () => {
+      clearInterval(syncInterval);
+      console.log('[CDR Sync] Periodic sync stopped');
+    };
+  }
+
+  // Start real-time CDR monitoring (if UCM supports webhooks)
+  startRealTimeSync(webhookUrl?: string) {
+    console.log('[CDR Sync] Starting real-time CDR monitoring...');
+    
+    if (webhookUrl) {
+      console.log(`[CDR Sync] Webhook URL configured: ${webhookUrl}`);
+      // In a real implementation, you would configure UCM to send CDR data to this webhook
+      return {
+        status: 'webhook-configured',
+        url: webhookUrl
+      };
+    } else {
+      // Fallback to frequent polling
+      console.log('[CDR Sync] Using polling fallback (every 1 minute)');
+      return this.startPeriodicSync(1); // More frequent sync for real-time feel
     }
   }
 }

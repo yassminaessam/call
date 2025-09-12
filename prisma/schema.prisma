@@ -193,6 +193,49 @@ model WebhookLog {
   @@map("webhook_logs")
 }
 
+model CDR {
+  id          BigInt       @id @default(autoincrement())
+  calldate    DateTime?    @default(now())
+  src         String?      @db.VarChar(64)  // Source number
+  dst         String?      @db.VarChar(64)  // Destination number
+  disposition String?      @db.VarChar(20)  // ANSWERED, NO ANSWER, BUSY, etc.
+  duration    Int?         @default(0)      // Total call duration in seconds
+  billsec     Int?         @default(0)      // Billable seconds
+  actionType  String?      @db.VarChar(64)  // Type of action/call
+  accountcode String?      @db.VarChar(64)  // Account code
+  uniqueid    String       @unique @db.VarChar(128) // Unique call identifier
+  
+  // Additional fields for enhanced CDR
+  channel     String?      @db.VarChar(128) // Channel used
+  dcontext    String?      @db.VarChar(80)  // Destination context
+  dstchannel  String?      @db.VarChar(128) // Destination channel
+  lastapp     String?      @db.VarChar(80)  // Last application
+  lastdata    String?      @db.VarChar(200) // Last application data
+  amaflags    Int?         @default(0)      // AMA flags
+  userfield   String?      @db.VarChar(255) // User field
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  
+  // Indexes for better query performance
+  @@index([calldate])
+  @@index([src])
+  @@index([dst])
+  @@index([disposition])
+  @@index([duration])
+  @@map("cdr")
+}
+
+model CDRConnectorConfig {
+  id         Int      @id @default(1)
+  mode       CDRMode  @default(HTTPS)
+  jsonConfig Json     @default("{}")  // Stores mode-specific configuration
+  isActive   Boolean  @default(true)
+  updatedAt  DateTime @updatedAt @default(now())
+  
+  @@map("cdr_connector_config")
+}
+
 // Enums
 enum UserRole {
   USER
@@ -300,4 +343,9 @@ enum TicketStatus {
   IN_PROGRESS
   RESOLVED
   CLOSED
+}
+
+enum CDRMode {
+  HTTPS
+  TCP
 }

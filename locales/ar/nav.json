@@ -2,9 +2,17 @@
   "dashboard": "لوحة التحكم",
   "communications": "الاتصالات",
   "callCenter": "مركز الاتصالات",
-  "advancedCallCenter": "مركز الاتصالات الذكي - بميزات متقدمة",
-  "aiAnswering": "الرد الآلي بالذكاء الاصطناعي - للردود الذكية",
-  "grandstream": "تحكم السنترال - الإدارة الكاملة للـ PBX ✨",
+  "advancedCallCenter": "مركز الاتصالات الذكي",
+  "aiAnswering": "الرد الآلي بالذكاء الاصطناعي",
+  "grandstream": "تحكم السنترال",
+  "cdrConnector": "موصل CDR",
+  "cdrSettings": "إعدادات CDR",
+  "pbx": {
+    "unified": {
+      "navTitle": "السنترال + السجلات + الذكاء",
+      "navDesc": "تحكم موحد بالسنترال وسجلات المكالمات والرد الذكي"
+    }
+  },
   "sales": "المبيعات",
   "hr": "الموارد البشرية",
   "marketing": "التسويق",

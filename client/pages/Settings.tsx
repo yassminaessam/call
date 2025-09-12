@@ -101,13 +101,7 @@ export default function SettingsPage() {
     // Theme
     theme: "light",
     primaryColor: "blue",
-    sidebarCollapsed: false,
-    
-    // Grandstream PBX Settings
-    pbxHost: "192.168.1.100",
-    pbxPort: "8088",
-    pbxUsername: "admin",
-    pbxPassword: "",
+    sidebarCollapsed: false
   });
 
   const handleSave = async () => {
@@ -227,7 +221,7 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="general" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-9">
+        <TabsList className="grid w-full grid-cols-8">
           <TabsTrigger value="general">{t('settings.tabs.general')}</TabsTrigger>
           <TabsTrigger value="profile">{t('settings.tabs.profile')}</TabsTrigger>
           <TabsTrigger value="security">{t('settings.tabs.security')}</TabsTrigger>
@@ -236,7 +230,6 @@ export default function SettingsPage() {
           <TabsTrigger value="ai">{t('settings.tabs.ai')}</TabsTrigger>
           <TabsTrigger value="database">{t('settings.tabs.database')}</TabsTrigger>
           <TabsTrigger value="integrations">{t('settings.tabs.integrations')}</TabsTrigger>
-          <TabsTrigger value="grandstream">{t('settings.tabs.grandstream')}</TabsTrigger>
         </TabsList>
 
         {/* General Settings */}
@@ -885,158 +878,6 @@ export default function SettingsPage() {
           </div>
         </TabsContent>
 
-        {/* Grandstream PBX Settings */}
-        <TabsContent value="grandstream">
-          <div className="grid gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Phone className="h-5 w-5" />
-                  {t('settings.grandstream.title')}
-                </CardTitle>
-                <CardDescription>
-                  {t('settings.grandstream.description')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="pbxHost">{t('settings.grandstream.host')}</Label>
-                    <Input
-                      id="pbxHost"
-                      value={settings.pbxHost || '192.168.1.100'}
-                      onChange={(e) => setSettings(prev => ({ ...prev, pbxHost: e.target.value }))}
-                      placeholder={t('settings.grandstream.placeholders.host')}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="pbxPort">{t('settings.grandstream.port')}</Label>
-                    <Input
-                      id="pbxPort"
-                      value={settings.pbxPort || '8088'}
-                      onChange={(e) => setSettings(prev => ({ ...prev, pbxPort: e.target.value }))}
-                      placeholder={t('settings.grandstream.placeholders.port')}
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="pbxUsername">{t('settings.grandstream.username')}</Label>
-                    <Input
-                      id="pbxUsername"
-                      value={settings.pbxUsername || 'admin'}
-                      onChange={(e) => setSettings(prev => ({ ...prev, pbxUsername: e.target.value }))}
-                      placeholder={t('settings.grandstream.placeholders.username')}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="pbxPassword">{t('settings.grandstream.password')}</Label>
-                    <div className="relative">
-                      <Input
-                        id="pbxPassword"
-                        type={showApiKey ? 'text' : 'password'}
-                        value={settings.pbxPassword || ''}
-                        onChange={(e) => setSettings(prev => ({ ...prev, pbxPassword: e.target.value }))}
-                        placeholder={t('settings.grandstream.placeholders.password')}
-                      />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="absolute right-0 top-0 h-full px-3 py-2"
-                        onClick={() => setShowApiKey(!showApiKey)}
-                      >
-                        {showApiKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                
-                <Separator />
-                
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium">{t('settings.grandstream.connectionTest')}</h4>
-                  <div className="flex items-center gap-4">
-                    <Button 
-                      variant="outline" 
-                      onClick={() => {
-                        toast({
-                          title: t('settings.grandstream.testing'),
-                          description: t('settings.grandstream.testingDescription'),
-                        });
-                      }}
-                    >
-                      <Activity className="h-4 w-4 mr-2" />
-                      {t('settings.grandstream.testConnection')}
-                    </Button>
-                    <Badge variant="outline" className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      {t('settings.grandstream.status.connected')}
-                    </Badge>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium">{t('settings.grandstream.extensions')}</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h5 className="font-medium">Extension 1001</h5>
-                          <p className="text-sm text-muted-foreground">{t('common.departments.salesDepartment')}</p>
-                        </div>
-                        <Badge variant="default">{t('common.online')}</Badge>
-                      </div>
-                    </Card>
-                    <Card className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h5 className="font-medium">Extension 1002</h5>
-                          <p className="text-sm text-muted-foreground">{t('common.departments.supportDepartment')}</p>
-                        </div>
-                        <Badge variant="secondary">{t('common.busy')}</Badge>
-                      </div>
-                    </Card>
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="space-y-4">
-                  <h4 className="text-sm font-medium">{t('settings.grandstream.queues')}</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card className="p-4">
-                      <div className="text-center">
-                        <h5 className="font-medium">Queue 100</h5>
-                        <p className="text-sm text-muted-foreground">General</p>
-                        <p className="text-2xl font-bold text-blue-600 mt-2">0</p>
-                        <p className="text-xs text-muted-foreground">Waiting</p>
-                      </div>
-                    </Card>
-                    <Card className="p-4">
-                      <div className="text-center">
-                        <h5 className="font-medium">Queue 200</h5>
-                        <p className="text-sm text-muted-foreground">Sales</p>
-                        <p className="text-2xl font-bold text-green-600 mt-2">2</p>
-                        <p className="text-xs text-muted-foreground">Active</p>
-                      </div>
-                    </Card>
-                    <Card className="p-4">
-                      <div className="text-center">
-                        <h5 className="font-medium">Queue 300</h5>
-                        <p className="text-sm text-muted-foreground">Support</p>
-                        <p className="text-2xl font-bold text-orange-600 mt-2">1</p>
-                        <p className="text-xs text-muted-foreground">Waiting</p>
-                      </div>
-                    </Card>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
       </Tabs>
     </div>
   );

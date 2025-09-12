@@ -1,0 +1,17 @@
+{
+  "unified": {
+    "title": "Unified PBX Console",
+    "subtitle": "All PBX control, CDR & AI in one place",
+    "tabs": {
+      "overview": "Overview",
+      "cdr": "CDR",
+      "cdrAlt": "Call Records (CDR)",
+      "ai": "AI"
+    },
+    "navTitle": "PBX + CDR + AI",
+    "navDesc": "Unified PBX control, call records & AI answering",
+    "ai": {
+      "lightNotice": "Lightweight preview – full AI features coming soon"
+    }
+  }
+}

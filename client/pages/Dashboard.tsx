@@ -15,14 +15,91 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "@/contexts/TranslationContext";
+import { useState } from "react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState('allSystems');
 
   const handleQuickCall = () => {
     console.log('Quick call initiated');
     navigate('/calls?tab=active');
+  };
+
+  // Navigation functions for all system buttons
+  const handleAllSystems = () => {
+    console.log('All Systems view');
+    setActiveTab('allSystems');
+    // Show overview of all systems - could be current dashboard or a dedicated systems overview
+  };
+
+  const handleOperations = () => {
+    console.log('Operations view');
+    setActiveTab('operations');
+    navigate('/calls'); // Navigate to call center operations
+  };
+
+  const handleMarketing = () => {
+    console.log('Marketing module');
+    setActiveTab('marketing');
+    navigate('/marketing');
+  };
+
+  const handleSupport = () => {
+    console.log('Support module');
+    setActiveTab('support');
+    navigate('/support');
+  };
+
+  const handleSales = () => {
+    console.log('Sales module');
+    setActiveTab('sales');
+    navigate('/sales');
+  };
+
+  const handleAIAnswering = () => {
+    console.log('AI Answering module');
+    setActiveTab('aiAnswering');
+    navigate('/ai-answering');
+  };
+
+  const handleManufacturing = () => {
+    console.log('Manufacturing module');
+    setActiveTab('manufacturing');
+    navigate('/manufacturing');
+  };
+
+  const handleHR = () => {
+    console.log('HR module');
+    setActiveTab('hr');
+    navigate('/hr');
+  };
+
+  // Navigation handlers for bottom cards
+  const handleSettings = () => {
+    console.log('Settings module');
+    setActiveTab('settings');
+    navigate('/settings');
+  };
+
+  const handleAnalytics = () => {
+    console.log('CRM Analytics module');
+    setActiveTab('analytics');
+    navigate('/analytics');
+  };
+
+  const handleSystemManagement = () => {
+    console.log('System Management module');
+    setActiveTab('systemManagement');
+    navigate('/system-management');
+  };
+
+  // Helper function to get button styles based on active state
+  const getButtonStyles = (tabName: string) => {
+    return activeTab === tabName 
+      ? "bg-blue-500 text-white border-blue-500 hover:bg-blue-600 font-medium" 
+      : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium";
   };
 
   return (
@@ -89,38 +166,70 @@ export default function Dashboard() {
         {/* Navigation Tabs */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
           <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" className="bg-blue-500 text-white border-blue-500 hover:bg-blue-600 font-medium">
+            <Button 
+              onClick={handleAllSystems}
+              variant="outline" 
+              className={getButtonStyles('allSystems')}
+            >
               <Phone className="mr-2 h-4 w-4" />
               {t('dashboard.allSystems') || 'All Systems'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
+            <Button 
+              onClick={handleOperations}
+              variant="outline" 
+              className={getButtonStyles('operations')}
+            >
               <BarChart3 className="mr-2 h-4 w-4" />
               {t('dashboard.operations') || 'Operations'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
+            <Button 
+              onClick={handleMarketing}
+              variant="outline" 
+              className={getButtonStyles('marketing')}
+            >
               <Target className="mr-2 h-4 w-4" />
               {t('nav.marketing') || 'Marketing'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
-              <Package className="mr-2 h-4 w-4" />
+            <Button 
+              onClick={handleSupport}
+              variant="outline" 
+              className={getButtonStyles('support')}
+            >
+              <HeadphonesIcon className="mr-2 h-4 w-4" />
               {t('nav.support') || 'Support'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
+            <Button 
+              onClick={handleSales}
+              variant="outline" 
+              className={getButtonStyles('sales')}
+            >
               <TrendingUp className="mr-2 h-4 w-4" />
               {t('nav.sales') || 'Sales'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
+            <Button 
+              onClick={handleAIAnswering}
+              variant="outline" 
+              className={getButtonStyles('aiAnswering')}
+            >
               <MessageSquare className="mr-2 h-4 w-4" />
               {t('nav.aiAnswering') || 'AI Answering'}
             </Button>
           </div>
           <div className="flex justify-center gap-4 mt-4">
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
-              <Activity className="mr-2 h-4 w-4" />
+            <Button 
+              onClick={handleManufacturing}
+              variant="outline" 
+              className={getButtonStyles('manufacturing')}
+            >
+              <Factory className="mr-2 h-4 w-4" />
               {t('nav.manufacturing') || 'Manufacturing'}
             </Button>
-            <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">
-              <HeadphonesIcon className="mr-2 h-4 w-4" />
+            <Button 
+              onClick={handleHR}
+              variant="outline" 
+              className={getButtonStyles('hr')}
+            >
+              <Users className="mr-2 h-4 w-4" />
               {t('nav.hr') || 'HR'}
             </Button>
           </div>
@@ -130,7 +239,7 @@ export default function Dashboard() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {/* AI Answering Module */}
           <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/ai-answering')}>
+               onClick={handleAIAnswering}>
             <div className="flex items-center justify-between mb-4">
               <MessageSquare className="w-8 h-8 text-white" />
               <Badge className="bg-white/20 text-white px-2 py-1 text-xs rounded-full font-medium">AI</Badge>
@@ -144,7 +253,7 @@ export default function Dashboard() {
 
           {/* Call Center Module */}
           <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/calls')}>
+               onClick={handleOperations}>
             <div className="flex items-center justify-between mb-4">
               <Phone className="w-8 h-8 text-white" />
             </div>
@@ -157,7 +266,7 @@ export default function Dashboard() {
 
           {/* HR Module */}
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/hr')}>
+               onClick={handleHR}>
             <div className="flex items-center justify-between mb-4">
               <Users className="w-8 h-8 text-white" />
               <div className="bg-white/20 rounded-full px-2 py-1 text-xs text-white font-medium">◊ {t('common.active') || 'Active'}</div>
@@ -171,7 +280,7 @@ export default function Dashboard() {
 
           {/* Marketing Module */}
           <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/marketing')}>
+               onClick={handleMarketing}>
             <div className="flex items-center justify-between mb-4">
               <Target className="w-8 h-8 text-white" />
               <div className="bg-white/20 rounded-full px-2 py-1 text-xs text-white font-medium">✓ {t('common.active') || 'Active'}</div>
@@ -185,7 +294,7 @@ export default function Dashboard() {
 
           {/* Manufacturing Module */}
           <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/manufacturing')}>
+               onClick={handleManufacturing}>
             <div className="flex items-center justify-between mb-4">
               <Factory className="w-8 h-8 text-white" />
               <div className="bg-white/20 rounded-full px-2 py-1 text-xs text-white font-medium">⚡ {t('common.active') || 'Active'}</div>
@@ -199,7 +308,7 @@ export default function Dashboard() {
 
           {/* Sales Module */}
           <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/sales')}>
+               onClick={handleSales}>
             <div className="flex items-center justify-between mb-4">
               <TrendingUp className="w-8 h-8 text-white" />
               <div className="bg-white/20 rounded-full px-2 py-1 text-xs text-white font-medium">✓ {t('common.active') || 'Active'}</div>
@@ -213,7 +322,7 @@ export default function Dashboard() {
 
           {/* Support Module */}
           <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-               onClick={() => navigate('/support')}>
+               onClick={handleSupport}>
             <div className="flex items-center justify-center mb-4">
               <HeadphonesIcon className="w-8 h-8 text-white" />
             </div>
@@ -228,7 +337,8 @@ export default function Dashboard() {
         {/* Bottom Section - CRM Management */}
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Settings Module */}
-          <div className="bg-gradient-to-br from-gray-500 to-gray-600 rounded-xl shadow-lg p-6 text-white">
+          <div className="bg-gradient-to-br from-gray-500 to-gray-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+               onClick={handleSettings}>
             <div className="flex items-center justify-between mb-4">
               <Settings className="w-8 h-8 text-white" />
               <Badge className="bg-white/20 text-white px-2 py-1 text-xs rounded-full font-medium">ADMIN</Badge>
@@ -241,11 +351,12 @@ export default function Dashboard() {
           </div>
 
           {/* CRM Analytics */}
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+               onClick={handleAnalytics}>
             <div className="flex items-center justify-between mb-4">
               <BarChart3 className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-2 text-white">{t('dashboard.analytics') || 'CRM Analytics'}</h3>
+            <h3 className="text-xl font-bold mb-2 text-white">{t('dashboard.analyticsTitle') || 'CRM Analytics'}</h3>
             <p className="text-blue-100 text-sm mb-4">{t('dashboard.analyticsDescription') || 'Data Analysis and Reports'}</p>
             <div className="bg-white/20 rounded-lg px-3 py-1 text-sm inline-block text-white font-medium">
               ○ {t('common.active') || 'Active'}
@@ -253,7 +364,8 @@ export default function Dashboard() {
           </div>
 
           {/* System Management */}
-          <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white">
+          <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+               onClick={handleSystemManagement}>
             <div className="flex items-center justify-between mb-4">
               <Activity className="w-8 h-8 text-white" />
             </div>

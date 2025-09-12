@@ -1,3 +1,5 @@
+// DEPRECATED: This page is superseded by `PBXDashboard.tsx` (/pbx). Kept temporarily for reference/testing.
+// All new PBX + CDR + AI work should be done in the unified PBXDashboard.
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '@/contexts/TranslationContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -283,7 +285,13 @@ export default function GrandstreamDashboard() {
       setConnectionStatus('checking');
       const response = await fetch('/api/grandstream/health');
       const result = await response.json();
-      setConnectionStatus(result.success ? 'connected' : 'disconnected');
+      
+      // Only show connected if we have a real connection (not demo mode)
+      if (result.success && result.connected && !result.demo) {
+        setConnectionStatus('connected');
+      } else {
+        setConnectionStatus('disconnected');
+      }
     } catch (error) {
       setConnectionStatus('disconnected');
     }
@@ -845,6 +853,7 @@ export default function GrandstreamDashboard() {
                           <Label htmlFor="logLevel">{t('grandstream.settings.logLevel')}</Label>
                           <select
                             id="logLevel"
+                            title={t('grandstream.settings.logLevel') || 'Log Level'}
                             className="w-full p-2 border rounded"
                             value={settingsForm.logLevel}
                             onChange={(e) => setSettingsForm(prev => ({ ...prev, logLevel: e.target.value }))}
@@ -905,6 +914,7 @@ export default function GrandstreamDashboard() {
                           <Label htmlFor="backupInterval">{t('grandstream.settings.backupInterval')}</Label>
                           <select
                             id="backupInterval"
+                            title={t('grandstream.settings.backupInterval') || 'Backup Interval'}
                             className="w-full p-2 border rounded"
                             value={settingsForm.backupInterval}
                             onChange={(e) => setSettingsForm(prev => ({ ...prev, backupInterval: e.target.value }))}

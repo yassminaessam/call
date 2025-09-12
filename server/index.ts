@@ -21,6 +21,7 @@ import {
 import webhookRoutes from "./routes/webhooks";
 import grandstreamRoutes from "./routes/grandstream";
 import callCenterRoutes from "./routes/callCenter";
+import cdrRoutes from "./routes/cdr";
 
 export function createServer() {
   const app = express();
@@ -79,6 +80,9 @@ export function createServer() {
   // Advanced Call Center with AI Integration
   app.use("/api/call-center", callCenterRoutes);
 
+  // CDR Connector for PBX Integration
+  app.use("/api/cdr", cdrRoutes);
+
   // Web Vitals metrics intake (fire-and-forget)
   app.post('/api/metrics/web-vitals', (req, res) => {
     try {
@@ -92,5 +96,57 @@ export function createServer() {
     res.status(204).end();
   });
 
+  // Initialize Grandstream service with periodic CDR sync
+  initializeGrandstreamService(app);
+
   return app;
+}
+
+// Initialize Grandstream service and start periodic sync
+async function initializeGrandstreamService(app: express.Application) {
+  try {
+    // Check if required environment variables are set
+    const requiredVars = ['GRANDSTREAM_HOST', 'GRANDSTREAM_USERNAME', 'GRANDSTREAM_PASSWORD'];
+    const missing = requiredVars.filter(varName => !process.env[varName]);
+    
+    if (missing.length > 0) {
+      console.warn(`[Grandstream] Skipping initialization - missing environment variables: ${missing.join(', ')}`);
+      console.warn('[Grandstream] Set these variables in .env file to enable UCM integration');
+      return;
+    }
+
+    console.log('[Grandstream] Initializing UCM6304A integration...');
+    
+    // Dynamic import to avoid issues during build
+    const { GrandstreamService } = await import('./services/grandstream.js');
+    const grandstreamService = new GrandstreamService();
+    
+    // Test initial connection
+    const connectionTest = await grandstreamService.testConnection();
+    if (connectionTest.connected) {
+      console.log('[Grandstream] ✅ Connected to UCM6304A successfully');
+      console.log(`[Grandstream] UCM Info:`, connectionTest.info);
+      
+      // Start automatic CDR sync
+      const syncIntervalMinutes = parseInt(process.env.CDR_SYNC_INTERVAL || '5');
+      const stopSync = grandstreamService.startPeriodicSync(syncIntervalMinutes);
+      
+      // Store service instance and cleanup function for API access
+      app.locals.grandstreamService = grandstreamService;
+      app.locals.stopGrandstreamSync = stopSync;
+      
+      console.log(`[Grandstream] 🔄 Started automatic CDR sync (every ${syncIntervalMinutes} minutes)`);
+      console.log('[Grandstream] 📊 CDR data will be automatically synced to database');
+      
+      // Log initial CDR stats
+      const diagnostics = await grandstreamService.getCDRDiagnostics();
+      console.log(`[Grandstream] Current CDR stats: ${diagnostics.totalRecords} total records, ${diagnostics.todayRecords} today`);
+    } else {
+      console.warn('[Grandstream] ⚠️ Initial connection test failed:', connectionTest.error);
+      console.warn('[Grandstream] Service will still be available but may not function properly');
+    }
+  } catch (error) {
+    console.error('[Grandstream] Failed to initialize service:', error);
+    console.warn('[Grandstream] UCM integration will be limited - check your configuration');
+  }
 }

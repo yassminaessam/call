@@ -84,15 +84,20 @@ export default function GrandstreamSettings() {
     try {
       const response = await fetch('/api/grandstream/health');
       const result = await response.json();
-      setIsConnected(result.success);
+      
+      // Only show connected if we have a real connection (not demo mode)
+      const isReallyConnected = result.success && result.connected && !result.demo;
+      setIsConnected(isReallyConnected);
       
       if (showToast) {
         toast({
-          title: result.success ? t('grandstream.settings.testSuccess') : t('grandstream.settings.testFailed'),
-          description: result.success 
+          title: isReallyConnected ? t('grandstream.settings.testSuccess') : t('grandstream.settings.testFailed'),
+          description: isReallyConnected 
             ? t('grandstream.settings.connectionSuccessful')
-            : result.details || t('grandstream.settings.connectionFailed'),
-          variant: result.success ? 'default' : 'destructive'
+            : result.demo 
+              ? 'Demo mode active - Configure real UCM6304A settings to connect'
+              : result.details || t('grandstream.settings.connectionFailed'),
+          variant: isReallyConnected ? 'default' : 'destructive'
         });
       }
     } catch (error) {

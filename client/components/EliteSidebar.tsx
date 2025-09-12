@@ -42,6 +42,27 @@ export default function EliteSidebar({ className }: EliteSidebarProps) {
       color: 'from-blue-500 to-blue-600'
     },
     {
+      id: 'pbx-unified',
+      name: t('pbx.unified.navTitle') || 'PBX + CDR + AI',
+      description: t('pbx.unified.navDesc') || 'تحكم السنترال + CDR + الذكاء الاصطناعي في صفحة واحدة',
+      icon: Router,
+      href: '/pbx',
+      status: 'ACTIVE',
+      isPro: true,
+      color: 'from-cyan-500 to-blue-600'
+    },
+    // Legacy (still accessible via redirect). Could be hidden later.
+    {
+      id: 'cdr-settings',
+      name: t('nav.cdrSettings') || 'CDR Connection',
+      description: t('cdr.configuration') || 'إعدادات الاتصال بالسنترال - CDR Connection Setup',
+      icon: Settings,
+      href: '/cdr-settings',
+      status: 'READY',
+      isPro: true,
+      color: 'from-slate-500 to-gray-600'
+    },
+    {
       id: 'call-center',
       name: t('nav.callCenter') || 'Call Center',
       description: t('nav.advancedCallCenter') || 'مركز الاتصالات الذكي - بميزات متقدمة',
@@ -49,26 +70,6 @@ export default function EliteSidebar({ className }: EliteSidebarProps) {
       href: '/calls',
       status: 'OPERATIONAL',
       color: 'from-green-500 to-green-600'
-    },
-    {
-      id: 'grandstream',
-      name: t('nav.grandstream') || 'PBX Control',
-      description: t('nav.grandstream') || 'تحكم السنترال - الإدارة الكاملة للـ PBX ✨',
-      icon: Router,
-      href: '/grandstream',
-      status: 'ACTIVE',
-      isPro: true,
-      color: 'from-cyan-500 to-blue-600'
-    },
-    {
-      id: 'ai-answering',
-      name: t('nav.aiAnswering') || 'AI Answering',
-      description: t('nav.aiAnswering') || 'الرد الآلي بالذكاء الاصطناعي - للردود الذكية',
-      icon: Brain,
-      href: '/ai-answering',
-      status: 'AI_ACTIVE',
-      isPro: true,
-      color: 'from-purple-500 to-blue-600'
     },
     {
       id: 'sales',

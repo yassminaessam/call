@@ -5,6 +5,14 @@
   "advancedCallCenter": "AI Call Center",
   "aiAnswering": "AI Answering",
   "grandstream": "PBX Control",
+  "cdrConnector": "CDR Connector",
+  "cdrSettings": "CDR Settings",
+  "pbx": {
+    "unified": {
+      "navTitle": "PBX + CDR + AI",
+      "navDesc": "Unified PBX control, call records & AI answering"
+    }
+  },
   "sales": "Sales",
   "hr": "Human Resources",
   "marketing": "Marketing",

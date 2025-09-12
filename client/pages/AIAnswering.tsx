@@ -1,3 +1,4 @@
+// DEPRECATED: Unified into PBXDashboard (/pbx). This standalone page will be removed after confirmation.
 import { useState } from "react";
 import { useTranslation } from "@/contexts/TranslationContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

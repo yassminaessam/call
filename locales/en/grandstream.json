@@ -27,6 +27,7 @@
     "issues": "Issues",
     "healthy": "Healthy",
     "queues": "Call Queues",
+    "queueLabel": "Queue",
     "quickActions": "Quick Actions",
     "waiting": "Waiting",
     "availableAgents": "Available Agents",
@@ -77,9 +78,17 @@
     "available": "Available",
     "busy": "Busy",
     "offline": "Offline",
-    "ringing": "Ringing"
+    "ringing": "Ringing",
+    "title": "Extensions",
+    "description": "Manage internal extensions and users",
+    "registered": "Registered",
+    "unregistered": "Unregistered",
+    "short": "Ext.",
+    "none": "No extensions loaded"
   },
   "calls": {
+    "recentHistory": "Recent Calls",
+    "noHistory": "No call history",
     "from": "From",
     "to": "To",
     "duration": "Duration",

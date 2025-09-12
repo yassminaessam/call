@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React, { Suspense, lazy } from 'react';
 import CRMLayout from "./components/CRMLayout";
 import { TranslationProvider, useTranslation } from "./contexts/TranslationContext";
@@ -22,9 +22,16 @@ const Support = lazy(() => import('./pages/Support'));
 
 // Additional modules
 const CallCenter = lazy(() => import('./pages/CallCenter')); // Basic call center
-const AIAnswering = lazy(() => import('./pages/AIAnswering')); // AI features
-// Grandstream PBX dashboard page (full operational control center)
+// Unified PBX Dashboard (merged PBX + CDR + AI)
+const PBXDashboard = lazy(() => import('./pages/PBXDashboard'));
+
+// Keep old pages (lazy) only if we still reference inside Prefetch logic; otherwise could remove later:
 const GrandstreamDashboard = lazy(() => import('./pages/GrandstreamDashboard'));
+const CDRConnector = lazy(() => import('./pages/CDRConnector'));
+const AIAnswering = lazy(() => import('./pages/AIAnswering'));
+const Analytics = lazy(() => import('./pages/Analytics'));
+const SystemManagement = lazy(() => import('./pages/SystemManagement'));
+const CDRSettings = lazy(() => import('./pages/CDRSettings'));
 
 // Placeholder components for routes (currently unused but kept for future lazy modules)
 const PlaceholderPage = ({ title }: { title: string }) => {
@@ -74,90 +81,31 @@ function AppContent() {
 
 function AppRoutes() {
   const { language } = useTranslation();
-
   return (
     <BrowserRouter key={language}>
-      <Suspense fallback={
-        <div className="min-h-screen flex items-center justify-center bg-background">
-          <LoadingSpinner label="Loading module..." />
-        </div>
-      }> 
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background"><LoadingSpinner label="Loading module..." /></div>}>
         <Routes>
-        <Route path="/" element={
-          <CRMLayout>
-            <Dashboard />
-          </CRMLayout>
-        } />
-
-        {/* Call Center Module */}
-        <Route path="/calls" element={
-          <CRMLayout>
-            <CallCenter />
-          </CRMLayout>
-        } />
-
-        <Route path="/advanced-calls" element={
-          <CRMLayout>
-            <AdvancedCallCenter />
-          </CRMLayout>
-        } />
-
-        <Route path="/ai-answering" element={
-          <CRMLayout>
-            <AIAnswering />
-          </CRMLayout>
-        } />
-
-        {/* Grandstream PBX Control */}
-        <Route path="/grandstream" element={
-          <CRMLayout>
-            <GrandstreamDashboard />
-          </CRMLayout>
-        } />
-
-        {/* Department Pages */}
-        <Route path="/sales" element={
-          <CRMLayout>
-            <Sales />
-          </CRMLayout>
-        } />
-
-        <Route path="/hr" element={
-          <CRMLayout>
-            <HR />
-          </CRMLayout>
-        } />
-
-        <Route path="/marketing" element={
-          <CRMLayout>
-            <Marketing />
-          </CRMLayout>
-        } />
-
-        <Route path="/manufacturing" element={
-          <CRMLayout>
-            <Manufacturing />
-          </CRMLayout>
-        } />
-
-        <Route path="/support" element={
-          <CRMLayout>
-            <Support />
-          </CRMLayout>
-        } />
-
-        {/* System Settings */}
-        <Route path="/settings" element={
-          <CRMLayout>
-            <SettingsPage />
-          </CRMLayout>
-        } />
-
-        <Route path="*" element={
-          <CRMLayout>
-            <NotFound />
-          </CRMLayout>
-        } />
+          <Route path="/" element={<CRMLayout><Dashboard /></CRMLayout>} />
+          <Route path="/pbx" element={<CRMLayout><PBXDashboard /></CRMLayout>} />
+          {/* Legacy routes redirected to unified page */}
+          <Route path="/grandstream" element={<Navigate to="/pbx" replace />} />
+          <Route path="/cdr-connector" element={<Navigate to="/pbx" replace />} />
+          <Route path="/ai-answering" element={<Navigate to="/pbx" replace />} />
+          {/* Other existing modules */}
+          <Route path="/calls" element={<CRMLayout><CallCenter /></CRMLayout>} />
+          <Route path="/advanced-calls" element={<CRMLayout><AdvancedCallCenter /></CRMLayout>} />
+          <Route path="/analytics" element={<CRMLayout><Analytics /></CRMLayout>} />
+          <Route path="/system-management" element={<CRMLayout><SystemManagement /></CRMLayout>} />
+          <Route path="/settings" element={<CRMLayout><SettingsPage /></CRMLayout>} />
+          {/* Department pages */}
+          <Route path="/sales" element={<CRMLayout><Sales /></CRMLayout>} />
+          <Route path="/hr" element={<CRMLayout><HR /></CRMLayout>} />
+          <Route path="/marketing" element={<CRMLayout><Marketing /></CRMLayout>} />
+          <Route path="/manufacturing" element={<CRMLayout><Manufacturing /></CRMLayout>} />
+          <Route path="/support" element={<CRMLayout><Support /></CRMLayout>} />
+          {/* Settings specific for CDR kept (optional) */}
+          <Route path="/cdr-settings" element={<CRMLayout><CDRSettings /></CRMLayout>} />
+          <Route path="*" element={<CRMLayout><NotFound /></CRMLayout>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
