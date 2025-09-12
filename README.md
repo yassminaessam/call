@@ -417,4 +417,5 @@ npm run i18n:pseudo    # إنشاء/تحديث pseudo-locale (ar-EG-x) للتو�
 
 </div>
 #   T r i g g e r   d e p l o y m e n t  
+ #   T r i g g e r   d e p l o y m e n t  
  
