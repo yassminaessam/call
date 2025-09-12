@@ -12,12 +12,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "prisma generate && npm run build:client && npm run build:server",
+    "build": "prisma generate && vite build --config vite.config.prod.ts && node scripts/copy-locales.mjs",
     "build:client": "vite build --config vite.config.prod.ts",
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
-    "dev:debug": "node --inspect --enable-source-maps ./node_modules/vite/bin/vite.js",
-    "build:vercel": "prisma generate && vite build --config vite.config.prod.ts && node scripts/copy-locales.mjs",
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
