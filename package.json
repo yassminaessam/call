@@ -14,6 +14,7 @@
     "dev": "vite",
     "build": "prisma generate && vite build --config vite.config.prod.ts && node scripts/copy-locales.mjs",
     "build:vercel": "npx prisma generate && vite build --config vite.config.prod.ts && node scripts/copy-locales.mjs",
+    "prebuild": "prisma generate",
     "build:client": "vite build --config vite.config.prod.ts",
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
