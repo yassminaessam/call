@@ -1,19 +1,25 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist/spa",
   "installCommand": "npm install",
   "framework": null,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { 
+      "handle": "filesystem" 
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "/index.html" 
+    }
   ],
   "env": {
-    "DATABASE_URL": "postgresql://user:pass@localhost:5432/callcenter",
-    "GRANDSTREAM_HOST": "192.168.1.100",
-    "GRANDSTREAM_PORT": "8088", 
-    "GRANDSTREAM_USERNAME": "admin",
-    "GRANDSTREAM_PASSWORD": "admin",
-    "GRANDSTREAM_API_VERSION": "v1.0"
+    "DATABASE_URL": "@database_url",
+    "GRANDSTREAM_HOST": "@grandstream_host",
+    "GRANDSTREAM_PORT": "@grandstream_port", 
+    "GRANDSTREAM_USERNAME": "@grandstream_username",
+    "GRANDSTREAM_PASSWORD": "@grandstream_password",
+    "GRANDSTREAM_API_VERSION": "@grandstream_api_version",
+    "UCM_MODE": "@ucm_mode"
   }
 }

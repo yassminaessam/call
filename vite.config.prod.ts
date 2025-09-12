@@ -1,24 +1,9 @@
-import { defineConfig, Plugin } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-// Optional bundle analyzer (ensure rollup-plugin-visualizer installed when using ANALYZE=1)
-let visualizer: any; // lazy require to avoid build crash if not installed
-try {
-  // @ts-ignore
-  visualizer = require('rollup-plugin-visualizer').visualizer;
-} catch {}
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-    fs: {
-      // Added ./locales to allow direct JSON loading for i18n dynamic imports
-      allow: ["./client", "./shared", "./locales"],
-      deny: [".env", ".env.*", "*.{crt,pem}", "**/.git/**", "server/**"],
-    },
-  },
+// Production build config without server dependencies
+export default defineConfig({
   build: {
     outDir: "dist/spa",
     rollupOptions: {
@@ -43,9 +28,7 @@ export default defineConfig(({ mode }) => ({
     }
   },
   plugins: [
-    react(),
-    expressPlugin(),
-    ...(process.env.ANALYZE && visualizer ? [visualizer({ filename: 'dist/spa/stats.html', template: 'sunburst', gzipSize: true, brotliSize: true })] : [])
+    react()
   ],
   resolve: {
     alias: {
@@ -53,19 +36,4 @@ export default defineConfig(({ mode }) => ({
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
-}));
-
-function expressPlugin(): Plugin {
-  return {
-    name: "express-plugin",
-    apply: "serve", // Only apply during development (serve mode)
-    configureServer(server) {
-      // Lazy load the server only during development
-      const { createServer } = require("./server");
-      const app = createServer();
-
-      // Add Express app as middleware to Vite dev server
-      server.middlewares.use(app);
-    },
-  };
-}
+});
