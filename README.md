@@ -416,3 +416,5 @@ npm run i18n:pseudo    # إنشاء/تحديث pseudo-locale (ar-EG-x) للتو�
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-purple.svg)](https://openai.com/)
 
 </div>
+#   T r i g g e r   d e p l o y m e n t  
+ 
