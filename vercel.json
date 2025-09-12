@@ -4,7 +4,16 @@
   "outputDirectory": "dist/spa",
   "installCommand": "npm install",
   "framework": null,
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
     { 
       "handle": "filesystem" 
     },
@@ -12,14 +21,5 @@
       "src": "/(.*)", 
       "dest": "/index.html" 
     }
-  ],
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "GRANDSTREAM_HOST": "@grandstream_host",
-    "GRANDSTREAM_PORT": "@grandstream_port", 
-    "GRANDSTREAM_USERNAME": "@grandstream_username",
-    "GRANDSTREAM_PASSWORD": "@grandstream_password",
-    "GRANDSTREAM_API_VERSION": "@grandstream_api_version",
-    "UCM_MODE": "@ucm_mode"
-  }
+  ]
 }
